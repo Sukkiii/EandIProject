@@ -1,0 +1,41 @@
+h1 {
+  color: orange;
+  background-color: slategray;
+  /* text-decoration: line-through; */
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+/* #cid {
+  color: black;
+  background-color: transparent;
+} */
+
+.content {
+  /* color: aqua; */
+  color: black;
+  background-color: transparent;
+}
+
+p {
+  color: blue;
+}
+
+ul {
+  border-width: 4px;
+  border-style: solid;
+  border-color: crimson;
+  border-bottom: 4px dotted black;
+  border-left: 8px dashed pink;
+  padding-top: 20px;
+}
+
+/* css 에는 적용 순서가 
+
+inline - style
+file head
+id ... 접근.... 최우선 순위
+class 접근... 우선순위
+<tag> 마지막 순위
+
+*/

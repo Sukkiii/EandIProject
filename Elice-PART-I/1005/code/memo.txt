@@ -1,0 +1,11 @@
+
+
+clone => pull => commit => push => pull
+
+commit (변경된 코드 사항을 git 에 인지시키는 것)
+'자주 사용해 주는 것이 좋은데'
+
+revert (변경 내용 취소)
+
+
+push (commit 으로 변경된 코드를 클라우드 저장소에 올리는 행위를 말함)

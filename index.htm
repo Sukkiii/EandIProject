@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.8.1/video-js.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.8.1/video.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var player = videojs("myPlayer", {
+            sources : [
+                { src : "https://wtnpyesmhqvw68558.cdn.gov-ntruss.com/ibk/ETC/0001/wPiu5twj8ZtdcIuGeTyu.mp4", type : "video/mp4"}
+            ],
+            poster : "https://wtnpyesmhqvw68558.cdn.gov-ntruss.com/ibk/ETC/0001/DPPWiqhOJcbxr1ZgVHFc.png",
+            controls : true,
+            playsinline : true,
+            muted : true,
+            preload : "metadata",
+            controlBar : {
+                playToggle : false,
+                pictureInPictureToggle : false,
+                remainingTimeDisplay : false,
+                progressControl : false,
+            }
+        });
+    </script>
+    <header>
+        <ul class="nav-container">
+            <a href="./index.htm" class="nav-logo">
+                <img src="./Unknown_오후_1.18.00-removebg-preview.png" alt="" class="nav-logo-img">
+            </a>
+            <ul class="nav-menu">
+                <li>
+                    <a href="" class="nav-item">피규어</a>
+                </li>
+                <li>
+                    <a href="" class="nav-item">인형</a>
+                </li>
+                <li>
+                    <a href="" class="nav-item">학용품</a>
+                </li>
+                <li>
+                    <a href="" class="nav-item">옷</a>
+                </li>
+                <li>
+                    <a href="" class="nav-item">스티커</a>
+                </li>
+                                <li>
+                    <a href="" class="nav-item">스티커</a>
+                </li>
+                                <li>
+                    <a href="" class="nav-item">스티커</a>
+                </li>
+
+            </ul>
+            <ul class="nav-profile">
+                <li>
+                    <a href="" class="nav-item">로그인</a>
+                </li>
+                <li>
+                    <a href="" class="nav-item">장바구니</a>
+                </li>
+                <li>
+                    <a href="" class="nav-item">마이페이지</a>
+                </li>
+            </ul>
+        </ul>
+    </header>
+    <main>
+        <video id="myPlayer" class="video-js vjs-default-skin" webkit-playsinline></video>
+    </main>
+    <footer>
+
+    </footer>
+
+</body>
+</html>

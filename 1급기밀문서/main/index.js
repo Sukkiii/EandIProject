@@ -20,11 +20,13 @@ function expandSticky() {
 const mainShoppingList = document.querySelector(".main-container");
 const shoppingStartBtn = document.querySelector(".forSeelist");
 const stickyImg = document.querySelector('.sticky-img');
-const footer = document.querySelector(".footer-box1");
+const footer = document.querySelector(".footer-container");
+const fakeFooter = document.querySelector(".fake-footer");
 
 shoppingStartBtn.addEventListener('click',() => {
     mainShoppingList.style.display = "block";
-    footer.style.display = "block"
+    footer.style.visibility = "visible";
+    fakeFooter.style.display = "none";
 
     setTimeout(() => {
         stickyImg.classList.add('stick-img-happy');

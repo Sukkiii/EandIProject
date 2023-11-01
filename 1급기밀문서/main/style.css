@@ -70,20 +70,20 @@
 }
 
 .forSeelist {
-    font-size: 25px;
+    font-size: 10px;
     padding: 10px;
     margin: 0;
     border: none;
-    width: 200px;
-    height: 80px;
+    width: 40px;
+    height: 40px;
     border-radius: 10px;
-    opacity: 0.1;
+    opacity: 0.4;
 }
 
 .forsee {
-    position: absolute;
-    right: 500px;
-    top: 100px;
+    position: relative;
+    bottom: 160px;
+    left: 120px;
 }
 
 .main-img {
@@ -117,7 +117,7 @@
 }
 
 .sticky-content{
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
 }
 
@@ -216,6 +216,7 @@
     padding-top: 20px;
     justify-content: space-between;
     border: 1px solid rgb(206, 202, 202);
+    display: none;
 
 }
 
@@ -230,6 +231,20 @@
 
 .add-scale{
     transform: scale(1.5);
+}
+
+.fake-footer {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.fake-text{
+    font-size: 40px;
+    width: 100%;
+    text-align: center;
 }
 
 

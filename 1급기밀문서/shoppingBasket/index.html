@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <ul class="nav-container">
+            <a href="./index.htm" class="nav-logo nav-box">
+                <img src="./jjangu.png" alt="" class="nav-logo-img">
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-box">
+                    <a class="nav-box-title">피규어</a>
+                </li>
+                <li class="nav-box">
+                    <a class="nav-box-title">인형</a>
+                </li>
+                <li class="nav-box">
+                    <a class="nav-box-title">학용품</a>
+                </li>
+                <li class="nav-box">
+                    <a class="nav-box-title">옷</a>
+                </li>
+
+            </ul>
+            <ul class="nav-profile">
+                <li class="nav-box">
+                    <a class="nav-box-title">로그인</a>
+                </li>
+                <li class="nav-box">
+                    <a class="nav-box-title">장바구니</a>
+                </li>
+                <li class="nav-box">
+                    <a class="nav-box-title">마이페이지</a>
+                </li>
+            </ul>
+        </ul>
+    </header>
+    <main>
+        <div class="main-img-container">
+            <img class="main-img" src="./jjangu.png" alt="">
+        </div>
+        <div class="main-container">
+            <div class="sh-container">
+                <div class="sh-title">장바구니</div>
+                <div class="sh-box">
+                    <div class="sh-box-header">
+                        <p class="sh-box-h1 header">제품정보</p>
+                        <p class="sh-box-h2 header">결제구매</p>
+                        <p class="sh-box-h3 header">선택</p>
+                    </div>
+                    <div class="sh-box-content">
+                        <div class="check-box b1">
+                            <input class="box" id="select-total" type="checkbox"/><label class="box-label" for="select-total">모두 선택</label>
+                        </div>
+                        <div class="check-box b2">
+                            <input class="box" id="total-del" type="checkbox"/><label class="box-label" for="total-del">전체 삭제</label>
+                        </div>
+                        <div class="check-box b3">
+                            <input class="box" id="part-del" type="checkbox"/><label class="box-label" for="part-del">선택 삭제</label>
+                        </div>
+                    </div>
+                    <div class="cart-container">
+                        <div class="item-container">
+                            <input type="text">
+                            <img class= "item-img" src="./jjangu.png" alt="">
+                            <p class="item-name">짱구</p>
+                            <p class="item-price">2000원</p>
+                            <!-- 수량 추가 기능 필요할지도 -->
+                            <p class="item-count">1개</p>
+                            <div class="cart-btn-container">
+                                <div class="btn-select-buy">선택 구매</div>
+                                <div class="btn-delete-buy">삭제</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sh-payment">
+                    <div class="payment-title">결제 예정금액</div>
+                    <div class="payment-box">
+                        <div class="sh-box-header">
+                            <p class="sh-box-h1 header">제품정보</p>
+                            <p class="sh-box-h2 header">결제구매</p>
+                            <p class="sh-box-h3 header">선택</p>
+                        </div>
+                    </div>
+                    <div class="order-btn-container">
+                        <button class="oreder-total btn w-btn-outline w-btn-pink-outline">전체 상품 주문</button>
+                        <button class="order-partial btn w-btn-outline w-btn-pink-outline">선택 상품 주문</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="./script.js"></script>
+</body>
+</html>

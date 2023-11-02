@@ -1,14 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-const { Product } = require('./models/model');
+const { productSchema } = require('./models/model');
+const indexRouter = require('./routes/index');
 
 
 mongoose.connect('mongodb+srv://ragnarok810:!apffhel810@board-cluster.vik4cbf.mongodb.net/').then(() => {
   console.log("MongoDB connect Success!");
 }).catch((err) => console.log(err));
+console.log(productSchema);
 
-const product = new Product({
+const product = productSchema.Product({
   productId: 1001,
   productName: "잠옷",
   price: 10000,
@@ -25,9 +27,7 @@ product.save().then(() => {
 
 const app = express();
 
-app.get('/', (req, res) => {
-    res.send("hello express");
-});
+app.use('/', indexRouter);
 
 app.listen(3000, () => {
     console.log("Server Started");

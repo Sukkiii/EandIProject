@@ -16,8 +16,8 @@ const categorySchema = new Schema({
     // parent: {
     //     type: mongoose.Schema.Types.ObjectId
     // },
-})
+});
 
-const Category = mongoose.model('Category', categorySchema);
+// const Category = mongoose.model('Category', categorySchema);
 
-module.exports = { Category };
+// module.exports = { Category };

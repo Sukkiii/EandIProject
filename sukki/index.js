@@ -11,7 +11,7 @@ function fetchProductData() {
   );
 }
 
-function displayProducts(products, containerClass) {
+function displayProducts(products, containerClass, thumbnailClass) {
   const productUl = document.querySelector(`.${containerClass} .product-ul`);
   // productUl.innerHTML = "";
 
@@ -19,8 +19,12 @@ function displayProducts(products, containerClass) {
     const productLi = document.createElement("li");
     // const productUl = document.querySelector(".product-ul");
     productLi.classList.add("product-li");
+
+    const thumbnailClassAdd = product.isBest
+      ? "best-product-thumbnail"
+      : "product-thumbnail";
     productLi.innerHTML = `
-    <div class="best-product-thumbnail">
+    <div class="${thumbnailClassAdd}">
       <img
         class="product-list-img"
         src="${product.Image}"
@@ -30,7 +34,11 @@ function displayProducts(products, containerClass) {
     <div class="description">
       <div class="product-name">${product.ProductName}</div>
       <div class="product-price">${product.Price}원</div>
-      <div class="product-explain">${product.Description}</div>
+      ${
+        product.isBest
+          ? ""
+          : `<div class="product-explain">${product.Description}</div>`
+      }
     </div>
   `;
 
@@ -40,8 +48,12 @@ function displayProducts(products, containerClass) {
 
 document.addEventListener("DOMContentLoaded", () => {
   fetchProductData().then((data) => {
-    displayProducts(data.bestProducts, "best-products");
+    displayProducts(
+      data.bestProducts,
+      "best-products",
+      "best-products-thumbnail"
+    );
 
-    displayProducts(data.products, "products");
+    displayProducts(data.products, "products", "product-thumbnail");
   });
 });

@@ -1,8 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-const { User } = require('./models/schemas/user-schema');
-const { Product } = require('./models/schemas/product-schema');
+const { Product } = require('./models/model');
 
 
 mongoose.connect('mongodb+srv://ragnarok810:!apffhel810@board-cluster.vik4cbf.mongodb.net/').then(() => {

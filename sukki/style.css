@@ -52,7 +52,19 @@ a.nav-item {
   color: white;
   text-decoration: none;
 }
-
+.main-logo-locate {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: solid 2px #f1f1f1;
+  padding-bottom: 1rem;
+}
+.page-introduce {
+  padding: 1rem;
+  color: #8c8c8c;
+  size: 2rem;
+}
 main {
   display: block;
   margin: 0 auto;

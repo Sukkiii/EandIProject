@@ -62,5 +62,50 @@
       font-size: 20px;
       font-weight: 500;
   }
+
+  /* 회원가입 css */
+  main{
+    background-color: #F7ECB4;
+    margin-top: 5%;
+    margin-left: 10%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    border-radius: 2rem;
+    width: 80%;
+ 
+    
+  }
+
+  form {
+    position: relative;
+    text-align:center;
+}
+
+h3{
+left: 50%;
+}
   
-  
+ #term{
+ 
+ } 
+
+ .formInput{
+    width: 60%;
+    height: 45px;
+
+ }
+
+ .flexbox{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    width: 100%;
+    
+ }
+ #addressInput ,#mobileInput{
+    height: 45px;
+    width: 100%;
+ }
+ #addressInput{
+    margin-left: 20px;
+ }

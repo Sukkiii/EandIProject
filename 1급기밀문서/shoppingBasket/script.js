@@ -1,4 +1,4 @@
-// 로컬 스토리지에 예시 데이터 저장
+// Example order data objects
 const orderData1 = {
     productId: "product_1",
     productName: "Product Name1",
@@ -39,12 +39,13 @@ const orderData5 = {
     quantity: 5
 };
 
+// Create an array to hold the order data
 const orderArray = [orderData1, orderData2, orderData3, orderData4, orderData5];
 
+// Serialize the array to a JSON string and store in local storage
 localStorage.setItem("orders", JSON.stringify(orderArray));
 
 
-// 로컬 스토리지에 저장된 데이터를 장바구니에 추가
 const shoppingCart = document.querySelector(".cart-container");
 
 
@@ -68,9 +69,3 @@ if (data) {
 
 }
 
-// localStorage 데이터 수정 - 문법같은건 없음 - 자체에선는 불가 꺼내서 다시 수정하고 저장
-// 1. 저장된 데이터 꺼내기
-// 2. 꺼낸 데이터 수정
-// 3. 다시 저장
-
-// 사용자가 

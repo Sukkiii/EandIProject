@@ -1,5 +1,5 @@
-const bestProductsFile = "./data/dummyData.json";
-const productsFile = "./data/dummyData2.json";
+const bestProductsFile = "../data/dummyData.json";
+const productsFile = "../data/dummyData2.json";
 
 function fetchProductData(url) {
   // return fetch("/api/products")

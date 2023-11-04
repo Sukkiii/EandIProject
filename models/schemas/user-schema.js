@@ -5,7 +5,7 @@ const userSchema = new Schema({
     email: {
         type: String,
         required: true,
-        unique: true,
+        // unique: true,
     },
     // userId: {
     //     type: String,
@@ -25,11 +25,12 @@ const userSchema = new Schema({
         required: true,
         trim: true,
     },
-    // address: {
-    //     type: String,
-    //     required: true,
-    //     detailAddress: { type: String },
-    // },
+    defaultAddress: {
+        type: String,
+        // zonecode: {type: String, required: true},
+        // address: {type: String, required: true},
+        // detailAddress: { type: String },
+    },
     userRole: {
         type: Number,
         // required: true,
@@ -43,4 +44,4 @@ const userSchema = new Schema({
     timestamps: true,
 });
 
-module.exports = { userSchema };
+module.exports = userSchema;

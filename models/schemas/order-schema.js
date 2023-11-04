@@ -47,4 +47,4 @@ const orderSchema = new Schema({
     timestamps: true,
 });
 
-module.exports = { orderSchema };
+module.exports = orderSchema;

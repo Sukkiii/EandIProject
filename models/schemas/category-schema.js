@@ -18,4 +18,4 @@ const categorySchema = new Schema({
     // },
 });
 
-module.exports = { categorySchema };
+module.exports = categorySchema;

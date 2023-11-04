@@ -40,4 +40,4 @@ const productSchema = new Schema({
     timestamps: true,
 });
 
-module.exports = { productSchema };
+module.exports = productSchema;

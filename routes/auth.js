@@ -8,7 +8,8 @@ const router = Router();
 router.post('/',
    passport.authenticate('local', { session: false }),
    (req, res, next) => {
-      setUserToken(res, req.user); // 유저의 토큰을 생성하고 res에 전달
+      setUserToken(res, req.user); // 유저(req.user)의 토큰을 생성하고 res에 전달
+      
       res.redirect('/');
    });
 

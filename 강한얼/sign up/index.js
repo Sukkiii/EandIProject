@@ -6,42 +6,76 @@
 //  추가기능1. js써서 필드가 다 차면 secondary에서 success로 class변경
 const signupForm = document.querySelector("#signupForm");
 const emailInput = document.querySelector("#emailInput");
-
 const passwordInput = document.querySelector("#passwordInput");
-
 const passwordCheckInput = document.querySelector("#passwordCheckInput");
 const birthInput = document.querySelector("#birthInput");
 const addressInput = document.querySelector("#addressInput");
 const termsButton = document.querySelector("#termsButton");
 const submitButton = document.querySelector("#submitButton");
-const valid = document.querySelector("#valid");
-//id길이검사
-const idLen = (val) => {
-  return val.length >= 4 && val.length <= 12;
-};
-
+const pwValid = document.querySelector("#pwValid");
+const idValid = document.querySelector("#idValid");
+const birthValid = document.querySelector("#birthValid");
 //id중복검사
 
- passwordCheckInput.addEventListener("keyup",pwdOnchange );
-function pwdOnchange() {
-  let div = document.createElement("div");
-  if (passwordInput.value !== passwordCheckInput.value) {
-    div.innerHTML= "일치하지않습니다"
-    valid.appendChild(div);
- 
+//id길이검사
+const idLen = (id) => {
+  return id.value.length >= 4 && id.value.length <= 12;
+};
+emailInput.addEventListener("keyup", (e) => {
+  if (!idLen(emailInput)) {
+    idValid.innerText = "아이디는 4-12 글자 사이로 입력해주세요.";
   } else {
-    div.innerHTML = "일치합니다."
-    valid.appendChild(div);
+    idValid.innerText = "";
+  }
+});
+
+//pwd검사 //pwdCheck
+const pwdLen = (pw1,pw2) => {
+  return pw1.value === pw2.value
+};
+passwordCheckInput.addEventListener("keyup", pwdOnchange);
+function pwdOnchange() {
+  if (pwdLen(passwordInput, passwordCheckInput)) {
+    pwValid.innerText = "비밀번호가 일치합니다.";
+  } else {
+    pwValid.innerText = "비밀번호가 일치하지않습니다";
   }
 }
 
+//생년월일형식
+const birthCheck = (birth) => {
+  return birth.value.length === 6
+};
+birthInput.addEventListener("keyup", () => {
+  if (birthCheck(birthInput)) {
+    birthValid.innerText = "";
+  } else {
+    birthValid.innerText = "yymmdd형식으로 작성해주세요.";
+  }
+});
 
-//pwd검사 //pwdCheck
-// const pwdCheck = (password1, password2) => {
-//   return password1 === password2;
-// };
-//  ===>true면 append로 pwdchk밑에 요소추가(일치합니다)
-//  ===>false면 append로 pwdchk밑에 요소추가 (틀립니다)
+
+
+
+
+
+
+
+//전체칸이 다 채워져있어야 submit을 수행하는 함수
+function beforeSubmit (){
+  if(emailInput.value&&passwordInput.value&&passwordCheckInput.value&&
+    birthInput.value&&termsButton.checked&&
+    idLen()&&
+pwdLen(passwordInput, passwordCheckInput)&&
+birthCheck(birthInput)
+    ){
+     submitButton.className= 'btn btn-outline-success'
+  }
+  }
+
+
+
+
 
 
 //버튼누르면정보를백으로뿌려주는최종함수
@@ -56,7 +90,7 @@ const submitHandler = (e) => {
   );
 };
 
-submitButton.addEventListener("click", submitHandler);
+submitButton.addEventListener("submit", submitHandler);
 
 //정보를json화하여body에담아보내는함수
 const signup = async (email, password, birth, address) => {
@@ -78,3 +112,11 @@ const signup = async (email, password, birth, address) => {
     console.error("Error:", error);
   }
 };
+
+
+new daum.Postcode({
+  oncomplete: function(data) {
+      // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+      // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+  }
+}).open();

@@ -1,4 +1,3 @@
-// // Example order data objects
 // const orderData1 = {
 //     productId: "product_1",
 //     productName: "Product Name1",

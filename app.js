@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 
+
+const permit = require('./middlewares/permit')
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users')
 const adminRouter = require('./routes/admin')
@@ -22,7 +25,7 @@ app.use(cookieParser());
 //라우터
 app.use('/', indexRouter);
 app.use('/users', usersRouter)
-app.use('/admin', adminRouter)
+app.use('/admin',permit, adminRouter)
 app.use('/seller',sellerRouter)
 
 //에러 핸들러

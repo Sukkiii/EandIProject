@@ -18,6 +18,7 @@ router.post('/join', createUser); // 회원가입
 
 router.get('/logout', (req, res, next) => { //로그아웃
     res.cookie('accessToken', null, { maxAge: 0 }) //쿠키 토큰 삭제
+    res.cookie('refreshToken', null, { maxAge: 0 }) //쿠키 토큰 삭제
     res.redirect('/'); // 메인페이지로
 });
 

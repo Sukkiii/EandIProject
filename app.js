@@ -4,12 +4,12 @@ const cookieParser = require('cookie-parser');
 const path = require('path');
 
 
-const permit = require('./middlewares/permit')
+const { userPermit, adminPermit } = require('./middlewares/permit')
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users')
 const adminRouter = require('./routes/admin')
-const sellerRouter = require('./routes/seller')
+// const sellerRouter = require('./routes/seller')
 
 mongoose.connect('mongodb://localhost:27017/').then(() => {
   console.log("MongoDB connect Success!");
@@ -24,9 +24,9 @@ app.use(cookieParser());
 
 //라우터
 app.use('/', indexRouter);
-app.use('/users', usersRouter)
-app.use('/admin',permit, adminRouter)
-app.use('/seller',sellerRouter)
+app.use('/users', userPermit, usersRouter)
+app.use('/admin', adminPermit, adminRouter)
+// app.use('/seller',sellerRouter)
 
 //에러 핸들러
 app.use((err, req, res, next) => {

@@ -4,7 +4,13 @@
       "ProductId": 5,
       "ProductName": "짱구 악어와 초코비 피규어",
       "Price": 25820,
-      "Image": "../image/jjangu-chochobi-figure.png",
+      "Image": ["../image/jjangu-chochobi-figure.png",
+                "../image/jjangu-chochobi-figure-explain2.png",
+                "../image/jjangu-chochobi-figure-explain3.png",
+                "../image/jjangu-chochobi-figure-explain4.png",
+                "../image/jjangu-chochobi-figure-explain5.png",
+                "../image/jjangu-chochobi-figure-explain6.png",
+                "../image/jjangu-chochobi-figure-explain7.png"],
       "Description": "너무 귀여운 짱구 피규어예요 :)짱구가 제일 좋아하는 초코비를 들고 악어로 변신한 짱구! 책상 위에 두면 책상이 얼마나 귀엽게요~?!"
     },
     {

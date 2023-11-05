@@ -4,12 +4,12 @@ const cookieParser = require('cookie-parser');
 const path = require('path');
 
 
-const permit = require('./middlewares/permit')
+const { userPermit, adminPermit } = require('./middlewares/permit')
 
 const indexRouter = require('./routes/index');
 const mypageRouter = require('./routes/mypage')
 const adminRouter = require('./routes/admin')
-const sellerRouter = require('./routes/seller')
+// const sellerRouter = require('./routes/seller')
 
 mongoose.connect('mongodb://localhost:27017/').then(() => {
   console.log("MongoDB connect Success!");

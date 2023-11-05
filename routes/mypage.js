@@ -4,7 +4,7 @@ const asyncHandler = require('../utils/async-handler');
 const router = express.Router();
 
 router.get('/', (req,res) => {
-   res.render('./user/me')
+   res.render('./user/mypage')
 })
 
 module.exports = router;

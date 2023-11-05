@@ -7,7 +7,7 @@ const path = require('path');
 const permit = require('./middlewares/permit')
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users')
+const mypageRouter = require('./routes/mypage')
 const adminRouter = require('./routes/admin')
 const sellerRouter = require('./routes/seller')
 
@@ -24,7 +24,7 @@ app.use(cookieParser());
 
 //라우터
 app.use('/', indexRouter);
-app.use('/users', usersRouter)
+app.use('/users', mypageRouter)
 app.use('/admin',permit, adminRouter)
 app.use('/seller',sellerRouter)
 

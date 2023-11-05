@@ -2,17 +2,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const path = require('path');
-const passport = require('passport');
 
-const loginRequired = require('./middlewares/login-required');
-const getUserFromJWT = require('./middlewares/get-user-from-jwt');
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
 const usersRouter = require('./routes/users')
 const adminRouter = require('./routes/admin')
 const sellerRouter = require('./routes/seller')
-
-require('./passport')(); //서버의 요청(req 객체)에 passport/index.js의 설정을 입력
 
 mongoose.connect('mongodb://localhost:27017/').then(() => {
   console.log("MongoDB connect Success!");
@@ -26,12 +21,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 //라우터
-app.use(passport.initialize()) //  passport를 미들웨어화
-app.use(getUserFromJWT)
 app.use('/', indexRouter);
 app.use('/auth', authRouter)
 app.use('/users', usersRouter)
-// app.use('/users', loginRequired, usersRouter);
 app.use('/admin', adminRouter)
 app.use('/seller', sellerRouter)
 
@@ -46,7 +38,7 @@ app.use((err, req, res, next) => {
   res.render('error');
 });
 
-app.listen(3000, () => {
+app.listen(8080, () => {
   console.log("Server Started");
 });
 

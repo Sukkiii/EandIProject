@@ -5,20 +5,8 @@ const asyncHandler = require('../utils/async-handler');
 
 const router = express.Router();
 
-router.get('/', (req, res) => { 
-    if(req.user && req.user.userRole === 3){
-        res.redirect('/admin'); // 관리자는 /admin 로 이동
-        return;
-    }
-    if(req.user && req.user.userRole === 2){
-        res.redirect('/seller'); // 판매자는 /seller이동
-        return;
-    }
-    if(req.user && req.user.userRole === 1) { // 유저확인
-        res.redirect('/users'); // 맞다면 /users 로 이동
-        return;
-      }
-    res.redirect('/login'); // 로그인 페이지로 이동
+router.get('/', (req, res) => {
+      res.render('user/main')
 });
 
 router.get('/login', (req, res, next) => { // 로그인페이지 렌더링
@@ -45,7 +33,7 @@ router.post('/join', asyncHandler(async (req, res) => {
 }));
 
 router.get('/logout', (req, res, next) => { //로그아웃
-    res.cookie('token', null, { maxAge: 0 }) //쿠키 토큰 삭제
+    res.cookie('accessToken', null, { maxAge: 0 }) //쿠키 토큰 삭제
     res.redirect('/'); // 메인페이지로
 });
 

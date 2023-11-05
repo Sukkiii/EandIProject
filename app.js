@@ -4,7 +4,6 @@ const cookieParser = require('cookie-parser');
 const path = require('path');
 
 const indexRouter = require('./routes/index');
-const authRouter = require('./routes/auth');
 const usersRouter = require('./routes/users')
 const adminRouter = require('./routes/admin')
 const sellerRouter = require('./routes/seller')
@@ -22,10 +21,9 @@ app.use(cookieParser());
 
 //라우터
 app.use('/', indexRouter);
-app.use('/auth', authRouter)
 app.use('/users', usersRouter)
 app.use('/admin', adminRouter)
-app.use('/seller', sellerRouter)
+app.use('/seller',sellerRouter)
 
 //에러 핸들러
 app.use((err, req, res, next) => {

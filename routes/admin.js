@@ -1,10 +1,8 @@
 const express = require('express');
-const asyncHandler = require('../utils/async-handler');
-
+const asyncHandler = require('express-async-handler')
+const userCheck = require('../middlewares/userCheck')
 const router = express.Router();
+const { Product } = require('../models/model');
 
-router.get('/', (req,res) => {
-   res.render('./user/admin')
-})
 
 module.exports = router;

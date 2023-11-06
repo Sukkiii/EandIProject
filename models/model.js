@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 
-const userSchema = require('./schemas/user-schema');
-const productSchema = require('./schemas/product-schema');
-const orderSchema = require('./schemas/order-schema');
-const categorySchema = require('./schemas/category-schema');
+const userSchema = require('./schemas/userSchema');
+const productSchema = require('./schemas/productSchema');
+const orderSchema = require('./schemas/orderSchema');
+const categorySchema = require('./schemas/categorySchema');
 
 const User = mongoose.model('User', userSchema)
 const Product = mongoose.model('Product', productSchema)

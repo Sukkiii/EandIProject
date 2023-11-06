@@ -32,10 +32,17 @@ const userSchema = new Schema({
         // detailAddress: { type: String },
     },
     userRole: {
-        type: Number,
+        type: String,
+        enum: ['admin', 'user', 'seller'],
         // required: true,
-        default: 1,
+        default: 'seller',
     },
+    permission: {
+        C: {},
+        R: {},
+        U: {},
+        D: {},
+     },
     deleteAt: {
         type: Date,
         default: null,

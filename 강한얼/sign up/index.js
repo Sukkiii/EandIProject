@@ -11,7 +11,8 @@ const passwordCheckInput = document.querySelector("#passwordCheckInput");
 const birthInput = document.querySelector("#birthInput");
 const addressInput = document.querySelector("#addressInput");
 const termsButton = document.querySelector("#termsButton");
-const submitButton = document.querySelector("#submitButton");
+const submitButton = document.getElementById("submitButton");
+const submitButton2 = document.getElementById("submitButton2");
 const pwValid = document.querySelector("#pwValid");
 const idValid = document.querySelector("#idValid");
 const birthValid = document.querySelector("#birthValid");
@@ -19,13 +20,14 @@ const birthValid = document.querySelector("#birthValid");
 
 //id길이검사
 const idLen = (id) => {
-  return id.value.length >= 4 && id.value.length <= 12;
+  return id.value.length >= 10 && id.value.length <= 25;
 };
 emailInput.addEventListener("keyup", (e) => {
   if (!idLen(emailInput)) {
-    idValid.innerText = "아이디는 4-12 글자 사이로 입력해주세요.";
+    idValid.innerText = "아이디는 10-25 글자 사이로 입력해주세요.";
   } else {
     idValid.innerText = "";
+     
   }
 });
 
@@ -60,37 +62,42 @@ birthInput.addEventListener("keyup", () => {
 
 
 
-
 //전체칸이 다 채워져있어야 submit을 수행하는 함수
 function beforeSubmit (){
   if(emailInput.value&&passwordInput.value&&passwordCheckInput.value&&
     birthInput.value&&termsButton.checked&&
-    idLen()&&
+    idLen(emailInput)&&
 pwdLen(passwordInput, passwordCheckInput)&&
 birthCheck(birthInput)
     ){
-     submitButton.className= 'btn btn-outline-success'
+      submitToggle()
   }
   }
+   
+//토글
+function submitToggle(){
+  submitButton2.style.display = "none";
+  submitButton.style.display = "unset";
+}
+
+window.onload(beforeSubmit)
 
 
 
 
-
-
-//버튼누르면정보를백으로뿌려주는최종함수
-const submitHandler = (e) => {
-  e.preventDefault();
-
-  signup(
-    emailInput.value,
-    passwordInput.value,
-    birthInput.value,
-    addressInput.value
-  );
-};
-
-submitButton.addEventListener("submit", submitHandler);
+  
+  // submitButton.addEventListener("submit", submitHandler);
+  // //버튼누르면정보를백으로뿌려주는최종함수
+  // const submitHandler = (e) => {
+  //   e.preventDefault();
+  
+  //   signup(
+  //     emailInput.value,
+  //     passwordInput.value,
+  //     birthInput.value,
+  //     addressInput.value
+  //   );
+  // };
 
 //정보를json화하여body에담아보내는함수
 const signup = async (email, password, birth, address) => {
@@ -114,9 +121,9 @@ const signup = async (email, password, birth, address) => {
 };
 
 
-new daum.Postcode({
-  oncomplete: function(data) {
-      // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
-      // 예제를 참고하여 다양한 활용법을 확인해 보세요.
-  }
-}).open();
+// new daum.Postcode({
+//   oncomplete: function(data) {
+//       // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+//       // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+//   }
+// }).open();

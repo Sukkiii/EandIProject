@@ -5,11 +5,7 @@ const cookieParser = require('cookie-parser');
 const path = require('path');
 dotenv.config();
 
-const userCheck = require('./middlewares/userCheck')
-
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users')
-// const sellerRouter = require('./routes/seller')
 
 mongoose.connect('mongodb://localhost:27017/').then(() => {
   console.log("MongoDB connect Success!");
@@ -24,9 +20,6 @@ app.use(cookieParser());
 
 //라우터
 app.use('/', indexRouter);
-// app.use('/users', usersRouter)
-// app.use('/admin', userCheck('R'), adminRouter)
-// app.use('/seller',sellerRouter)
 
 //에러 핸들러
 app.use((err, req, res, next) => {

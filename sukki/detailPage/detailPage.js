@@ -1,6 +1,13 @@
 // const bestProductsFile = "../data/dummyData.json";
 const productsFile = "../data/dummyData2.json";
 
+const selectedProduct = {
+  productId: null,
+  name: null,
+  price: null,
+  quantity: 1,
+  thumbnail: null,
+};
 // 페이지 상세 제품 url이 https://쇼핑몰/product-detail.html?id=123
 // 위와같은 형태로 제공된다고 가정했을 때, 아래와 같은 코드를 사용해야할 것 같다.
 
@@ -17,6 +24,11 @@ function fetchProductData(url) {
       .then((data) => {
         const product = data.products.find((p) => p.ProductId === productId);
         if (product) {
+          selectedProduct.productId = productId;
+          selectedProduct.name = product.ProductName;
+          selectedProduct.price = product.Price;
+          selectedProduct.thumbnail = product.Image[0];
+          // selectedProduct.quantity = 1;
           return product;
         } else {
           throw new Error("상품을 찾을 수 없습니다.");
@@ -32,6 +44,25 @@ document.addEventListener("DOMContentLoaded", () => {
   fetchProductData(productsFile)
     .then((data) => {
       displayDetailProduct(data);
+
+      const addToCartButton = document.querySelector(".into-basket");
+      addToCartButton.addEventListener("click", () => {
+        addToCart();
+      });
+
+      const directBuyButton = document.querySelector(".direct-buy");
+      directBuyButton.addEventListener("click", () => {
+        directBuy();
+      });
+      const quantityDownButton = document.querySelector(".quantity-down");
+      quantityDownButton.addEventListener("click", () => {
+        decreaseQuantity();
+      });
+
+      const quantityUpButton = document.querySelector(".quantity-up");
+      quantityUpButton.addEventListener("click", () => {
+        increaseQuantity();
+      });
     })
     .catch((error) => {
       console.error(error);
@@ -56,11 +87,79 @@ function displayDetailProduct(product) {
   }
 
   const detailMsg = document.querySelector(".product-detail-msg");
+  const priceCalculate = document.querySelector(".price-calculate");
+
   detailMsg.innerHTML = `
   <div class="product-name">${product.ProductName}</div>
-  <div class="product-price">${product.Price}원</div>
+  <div class="product-price">${formatPriceWithCommas(product.Price)}원</div>
   <div class="product-explain">${product.Description}</div>
   `;
-  const priceCalculate = document.querySelector(".price-calculate");
-  priceCalculate.innerHTML = `${product.Price}원`;
+
+  priceCalculate.innerHTML = `${formatPriceWithCommas(product.Price)}원`;
 }
+
+function addToCart(data) {
+  let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+  let found = false;
+  for (let i = 0; i < cartItems.length; i++) {
+    if (cartItems[i].productId === selectedProduct.productId) {
+      cartItems[i].quantity += parseInt(selectedProduct.quantity, 10);
+      found = true;
+      break;
+    }
+  }
+
+  if (!found) {
+    cartItems.push(selectedProduct);
+  }
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+}
+
+function directBuy(data) {
+  let buyItems = JSON.parse(localStorage.getItem("buyItems")) || [];
+  buyItems.push(selectedProduct);
+  localStorage.setItem("buyItems", JSON.stringify(buyItems));
+}
+
+function decreaseQuantity() {
+  const quantityInput = document.querySelector(".option-box-quantity");
+  let currentQuantity = parseInt(quantityInput.value, 10);
+  if (currentQuantity > 1) {
+    currentQuantity--;
+  }
+  quantityInput.value = currentQuantity;
+
+  selectedProduct.quantity = currentQuantity;
+  updatePrice(currentQuantity);
+}
+
+function increaseQuantity() {
+  const quantityInput = document.querySelector(".option-box-quantity");
+  let currentQuantity = parseInt(quantityInput.value, 10);
+  currentQuantity++;
+  quantityInput.value = currentQuantity;
+
+  selectedProduct.quantity = currentQuantity;
+  updatePrice(currentQuantity);
+}
+
+function formatPriceWithCommas(price) {
+  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function updatePrice(quantity) {
+  const productPrice = document.querySelector(".product-price");
+  const priceCalculate = document.querySelector(".price-calculate");
+
+  const priceValue = parseInt(
+    productPrice.innerText.replace("원", "").replace(/,/g, "")
+  );
+  priceCalculate.innerHTML = `${formatPriceWithCommas(
+    priceValue * quantity
+  )}원`;
+}
+
+// 1. 장바구니를 거치지 않고 구매하기 버튼을 눌렀을 때, 장바구니에 추가는 하지 않을건지
+// 2. 구매하기 버튼을 눌렀을때, 상세페이지에서 구매하기 페이지로 바로 데이터를 보내야할 지?
+// 3.

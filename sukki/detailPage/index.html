@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.8.1/video-js.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.8.1/video.min.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="../common/common.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./detailPage.js"></script>
+    <header>
+      <div id="header-content"></div>
+    </header>
+    <main>
+      <div class="product-detail-wrap">
+        <section class="detail-center">
+          <div class="detail-thumbnail-wrap">
+            <div class="detail-thumbnail-random">
+              <!-- detail-thumbnail-random받아와야함 -->
+              <!-- 이 thumbnail은 basket으로 넘겨줘야함 -->
+              <!-- <img src="../image/jjangu-buriburiking-figure.png" alt="" /> -->
+            </div>
+          </div>
+          <div class="detail-area">
+            <!-- 받아와야하는 detail img들 > 배열형태일 것으로 예상됨. -->
+            <!-- <img src="../image/jjangu-chochobi-figure-explain2.png" />
+            <img src="../image/jjangu-chochobi-figure-explain3.png" />
+            <img src="../image/jjangu-chochobi-figure-explain4.png" />
+            <img src="../image/jjangu-chochobi-figure-explain5.png" />
+            <img src="../image/jjangu-chochobi-figure-explain6.png" />
+            <img src="../image/jjangu-chochobi-figure-explain7.png" /> -->
+          </div>
+        </section>
+        <section class="detail-right scroll-fixed">
+          <div class="detail-scroll-container">
+            <div class="detail-scroll">
+              <div class="detail-content-container">
+                <div class="detail-content">
+                  <div class="content-box">
+                    <div class="product-plz-buy-img">
+                      <img src="../image/product-detail-buyplz.png" alt="" />
+                    </div>
+                    <!-- 상품명, 가격, 설명 받아오기 -->
+                    <div class="product-detail-msg">
+                      <!-- <div class="product-name">짱구 부리부리왕 피규어</div>
+                      <div class="product-price">25,000원</div>
+                      <div class="product-explain">
+                        매일매일 귀여운 짱구의 피규어를 구경할 수 있는 기회!
+                        책상위에 짱구 피규어를 올려두면 테이블 환경도 살고 일에
+                        집중도 잘되는 마법! 원래 귀여운걸 보면 기분이
+                        좋아지잖아요?!
+                      </div> -->
+                    </div>
+                    <div class="product-quantity-wrap">
+                      <p class="product-quantity-name">수량</p>
+                      <div class="product-quantity-control">
+                        <div class="quantity-controller">
+                          <a
+                            href="#none"
+                            class="quantity-down quantity-control"
+                            data-target="option_box1_down"
+                          >
+                            <img
+                              src="../image/minus-icon.png"
+                              alt="down"
+                              class="option_box_down"
+                              width="18"
+                            />
+                          </a>
+                          <input
+                            type="number"
+                            class="option-box-quantity"
+                            autocomplete="off"
+                            value="1"
+                            width="100"
+                          />
+                          <a
+                            href="#none"
+                            class="quantity-up quantity-control"
+                            data-target="option_box1_up"
+                          >
+                            <img
+                              src="../image/plus-icon.png"
+                              alt="up"
+                              class="option_box_up"
+                              width="18"
+                            />
+                          </a>
+                        </div>
+                        <div class="total-price-show">
+                          <span class="price-explain"> 총 상품 금액 : </span>
+                          <span class="price-calculate"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="product-option">
+                      <a href="#none" class="into-basket btn s-btn">
+                        장바구니에 담기
+                      </a>
+                      <a href="#none" class="direct-buy btn line-btn">
+                        바로 구매하기
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer>
+      <div id="footer-content"></div>
+    </footer>
+  </body>
+</html>

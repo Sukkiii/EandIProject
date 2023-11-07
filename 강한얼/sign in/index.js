@@ -42,7 +42,7 @@
 //     }
 //   };
 
-const url = "http://localhost:5500";
+const url = "http://localhost:5500"; 
 const submitButton = document.querySelector("#signInSubmit");
 const email = document.querySelector("#emailInput").value;
 const password = document.querySelector("#passwordInput").value;

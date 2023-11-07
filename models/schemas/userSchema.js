@@ -1,16 +1,12 @@
-
-const { Schema } = require('mongoose');
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 const userSchema = new Schema({
     email: {
         type: String,
         required: true,
-        // unique: true,
+        unique: true,
     },
-    // userId: {
-    //     type: String,
-    //     required: true,
-    // },
     birthDay: {
         type: Date,
         required: true,
@@ -25,24 +21,17 @@ const userSchema = new Schema({
         required: true,
         trim: true,
     },
-    defaultAddress: {
+    address: {
         type: String,
         // zonecode: {type: String, required: true},
-        // address: {type: String, required: true},
+        // basicAddress: {type: String, required: true},
         // detailAddress: { type: String },
     },
     userRole: {
         type: String,
         enum: ['admin', 'user', 'seller'],
-        // required: true,
-        default: 'seller',
+        default: 'user',
     },
-    permission: {
-        C: {},
-        R: {},
-        U: {},
-        D: {},
-     },
     deleteAt: {
         type: Date,
         default: null,

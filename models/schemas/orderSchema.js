@@ -1,4 +1,5 @@
-const { Schema } = require('mongoose');
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 const orderSchema = new Schema({
     orderId: {
@@ -27,17 +28,16 @@ const orderSchema = new Schema({
     },
     orderDate: {
         type: String,
-        required: true,
         default: Date.now,
     },
     deliveryStatus: {
-        type: String,
-        required: true,
+        type: Number,
+        enum: [1, 2, 3, 4], // 1: 결제완료, 2: 배송 준비중, 3: 배송중, 4: 배송 완료
+        default: 1,
     },
     totalPrice: {
         type: Number,
         required: true,
-        default: 0,
     },
     deleteAt: {
         type: Date,

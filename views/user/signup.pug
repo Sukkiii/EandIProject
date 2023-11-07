@@ -1,6 +1,6 @@
 extends ../layout
 block content
-  form(action="/join" method="post" onsubmit="return check()")
+  form(action="/signup" method="post" onsubmit="return check()")
     table
       tbody
         tr
@@ -14,7 +14,7 @@ block content
           td: input(type="Date" name="birthDay")
         tr
           td 주소
-          td: input(type="text" name="defaultAddress")
+          td: input(type="text" name="address")
         tr
           td 비밀번호
           td: input(type="password" name="password")

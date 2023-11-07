@@ -1,4 +1,5 @@
-const { Schema } = require('mongoose');
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 const productSchema = new Schema({
     productId: {
@@ -12,16 +13,14 @@ const productSchema = new Schema({
     price: {
         type: Number,
         require: true,
-        default: 0,
     },
     categoryId: {
-        type: String,
+        type: Number,
         required: true,
     },
     stock: {
         type: Number,
         required: true,
-        default: 0,
     },
     description: {
         type: String,
@@ -31,11 +30,6 @@ const productSchema = new Schema({
         type: String,
         required: true,
     }],
-    isDeleted: {
-        type: Boolean,
-        required: true,
-        default: false,
-    },
 }, {
     timestamps: true,
 });

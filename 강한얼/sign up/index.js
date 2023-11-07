@@ -98,13 +98,15 @@ addressInput.addEventListener("keyup", () => {
 
 //번호유무
 const mobileInputCheck = () => {
-  if (mobileInput.value) {
+  if (mobileInput.value && typeof mobileInput.value === Number) {
     return true;
   } else return false;
 };
 mobileInput.addEventListener("keyup", () => {
   if (mobileInputCheck) {
     beforeSubmit();
+  }else {
+    alert('숫자를 적어주세요.')
   }
 });
 
@@ -139,10 +141,10 @@ function submitToggle2() {
   submitButton.style.display = "none";
 }
 
-submitButton2.addEventListener("click", (e)=>{
-e.preventDefault();
-alert('회원가입에 필요한 모든 필드를 채워주세요.')
-})
+submitButton2.addEventListener("click", (e) => {
+  e.preventDefault();
+  alert("회원가입에 필요한 모든 필드를 채워주세요.");
+});
 
 // submitButton.addEventListener("submit", submitHandler);
 // //버튼누르면정보를백으로뿌려주는최종함수

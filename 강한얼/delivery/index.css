@@ -101,7 +101,7 @@
   height: 150px;
   object-fit: cover;
 }
-#deliverImg {
+#backward {
   margin-top: 5%;
   width: 150px;
   height: 150px;
@@ -110,7 +110,7 @@
 #cartImg {
   margin-bottom: 20%;
   width: 130px;
-  height: 120px;
+  height: 110px;
   object-fit: cover;
 }
 
@@ -121,14 +121,15 @@
   padding: 0;
 }
 #itemImg {
-  margin: 5% 0 0 5%;
+  margin: 5% auto;
   overflow: hidden;
   padding-top: 10px;
-  text-align: center;
+  padding-bottom: 50px;
+  /* text-align: center;
      align-items: center;
-     justify-content: center;
+     justify-content: center; */
 }
-#itemImg article {
+/* #itemImg article {
   float: left;
   margin-left: 10px;
   margin-bottom: 30px;
@@ -137,4 +138,51 @@
   display: block;
   width: 250px;
   height: 200px;
+} */
+
+main{
+  background-color: #F7ECB4;
+  margin-top: 5%;
+  margin-left: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  border-radius: 2rem;
+  width: 80%;
+
+
+  
 }
+
+/* form {
+  position: relative;
+  text-align:center;
+} */
+
+/* h3{
+left: 50%;
+} */
+
+/* #term{
+
+} 
+
+.formInput{
+  width: 60%;
+  height: 45px;
+
+}
+
+.flexbox{
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  width: 100%;
+  
+}
+#addressInput ,#mobileInput{
+  height: 45px;
+  width: 100%;
+}
+#addressInput{
+  margin-left: 20px;
+} */

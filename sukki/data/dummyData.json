@@ -1,0 +1,52 @@
+{
+  "bestProducts" : [
+    {
+      "ProductId": 1,
+      "ProductName": "짱구 피규어",
+      "Price": 25000,
+      "Image": ["../image/jjangu-chochobi-figure.png",
+                "../image/jjangu-chochobi-figure-explain2.png",
+                "../image/jjangu-chochobi-figure-explain3.png",
+                "../image/jjangu-chochobi-figure-explain4.png",
+                "../image/jjangu-chochobi-figure-explain5.png",
+                "../image/jjangu-chochobi-figure-explain6.png",
+                "../image/jjangu-chochobi-figure-explain7.png"]
+    },
+    {
+      "ProductId": 2,
+      "ProductName": "유리 피규어",
+      "Price": 25000,
+      "Image": ["../image/yuri-figure.png",
+                "../image/jjangu-chochobi-figure-explain2.png",
+                "../image/jjangu-chochobi-figure-explain3.png",
+                "../image/jjangu-chochobi-figure-explain4.png",
+                "../image/jjangu-chochobi-figure-explain5.png",
+                "../image/jjangu-chochobi-figure-explain6.png",
+                "../image/jjangu-chochobi-figure-explain7.png"]
+    },
+    {
+      "ProductId": 3,
+      "ProductName": "철수 피규어",
+      "Price": 25000,
+      "Image": ["../image/chulsu-figure.png",
+                "../image/jjangu-chochobi-figure-explain2.png",
+                "../image/jjangu-chochobi-figure-explain3.png",
+                "../image/jjangu-chochobi-figure-explain4.png",
+                "../image/jjangu-chochobi-figure-explain5.png",
+                "../image/jjangu-chochobi-figure-explain6.png",
+                "../image/jjangu-chochobi-figure-explain7.png"]
+    },
+    {
+      "ProductId": 4,
+      "ProductName": "맹구 피규어",
+      "Price": 25000,
+      "Image": ["../image/mangu-figure.png",
+                "../image/jjangu-chochobi-figure-explain2.png",
+                "../image/jjangu-chochobi-figure-explain3.png",
+                "../image/jjangu-chochobi-figure-explain4.png",
+                "../image/jjangu-chochobi-figure-explain5.png",
+                "../image/jjangu-chochobi-figure-explain6.png",
+                "../image/jjangu-chochobi-figure-explain7.png"]
+    }
+  ]
+}

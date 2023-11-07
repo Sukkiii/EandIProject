@@ -1,0 +1,123 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.nav-container {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  background-color: red;
+}
+
+.nav-box {
+  width: 100px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-logo {
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.nav-logo-img {
+  width: 60px;
+  height: 60px;
+}
+
+.nav-menu {
+  display: flex;
+  width: 60%;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px;
+  list-style: none;
+  margin: 0;
+}
+
+.nav-profile {
+  display: flex;
+  width: 20%;
+  justify-content: space-around;
+  padding: 0;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-box a:link {
+  color: red;
+  text-decoration: none;
+}
+.nav-box a:visited {
+  color: white;
+  text-decoration: none;
+}
+.nav-box a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+.nav-box-title {
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+
+/* 계정관리 css */
+#mypageForm {
+  background-color: #f7ecb4;
+  margin-top: 5%;
+  margin-left: 5%;
+  border-radius: 2rem;
+  width: 90%;
+  height: 80%;
+  /* justify-content:center; */
+  /* align-items: center; */
+}
+#mypageSec1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0%;
+}
+#mypageSec1 div {
+  text-align: center;
+  margin-top: 10%;
+  margin: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+#backward {
+  margin-top: 5%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+#deliverImg {
+  margin-top: 5%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+#cartImg {
+  margin-bottom: 20%;
+  width: 130px;
+  height: 110px;
+  object-fit: cover;
+}
+
+#mypageSec2 {
+  text-align: center;
+  /* margin-bottom: 10%; */
+  /* margin: 0; */
+  padding-bottom: 10%;
+}
+ 

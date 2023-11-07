@@ -25,8 +25,8 @@ function displayProducts(products, containerClass, thumbnailClass) {
     <div class="${thumbnailClassAdd}">
       <img
         class="product-list-img"
-        src="${product.Image}"
-        alt="${product.Image}"
+        src="${product.Image[0]}"
+        alt="${product.Image[0]}"
       />
     </div>
     <div class="description">
@@ -63,5 +63,25 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch((error) => {
       console.error(error);
+    });
+  const headerContent = document.querySelector("#header-content");
+  fetch("../common/header.html")
+    .then((response) => response.text())
+    .then((data) => {
+      headerContent.innerHTML = data;
+    })
+    .catch((error) => {
+      console.error("헤더 로드 중 오류 발생:", error);
+    });
+
+  // footer를 가져와서 HTML 파일에 추가
+  const footerContent = document.querySelector("#footer-content");
+  fetch("../common/footer.html")
+    .then((response) => response.text())
+    .then((data) => {
+      footerContent.innerHTML = data;
+    })
+    .catch((error) => {
+      console.error("푸터 로드 중 오류 발생:", error);
     });
 });

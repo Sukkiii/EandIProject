@@ -17,21 +17,39 @@
       "ProductId": 6,
       "ProductName": "짱구 건담로봇 블록",
       "Price": 25820,
-      "Image": "../image/jjangu-gundamrogbot-figure.png",
+      "Image": ["../image/jjangu-gundamrogbot-figure.png",
+                "../image/jjangu-chochobi-figure-explain2.png",
+                "../image/jjangu-chochobi-figure-explain3.png",
+                "../image/jjangu-chochobi-figure-explain4.png",
+                "../image/jjangu-chochobi-figure-explain5.png",
+                "../image/jjangu-chochobi-figure-explain6.png",
+                "../image/jjangu-chochobi-figure-explain7.png"],
       "Description": "너무 귀여운 짱구 피규어예요 :) 짱구가 건담로봇으로 변신했어요!"
     },
     {
       "ProductId": 7,
       "ProductName": "짱구 부리부리대마왕 블록",
       "Price": 25820,
-      "Image": "../image/jjangu-buriburiking-figure.png",
+      "Image": ["../image/jjangu-buriburiking-figure.png",
+                "../image/jjangu-chochobi-figure-explain2.png",
+                "../image/jjangu-chochobi-figure-explain3.png",
+                "../image/jjangu-chochobi-figure-explain4.png",
+                "../image/jjangu-chochobi-figure-explain5.png",
+                "../image/jjangu-chochobi-figure-explain6.png",
+                "../image/jjangu-chochobi-figure-explain7.png"],
       "Description": "너무 귀여운 짱구 피규어예요 :) 부리부리대마왕으로 변신한 짱구! 부리부리부리부리~ 부리부리부리부리~"
     },
     {
       "ProductId": 8,
       "ProductName": "짱구 부리부리춤 블록",
       "Price": 25820,
-      "Image": "../image/jjangu-buriburidance-figure.png",
+      "Image": ["../image/jjangu-buriburidance-figure.png",
+                "../image/jjangu-chochobi-figure-explain2.png",
+                "../image/jjangu-chochobi-figure-explain3.png",
+                "../image/jjangu-chochobi-figure-explain4.png",
+                "../image/jjangu-chochobi-figure-explain5.png",
+                "../image/jjangu-chochobi-figure-explain6.png",
+                "../image/jjangu-chochobi-figure-explain7.png"],
       "Description": "너무 귀여운 짱구 피규어예요 :) 부끄러움을 모르는 짱구 :( 부끄러움은 모르지만 얄미우면서 귀엽지 않나요?"
     }
   ]

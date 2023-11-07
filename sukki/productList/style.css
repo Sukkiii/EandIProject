@@ -3,72 +3,12 @@
   margin: 0;
   padding: 0;
 }
-
-.main-video {
-  width: 100%;
-  height: 310px;
-}
-
-.nav-logo {
-  background-color: #d12d32;
-}
-.nav-logo-img {
-  width: 40px;
-  bottom: 100px;
-}
-
-.nav-container {
-  width: 100%;
-  height: 40px;
-  display: flex;
-  justify-content: space-between;
-  padding: 0;
-  background-color: #d12d32;
-}
-
-.nav-logo {
-  width: 10%;
-}
-
-.nav-menu {
-  display: flex;
-  width: 60%;
-  justify-content: space-around;
-  align-items: center;
-  margin: 10px;
-  list-style: none;
-}
-
-.nav-profile {
-  display: flex;
-  width: 20%;
-  justify-content: space-around;
-  padding: 0;
-  list-style: none;
-  align-items: center;
-}
-
-a.nav-item {
-  color: white;
-  text-decoration: none;
-}
-.main-logo-locate {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-bottom: solid 2px #f1f1f1;
-  padding-bottom: 1rem;
-}
-.page-introduce {
-  padding: 1rem;
-  color: #8c8c8c;
-  size: 2rem;
-}
 main {
   display: block;
   margin: 0 auto;
   box-sizing: border-box;
+  padding-top: 200px;
+  visibility: visible;
 }
 section {
   display: block;

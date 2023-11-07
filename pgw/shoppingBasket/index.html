@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <ul class="nav-container">
+            <a href="./index.htm" class="nav-logo nav-box">
+                <img src="./jjangu.png" alt="" class="nav-logo-img">
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-box">
+                    <a class="nav-box-title">피규어</a>
+                </li>
+                <li class="nav-box">
+                    <a class="nav-box-title">인형</a>
+                </li>
+                <li class="nav-box">
+                    <a class="nav-box-title">학용품</a>
+                </li>
+                <li class="nav-box">
+                    <a class="nav-box-title">옷</a>
+                </li>
+
+            </ul>
+            <ul class="nav-profile">
+                <li class="nav-box">
+                    <a class="nav-box-title">로그인</a>
+                </li>
+                <li class="nav-box">
+                    <a class="nav-box-title">장바구니</a>
+                </li>
+                <li class="nav-box">
+                    <a class="nav-box-title">마이페이지</a>
+                </li>
+            </ul>
+        </ul>
+    </header>
+    <main>
+        <div class="main-img-container">
+            <img class="main-img" src="./Unknown2.jpeg" alt="">
+        </div>
+        <div class="main-container">
+            <div class="sh-container">
+                <div class="sh-title">장바구니</div>
+                <div class="sh-box">
+                    <div class="sh-box-header">
+                        <input type="checkbox" class="total-ck-btn">
+                        <p class="sh-box-h1 header">이미지</p>
+                        <p class="sh-box-h2 header">제품정보</p>
+                        <p class="sh-box-h3 header">판매가</p>
+                        <p class="sh-box-h4 header">수량</p>
+                        <p class="sh-box-h5 header">배송구분</p>
+                        <p class="sh-box-h6 header">배송비</p>
+                    </div>
+
+                    <!-- 장바구니 -->
+                    <div class="cart-container">
+                        
+                    
+                    </div>
+                </div>
+
+                <div class="btn-container">
+                    <button class="delete-partial-item-btn">X 선택 삭제</button>
+                    <button class="delete-total-item-btn">X 전체 삭제</button>
+                </div>
+
+                <div class="sh-payment">
+                    <div class="payment-title">결제 예정금액</div>
+                    <div class="payment-box">
+                        <div class="payment-box-header">
+                            <p class="sh-box-h1 header">총 상품 금액</p>
+                            <p class="sh-box-h2 header">총 배송비</p>
+                            <p class="sh-box-h3 header">결제 예정 금액</p>
+                        </div>
+                        <div class="payment-box-body">
+                            <p class="sh-box-h1 header sum-item-price">주문 금액</p>
+                            <p class="sh-box-h2 header del-price">+  3000</p>
+                            <p class="sh-box-h3 header total-price">=  총 결제 금액</p>
+                        </div>
+                    </div>
+                    <div class="order-btn-container">
+                        <button class="oreder-total btn w-btn-outline w-btn-pink-outline" onclick="location.href='../payment/index.html'">전체 상품 주문</button>
+                        <button class="order-partial btn w-btn-outline w-btn-pink-outline" onclick="location.href='../payment/index.html'">선택 상품 주문</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+
+    <script src="./script.js"></script>
+</body>
+</html>

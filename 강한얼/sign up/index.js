@@ -11,86 +11,153 @@ const passwordCheckInput = document.querySelector("#passwordCheckInput");
 const birthInput = document.querySelector("#birthInput");
 const addressInput = document.querySelector("#addressInput");
 const termsButton = document.querySelector("#termsButton");
-const submitButton = document.querySelector("#submitButton");
+const submitButton = document.getElementById("submitButton");
+const submitButton2 = document.getElementById("submitButton2");
 const pwValid = document.querySelector("#pwValid");
 const idValid = document.querySelector("#idValid");
 const birthValid = document.querySelector("#birthValid");
+const mobileInput = document.querySelector("#mobileInput");
+
 //id중복검사
 
 //id길이검사
 const idLen = (id) => {
-  return id.value.length >= 4 && id.value.length <= 12;
+  return id.value.length >= 10 && id.value.length <= 25;
 };
 emailInput.addEventListener("keyup", (e) => {
   if (!idLen(emailInput)) {
-    idValid.innerText = "아이디는 4-12 글자 사이로 입력해주세요.";
+    idValid.innerText = "아이디는 10-25 글자 사이로 입력해주세요.";
   } else {
     idValid.innerText = "";
+    beforeSubmit();
+  }
+});
+emailInput.addEventListener("keyup", () => {
+  if (idLen) {
+    beforeSubmit();
   }
 });
 
 //pwd검사 //pwdCheck
-const pwdLen = (pw1,pw2) => {
-  return pw1.value === pw2.value
+const pwdLen = (pw1, pw2) => {
+  return pw1.value === pw2.value;
 };
 passwordCheckInput.addEventListener("keyup", pwdOnchange);
 function pwdOnchange() {
   if (pwdLen(passwordInput, passwordCheckInput)) {
     pwValid.innerText = "비밀번호가 일치합니다.";
+    beforeSubmit();
   } else {
     pwValid.innerText = "비밀번호가 일치하지않습니다";
   }
 }
+passwordCheckInput.addEventListener("keyup", () => {
+  if (pwdLen) {
+    beforeSubmit();
+  }
+});
 
 //생년월일형식
 const birthCheck = (birth) => {
-  return birth.value.length === 6
+  return birth.value.length === 6;
 };
 birthInput.addEventListener("keyup", () => {
   if (birthCheck(birthInput)) {
     birthValid.innerText = "";
+    beforeSubmit();
   } else {
     birthValid.innerText = "yymmdd형식으로 작성해주세요.";
   }
 });
+birthInput.addEventListener("keyup", () => {
+  if (birthCheck) {
+    beforeSubmit();
+  }
+});
+//체크박스확인
+const termsCheck = () => {
+  return termsButton.checked;
+};
+termsButton.addEventListener("change", () => {
+  if (termsCheck) {
+    beforeSubmit();
+  }
+});
 
+//주소유무
+const addressInputCheck = () => {
+  if (addressInput.value) {
+    return true;
+  } else return false;
+};
+addressInput.addEventListener("keyup", () => {
+  if (addressInputCheck) {
+    beforeSubmit();
+  }
+});
 
-
-
-
-
-
+//번호유무
+const mobileInputCheck = () => {
+  if (mobileInput.value && typeof mobileInput.value === Number) {
+    return true;
+  } else return false;
+};
+mobileInput.addEventListener("keyup", () => {
+  if (mobileInputCheck) {
+    beforeSubmit();
+  }else {
+    alert('숫자를 적어주세요.')
+  }
+});
 
 //전체칸이 다 채워져있어야 submit을 수행하는 함수
-function beforeSubmit (){
-  if(emailInput.value&&passwordInput.value&&passwordCheckInput.value&&
-    birthInput.value&&termsButton.checked&&
-    idLen()&&
-pwdLen(passwordInput, passwordCheckInput)&&
-birthCheck(birthInput)
-    ){
-     submitButton.className= 'btn btn-outline-success'
+function beforeSubmit() {
+  if (
+    addressInput.value &&
+    mobileInput.value &&
+    emailInput.value &&
+    passwordInput.value &&
+    passwordCheckInput.value &&
+    birthInput.value &&
+    termsButton.checked &&
+    idLen(emailInput) &&
+    pwdLen(passwordInput, passwordCheckInput) &&
+    birthCheck(birthInput)
+  ) {
+    submitToggle();
+  } else {
+    submitToggle2();
   }
-  }
+}
 
+//submit토글
+function submitToggle() {
+  submitButton2.style.display = "none";
+  submitButton.style.display = "unset";
+}
 
+function submitToggle2() {
+  submitButton2.style.display = "unset";
+  submitButton.style.display = "none";
+}
 
-
-
-
-//버튼누르면정보를백으로뿌려주는최종함수
-const submitHandler = (e) => {
+submitButton2.addEventListener("click", (e) => {
   e.preventDefault();
+  alert("회원가입에 필요한 모든 필드를 채워주세요.");
+});
 
-  signup(
-    emailInput.value,
-    passwordInput.value,
-    birthInput.value,
-    addressInput.value
-  );
-};
+// submitButton.addEventListener("submit", submitHandler);
+// //버튼누르면정보를백으로뿌려주는최종함수
+// const submitHandler = (e) => {
+//   e.preventDefault();
 
-submitButton.addEventListener("submit", submitHandler);
+//   signup(
+//     emailInput.value,
+//     passwordInput.value,
+//     birthInput.value,
+//     addressInput.value
+//   );
+// };
 
 //정보를json화하여body에담아보내는함수
 const signup = async (email, password, birth, address) => {
@@ -101,10 +168,10 @@ const signup = async (email, password, birth, address) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email: email,
-        password: password,
-        birth: birth,
-        address: address,
+        email: emailInput,
+        password: passwordInput,
+        birth: birthInput,
+        address: addressInput,
       }),
     });
     console.log(response);
@@ -113,10 +180,9 @@ const signup = async (email, password, birth, address) => {
   }
 };
 
-
-new daum.Postcode({
-  oncomplete: function(data) {
-      // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
-      // 예제를 참고하여 다양한 활용법을 확인해 보세요.
-  }
-}).open();
+// new daum.Postcode({
+//   oncomplete: function(data) {
+//       // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+//       // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+//   }
+// }).open();

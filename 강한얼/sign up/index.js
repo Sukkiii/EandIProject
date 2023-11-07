@@ -16,6 +16,8 @@ const submitButton2 = document.getElementById("submitButton2");
 const pwValid = document.querySelector("#pwValid");
 const idValid = document.querySelector("#idValid");
 const birthValid = document.querySelector("#birthValid");
+const mobileInput = document.querySelector("#mobileInput");
+
 //id중복검사
 
 //id길이검사
@@ -27,77 +29,133 @@ emailInput.addEventListener("keyup", (e) => {
     idValid.innerText = "아이디는 10-25 글자 사이로 입력해주세요.";
   } else {
     idValid.innerText = "";
-     
+    beforeSubmit();
+  }
+});
+emailInput.addEventListener("keyup", () => {
+  if (idLen) {
+    beforeSubmit();
   }
 });
 
 //pwd검사 //pwdCheck
-const pwdLen = (pw1,pw2) => {
-  return pw1.value === pw2.value
+const pwdLen = (pw1, pw2) => {
+  return pw1.value === pw2.value;
 };
 passwordCheckInput.addEventListener("keyup", pwdOnchange);
 function pwdOnchange() {
   if (pwdLen(passwordInput, passwordCheckInput)) {
     pwValid.innerText = "비밀번호가 일치합니다.";
+    beforeSubmit();
   } else {
     pwValid.innerText = "비밀번호가 일치하지않습니다";
   }
 }
+passwordCheckInput.addEventListener("keyup", () => {
+  if (pwdLen) {
+    beforeSubmit();
+  }
+});
 
 //생년월일형식
 const birthCheck = (birth) => {
-  return birth.value.length === 6
+  return birth.value.length === 6;
 };
 birthInput.addEventListener("keyup", () => {
   if (birthCheck(birthInput)) {
     birthValid.innerText = "";
+    beforeSubmit();
   } else {
     birthValid.innerText = "yymmdd형식으로 작성해주세요.";
   }
 });
+birthInput.addEventListener("keyup", () => {
+  if (birthCheck) {
+    beforeSubmit();
+  }
+});
+//체크박스확인
+const termsCheck = () => {
+  return termsButton.checked;
+};
+termsButton.addEventListener("change", () => {
+  if (termsCheck) {
+    beforeSubmit();
+  }
+});
 
+//주소유무
+const addressInputCheck = () => {
+  if (addressInput.value) {
+    return true;
+  } else return false;
+};
+addressInput.addEventListener("keyup", () => {
+  if (addressInputCheck) {
+    beforeSubmit();
+  }
+});
 
-
-
-
-
+//번호유무
+const mobileInputCheck = () => {
+  if (mobileInput.value) {
+    return true;
+  } else return false;
+};
+mobileInput.addEventListener("keyup", () => {
+  if (mobileInputCheck) {
+    beforeSubmit();
+  }
+});
 
 //전체칸이 다 채워져있어야 submit을 수행하는 함수
-function beforeSubmit (){
-  if(emailInput.value&&passwordInput.value&&passwordCheckInput.value&&
-    birthInput.value&&termsButton.checked&&
-    idLen(emailInput)&&
-pwdLen(passwordInput, passwordCheckInput)&&
-birthCheck(birthInput)
-    ){
-      submitToggle()
+function beforeSubmit() {
+  if (
+    addressInput.value &&
+    mobileInput.value &&
+    emailInput.value &&
+    passwordInput.value &&
+    passwordCheckInput.value &&
+    birthInput.value &&
+    termsButton.checked &&
+    idLen(emailInput) &&
+    pwdLen(passwordInput, passwordCheckInput) &&
+    birthCheck(birthInput)
+  ) {
+    submitToggle();
+  } else {
+    submitToggle2();
   }
-  }
-   
-//토글
-function submitToggle(){
+}
+
+//submit토글
+function submitToggle() {
   submitButton2.style.display = "none";
   submitButton.style.display = "unset";
 }
 
-window.onload(beforeSubmit)
+function submitToggle2() {
+  submitButton2.style.display = "unset";
+  submitButton.style.display = "none";
+}
 
+submitButton2.addEventListener("click", (e)=>{
+e.preventDefault();
+alert('회원가입에 필요한 모든 필드를 채워주세요.')
+})
 
+// submitButton.addEventListener("submit", submitHandler);
+// //버튼누르면정보를백으로뿌려주는최종함수
+// const submitHandler = (e) => {
+//   e.preventDefault();
 
-
-  
-  // submitButton.addEventListener("submit", submitHandler);
-  // //버튼누르면정보를백으로뿌려주는최종함수
-  // const submitHandler = (e) => {
-  //   e.preventDefault();
-  
-  //   signup(
-  //     emailInput.value,
-  //     passwordInput.value,
-  //     birthInput.value,
-  //     addressInput.value
-  //   );
-  // };
+//   signup(
+//     emailInput.value,
+//     passwordInput.value,
+//     birthInput.value,
+//     addressInput.value
+//   );
+// };
 
 //정보를json화하여body에담아보내는함수
 const signup = async (email, password, birth, address) => {
@@ -108,10 +166,10 @@ const signup = async (email, password, birth, address) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email: email,
-        password: password,
-        birth: birth,
-        address: address,
+        email: emailInput,
+        password: passwordInput,
+        birth: birthInput,
+        address: addressInput,
       }),
     });
     console.log(response);
@@ -119,7 +177,6 @@ const signup = async (email, password, birth, address) => {
     console.error("Error:", error);
   }
 };
-
 
 // new daum.Postcode({
 //   oncomplete: function(data) {

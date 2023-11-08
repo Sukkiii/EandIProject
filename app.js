@@ -27,6 +27,7 @@ app.use('/admin', permission('admin'));
 
 //에러 핸들러
 app.use((err, req, res, next) => {
+  console.log(err)
   // set locals, only providing error in development
   res.locals.message = err.message; // res.locals는 응답 객체의 로컬 변수(local variable)를 나타내며, 응답을 렌더링하는 뷰(view)에서 사용
   res.locals.error = req.app.get('env') === 'development' ? err : {}; // 재사용하기 어려움

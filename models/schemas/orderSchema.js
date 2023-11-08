@@ -28,7 +28,7 @@ const orderSchema = new Schema({
         required: true,
     },
     orderDate: {
-        type: String,
+        type: Date,
         default: Date.now,
     },
     deliveryStatus: {

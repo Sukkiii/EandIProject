@@ -17,7 +17,7 @@ router.delete('/logout', logout) // 로그아웃
 //메인 페이지 및 상품 조회
 router.get('/', getCategory) // 주문 조회
 router.get('/', getProductList) // 상품 목록 조회
-router.get('/', getProduct) // 상품 조회
+router.get('/produts/:id', getProduct) // 상품 조회
 
 // 관리자
 router.use('/admin/users', usersRouter)

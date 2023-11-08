@@ -74,7 +74,7 @@ const logout = asyncHandler(async (req, res) => {
 // 회원 목록 조회 (관리자)
 const getUserList = asyncHandler(async (req, res) => {
     const users = await User.find({}).limit(20); // db 특정 필터를 설정하여 갯수를 제한하여 데이터 반환할 수 있게 로직구현 고민
-    if(!users) {
+    if(users.length === 0) {
         res.status(404)
         throw new Error('요청하신 데이터가 존재하지 않습니다.')
     }
@@ -94,6 +94,10 @@ const getUser = asyncHandler(async (req, res) => {
 const updateUser = asyncHandler(async (req, res) => {
     const { password, ...rest } = req.body;
     const userId = req.params.id;
+    const user = await User.findById(userId)
+    if (!user) {
+        return res.status(404).json({ error: '사용자를 찾을 수 없습니다.' });
+    }
     if (password) {
         const hashedPassword = hashPassword(password)
         rest.password = hashedPassword
@@ -102,9 +106,9 @@ const updateUser = asyncHandler(async (req, res) => {
         { _id: userId },
         { rest },
     );
-    if (updatedUser.nModified === 0) {
-        res.status(404)
-        throw new Error({ error: '사용자를 찾을 수 없습니다.' });
+    if (updatedUser.modifiedCount === 0) {
+        res.status(500)
+        throw new Error('서버 오류입니다.');
     }
 
     res.json({ message: '회원 정보가 수정되었습니다.' });
@@ -116,7 +120,8 @@ const deleteUser = asyncHandler(async (req, res) => {
 
     const user = await User.findById(userId)
     if (!user) {
-        return res.status(404).json({ error: '사용자를 찾을 수 없습니다.' });
+        res.status(404)
+        throw new Error('사용자를 찾을 수 없습니다.');
     }
     if (user.deleteAt !== null) {
         res.status(400)

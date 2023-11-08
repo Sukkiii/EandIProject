@@ -4,6 +4,7 @@
       "ProductId": 1,
       "ProductName": "짱구 피규어",
       "Price": 25000,
+<<<<<<< HEAD:data/dummyData.json
       "Image": ["../image/jjangu-chochobi-figure.png",
                 "../image/jjangu-chochobi-figure-explain2.png",
                 "../image/jjangu-chochobi-figure-explain3.png",
@@ -11,11 +12,15 @@
                 "../image/jjangu-chochobi-figure-explain5.png",
                 "../image/jjangu-chochobi-figure-explain6.png",
                 "../image/jjangu-chochobi-figure-explain7.png"]
+=======
+      "Image": "./image/jjangu-chochobi-figure.png"
+>>>>>>> origin/front-dev:pgw/main/data/dummyData.json
     },
     {
       "ProductId": 2,
       "ProductName": "유리 피규어",
       "Price": 25000,
+<<<<<<< HEAD:data/dummyData.json
       "Image": ["../image/yuri-figure.png",
                 "../image/jjangu-chochobi-figure-explain2.png",
                 "../image/jjangu-chochobi-figure-explain3.png",
@@ -23,11 +28,15 @@
                 "../image/jjangu-chochobi-figure-explain5.png",
                 "../image/jjangu-chochobi-figure-explain6.png",
                 "../image/jjangu-chochobi-figure-explain7.png"]
+=======
+      "Image": "./image/yuri-figure.png"
+>>>>>>> origin/front-dev:pgw/main/data/dummyData.json
     },
     {
       "ProductId": 3,
       "ProductName": "철수 피규어",
       "Price": 25000,
+<<<<<<< HEAD:data/dummyData.json
       "Image": ["../image/chulsu-figure.png",
                 "../image/jjangu-chochobi-figure-explain2.png",
                 "../image/jjangu-chochobi-figure-explain3.png",
@@ -35,11 +44,15 @@
                 "../image/jjangu-chochobi-figure-explain5.png",
                 "../image/jjangu-chochobi-figure-explain6.png",
                 "../image/jjangu-chochobi-figure-explain7.png"]
+=======
+      "Image": "./image/chulsu-figure.png"
+>>>>>>> origin/front-dev:pgw/main/data/dummyData.json
     },
     {
       "ProductId": 4,
       "ProductName": "맹구 피규어",
       "Price": 25000,
+<<<<<<< HEAD:data/dummyData.json
       "Image": ["../image/mangu-figure.png",
                 "../image/jjangu-chochobi-figure-explain2.png",
                 "../image/jjangu-chochobi-figure-explain3.png",
@@ -47,6 +60,9 @@
                 "../image/jjangu-chochobi-figure-explain5.png",
                 "../image/jjangu-chochobi-figure-explain6.png",
                 "../image/jjangu-chochobi-figure-explain7.png"]
+=======
+      "Image": "./image/mangu-figure.png"
+>>>>>>> origin/front-dev:pgw/main/data/dummyData.json
     }
   ]
 }

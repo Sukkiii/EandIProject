@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("헤더 로드 중 오류 발생:", error);
     });
 
-  // footer를 가져와서 HTML 파일에 추가
+  // footer.html과 header.html이 js로 존재한다면, js파일로 존재한다면 바로 넣을 수 있을 것
   const footerContent = document.querySelector("#footer-content");
   fetch("../common/footer.html")
     .then((response) => response.text())

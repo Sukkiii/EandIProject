@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const orderSchema = new Schema({
-    orderId: {
-        type: Number,
-        required: true,
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     },
     userName: {
         type: String,
@@ -14,10 +14,11 @@ const orderSchema = new Schema({
         type: String,
         required: true,
     },
-    productId: {
-        type: Number,
+    orderProduct: [{
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
-    },
+        ref: 'Product'
+    }],
     quantity: {
         type: Number,
         required: true,
@@ -35,14 +36,14 @@ const orderSchema = new Schema({
         enum: [1, 2, 3, 4], // 1: 결제완료, 2: 배송 준비중, 3: 배송중, 4: 배송 완료
         default: 1,
     },
+    description: {
+        type: String,
+        default: "",
+    },
     totalPrice: {
         type: Number,
         required: true,
-    },
-    deleteAt: {
-        type: Date,
-        default: null
-    },
+    }
 }, {
     timestamps: true,
 });

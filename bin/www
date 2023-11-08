@@ -1,4 +1,0 @@
-var app = require('../app');
-var debug = require('debug')('loginout:server');
-var http = require('http');
-

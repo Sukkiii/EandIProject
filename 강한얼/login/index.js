@@ -56,5 +56,21 @@ const loginHandle = () => {
     headers: {
       "Content-Type": "application/json",
     },
-  }).then((res) => res.json()).then();
+  })
+    .then((res) => res.json())
+    .then(
+      redirect(`${url}/main`)
+      //리디렉 메인url로 (토큰x)
+      //토큰을 로컬스토리지에 저장하는 로직 생각해보기.
+    );
 };
+localStorage.setItem('jwtToken',token)
+
+fetch('/protected-resource', {
+  headers: {
+      'Authorization': `Bearer ${token}`
+  }
+})
+.then(response => {
+response
+});

@@ -105,8 +105,8 @@ const mobileInputCheck = () => {
 mobileInput.addEventListener("keyup", () => {
   if (mobileInputCheck) {
     beforeSubmit();
-  }else {
-    alert('숫자를 적어주세요.')
+  } else {
+    alert("숫자를 적어주세요.");
   }
 });
 
@@ -160,24 +160,28 @@ submitButton2.addEventListener("click", (e) => {
 // };
 
 //정보를json화하여body에담아보내는함수
-const signup = async (email, password, birth, address) => {
-  try {
-    const response = await fetch("http://localhost:5500/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: emailInput,
-        password: passwordInput,
-        birth: birthInput,
-        address: addressInput,
-      }),
+const signup = async () => {
+  await fetch("http://localhost:5500/signup", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: emailInput,
+
+      password: passwordInput,
+      birth: birthInput,
+      address: addressInput,
+    }),
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      if (res.statuscode === 201) {
+        alert(res.body.message);
+      }
+    }).catch((err) => {
+      alert(err)
     });
-    console.log(response);
-  } catch (error) {
-    console.error("Error:", error);
-  }
 };
 
 // new daum.Postcode({

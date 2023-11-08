@@ -1,5 +1,5 @@
 
-const LocalStorageData = localStorage.getItem("cart");
+const LocalStorageData = localStorage.getItem("userBy");
 
 const orderItemList = document.querySelector(".order-item-list");
 
@@ -16,7 +16,7 @@ if (data) {
             </div>
             <p class="item-count info">${data.quantity}</p>
             <p class="item-delval info">3000</p>
-            <p class="item-price info">${data.price}</p>
+            <p class="item-price info">${data.price * data.quantity}</p>
         </div>`
     });
 }

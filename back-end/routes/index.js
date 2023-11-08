@@ -28,11 +28,9 @@ router.use('/admin/categories', categoriesRouter)
 router.use('/seller/users', usersRouter)
 router.use('/seller/products', productsRouter)
 router.use('/seller/orders', ordersRouter)
-router.use('/seller/categories', categoriesRouter)
 // 유저
 router.use('/user/users', usersRouter)
 router.use('/user/products', productsRouter)
 router.use('/user/orders', ordersRouter)
-router.use('/user/categories', categoriesRouter)
 
 module.exports = router;

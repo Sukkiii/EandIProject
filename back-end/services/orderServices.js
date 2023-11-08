@@ -89,19 +89,5 @@ const deleteOrder = asyncHandler(async (req, res) => {
    res.json({ message: '주문이 삭제되었습니다.' });
 });
 
-// 배송 상태 수정
-const updateDeliveryStatus = asyncHandler(async (req, res) => {
-   const orderId = req.params.orderId;
-   const newStatus = req.body.deliveryStatus; // 새로운 state 값을 요청 본문에서 가져옵니다.
-   const order = await Order.findById(orderId);
-   if (!order) {
-      res.status(404);
-      throw new Error('주문이 존재하지 않습니다.');
-   }
-   order.deliveryStatus = newStatus; // 주문의 state 값을 업데이트합니다.
-   const updatedStatus = await order.save(); // 변경된 주문을 저장합니다.
-   res.json(updatedStatus); // 업데이트된 주문을 반환합니다.
-})
 
-
-module.exports = { getOrder, createOrder, updateOrder, deleteOrder, getOrders, getOrderList, updateDeliveryStatus }; 
+module.exports = { getOrder, createOrder, updateOrder, deleteOrder, getOrders, getOrderList }; 

@@ -22,7 +22,7 @@ app.use(cookieParser());
 //라우터
 app.use('/', indexRouter);
 app.use('/user', permission('user'));
-app.use('/seller', permission('seller'));
+// app.use('/seller', permission('seller'));
 app.use('/admin', permission('admin'));
 
 //에러 핸들러

@@ -15,8 +15,9 @@ router.post('/login', login) // 로그인
 router.delete('/logout', logout) // 로그아웃
 
 //메인 페이지 및 상품 조회
-router.get('/categories/:id',getProductByCategory) // 특정 카테고리 상품목록
-router.get('/', getProductList) // 상품 목록 조회
+router.get('/categories/:id',getProductsByTopCategory) // 상위 카테고리 ->상품목록
+router.get('/categories/:id1/:id2',getProductsByCategory) // 상위 -> 하위 카테고리 상품목록
+router.get('/', getList) // 상품 목록 조회
 router.get('/produts/:id', getProduct) // 상품 조회
 
 // 관리자

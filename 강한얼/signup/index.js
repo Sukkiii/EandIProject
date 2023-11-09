@@ -146,22 +146,18 @@ submitButton2.addEventListener("click", (e) => {
   alert("회원가입에 필요한 모든 필드를 채워주세요.");
 });
 
-// submitButton.addEventListener("submit", submitHandler);
 // //버튼누르면정보를백으로뿌려주는최종함수
-// const submitHandler = (e) => {
-//   e.preventDefault();
+const submitHandler = (e) => {
+  e.preventDefault();
+  
+  signup();
+};
+submitButton.addEventListener("submit", submitHandler);
 
-//   signup(
-//     emailInput.value,
-//     passwordInput.value,
-//     birthInput.value,
-//     addressInput.value
-//   );
-// };
-
+// const data = [{email:'asd',passwr},{}]
 //정보를json화하여body에담아보내는함수
 const signup = async () => {
-  await fetch("http://localhost:5500/signup", {
+  await fetch("http://127.0.0.1:5500/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -176,15 +172,13 @@ const signup = async () => {
   })
     .then((res) => res.json())
     .then((res) => {
-      if (res.statuscode === 201) {
-        alert(res.body.message);
-      }
+        console.log(res,"성공")
+      
     }).catch((err) => {
       alert(err)
+      console.log(err,"실패")
     });
 };
-
-// new daum.Postcode({
 //   oncomplete: function(data) {
 //       // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
 //       // 예제를 참고하여 다양한 활용법을 확인해 보세요.

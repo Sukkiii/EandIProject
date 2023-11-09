@@ -18,3 +18,4 @@ itemImg.innerHTML += `<article><img src="${img}"></article>`;
 
 
 
+

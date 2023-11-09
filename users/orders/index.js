@@ -1,4 +1,7 @@
-fetch("./Data.json")
+fetch("http://localhost:5000/user/orders/:id2",{
+  // ./Data.json
+  // 
+})
   .then((res) => 
    res.json()
   )
@@ -24,9 +27,9 @@ fetch("./Data.json")
       table.appendChild(row2);
       table.appendChild(row3);
       itemImg.appendChild(table);
-      row1.textContent = data.date;
-      row2.textContent = data.item;
-      row3.textContent = data.status;
+      row1.textContent = data.orderDate;
+      row2.textContent = data.orderProduct;
+      row3.textContent = data.deliveryStatus;
     });
   });
 

@@ -42,17 +42,18 @@
 //     }
 //   };
 
-const url = "http://localhost:5500";
+const url = "http://localhost:5000";
 const submitButton = document.querySelector("#signInSubmit");
-const email = document.querySelector("#emailInput").value;
-const password = document.querySelector("#passwordInput").value;
-
-submitButton.addEventListener("submit", loginHandle);
+const emailInput = document.querySelector("#emailInput");
+const passwordInput = document.querySelector("#passwordInput");
+const email = emailInput.value;
+const password = passwordInput.value;
 
 const loginHandle = () => {
   fetch(`${url}/login`, {
     method: "POST",
-    body: JSON.stringify({ email, password }),
+    credentials: "include",
+    body: JSON.stringify({ UserID: email, Password: password }),
     headers: {
       "Content-Type": "application/json",
     },
@@ -60,12 +61,14 @@ const loginHandle = () => {
     .then((res) => res.json())
     .then(
       (data) => {
-        if (data.token) {
-          localStorage.setItem("jwtToken", token);
-          alert("로그인");
-          redirect(`${url}/main`);
+        if (data.success) {
+          // localStorage.setItem("jwtToken", token);
+          // alert("로그인");
+          document.cookie = `token=${result.token}; path=/`;
+          alert("Login successful");
+          redirect(`${url}/`);
         } else {
-          alert("로그인 실패");
+          alert("Login failed");
         }
       }
       //리디렉 메인url로 (토큰x)
@@ -73,8 +76,10 @@ const loginHandle = () => {
     )
     .catch((err) => {
       alert(err, "에러발생");
+      alert("Failed to login. Please try again later.");
     });
 };
+submitButton.addEventListener("submit", loginHandle);
 
 // fetch("/protected-resource", {
 //   headers: {

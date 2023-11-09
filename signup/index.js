@@ -17,7 +17,8 @@ const pwValid = document.querySelector("#pwValid");
 const idValid = document.querySelector("#idValid");
 const birthValid = document.querySelector("#birthValid");
 const mobileInput = document.querySelector("#mobileInput");
-
+const nameInput = document.querySelector("#nameInput");
+const emailButton = document.querySelector("#emailButton");
 //id중복검사
 
 //id길이검사
@@ -96,6 +97,18 @@ addressInput.addEventListener("keyup", () => {
   }
 });
 
+//이름유무
+const nameInputCheck = () => {
+  if (nameInput.value) {
+    return true;
+  } else return false;
+};
+nameInput.addEventListener("keyup", () => {
+  if (nameInputCheck) {
+    beforeSubmit();
+  }
+});
+
 //번호유무
 const mobileInputCheck = () => {
   if (mobileInput.value && typeof mobileInput.value === Number) {
@@ -119,6 +132,7 @@ function beforeSubmit() {
     passwordInput.value &&
     passwordCheckInput.value &&
     birthInput.value &&
+    nameInput.value &&
     termsButton.checked &&
     idLen(emailInput) &&
     pwdLen(passwordInput, passwordCheckInput) &&
@@ -149,34 +163,39 @@ submitButton2.addEventListener("click", (e) => {
 // //버튼누르면정보를백으로뿌려주는최종함수
 const submitHandler = (e) => {
   e.preventDefault();
-  
   signup();
 };
+
 submitButton.addEventListener("submit", submitHandler);
 
 // const data = [{email:'asd',passwr},{}]
 //정보를json화하여body에담아보내는함수
-const signup = async () => {
-  await fetch("http://127.0.0.1:5500/", {
+ 
+const signup = () => {
+  fetch("http://localhost:5000/signup", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      email: emailInput,
-
-      password: passwordInput,
-      birth: birthInput,
-      address: addressInput,
+      email: emailInput.value,
+      userName: nameInput.value,
+      password: passwordInput.value,
+      birth: birthInput.value,
+      address: addressInput.value,
+      mobile: mobileInput.value
     }),
   })
     .then((res) => res.json())
     .then((res) => {
-        console.log(res,"성공")
-      
-    }).catch((err) => {
-      alert(err)
-      console.log(err,"실패")
+      if (res.statusCode === 200) {
+        alert(res.body.message);
+        console.log("success");
+      }
+    })
+    .catch((err) => {
+      alert(err);
+      console.log(err, "실패");
     });
 };
 //   oncomplete: function(data) {
@@ -184,3 +203,29 @@ const signup = async () => {
 //       // 예제를 참고하여 다양한 활용법을 확인해 보세요.
 //   }
 // }).open();
+emailButton.addEventListener("click", checkUsername);
+
+function checkUsername(e) {
+  e.preventDefault();
+  fetch("/signup", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email: emailInput.value }),
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      if (res.status === 400) {
+        alert("중복된 이메일입니다.");
+        return false;
+      } else {
+        console.log("이메일 검사 통과");
+        return true;
+      }
+    })
+    .catch(() => {
+      console.log("error");
+      return true;
+    });
+}

@@ -14,8 +14,8 @@ mongoose.connect(process.env.MONGODB_URL).then(() => {
 
 const app = express();
 app.use(express.json());// express.json(): POST 등의 요청과 함께 오는 json형태의 데이터를 인식하고 핸들링할 수 있게 함.
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.use(express.static("views"));
+app.use("/image", express.static("image"));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 

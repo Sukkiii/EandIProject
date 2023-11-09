@@ -72,8 +72,12 @@ const getProductsByTopCategory = asyncHandler(async (req, res) => {
     const categoryIds = categories.map(category => category._id);
     const products = await Product.find({ category: categoryIds });
     if (!products) {
-        res.status(400)
+        res.status(404)
         throw new Error('요청하신 상품들이 존재하지 않습니다.');
+    }
+    if (categories.length === 0) {
+        res.status(404);
+        throw new Error('카테고리가 존재하지 않습니다.');
     }
     res.json({products},{categories});
 });
@@ -84,7 +88,7 @@ const getProductsByCategory = asyncHandler(async (req, res) => {
     const categoryId = req.params.id2;
     const products = await Product.find({ category: categoryId });
     if (!products) {
-        res.status(400)
+        res.status(404)
         throw new Error('요청하신 상품들이 존재하지 않습니다.');
     }
     res.json(products);

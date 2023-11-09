@@ -35,13 +35,13 @@ const getOrder = asyncHandler(async (req, res) => {
 
 // 주문 신청
 const createOrder = asyncHandler(async (req, res) => {
-   const { userId, productId, userName, quantity, phoneNumber, orderAddress, deliveryStatus, totalPrice } = req.body;
+   const { userId, productId, receiver, quantity, phoneNumber, orderAddress, deliveryStatus, totalPrice } = req.body;
 
    const order = new Order({
       userId,
       productId,
       quantity,
-      userName,
+      receiver,
       phoneNumber,
       orderAddress,
       deliveryStatus,
@@ -60,11 +60,11 @@ const createOrder = asyncHandler(async (req, res) => {
 
 // 주문 수정  /user/orders/:id
 const updateOrder = asyncHandler(async (req, res) => {
-   const { productId, quantity, userName, phoneNumber, orderAddress } = req.body;
+   const { productId, quantity, receiver, phoneNumber, orderAddress } = req.body;
    const orderId = req.params.id;
    const updatedOrder = await Order.updateOne(
       { _id: orderId },
-      { productId, quantity, userName, phoneNumber, orderAddress },
+      { productId, quantity, receiver, phoneNumber, orderAddress },
       { new: true },
    );
 

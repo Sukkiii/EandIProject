@@ -14,7 +14,7 @@ const getProductList = asyncHandler(async (req, res) => {
 // 상품 조회
 const getProduct = asyncHandler(async (req, res) => {
     const productId = req.params.id;
-    const products = await Product.findById(productId);
+    const products = await Product.findById(productId).populate("category");
 
     if (!products) {
         res.status(404);

@@ -63,4 +63,11 @@ const deleteCategory = asyncHandler(async (req, res) => {
     res.json({ message: '카테고리가 삭제되었습니다.'});
 });
 
-module.exports = { createCategory, getCategory, updateCategory, deleteCategory };
+// 카테고리 -> 상품조회
+const getProductByCategory = asyncHandler(async (req, res) => {
+    const categoryId = req.params.id;
+    const products = await Product.find({ category: categoryId });
+    res.json(products)
+});
+
+module.exports = { createCategory, getCategory, updateCategory, deleteCategory, getProductByCategory };

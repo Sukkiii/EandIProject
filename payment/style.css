@@ -223,3 +223,20 @@ main {
 .item-price {
     width: 18%;
 }
+
+.hide {
+    display: none;
+}
+
+.payment-btn {
+    margin: 20px;
+    padding: 10px;
+    border: none;
+    width: 50%;
+    height: 50px;
+    border-radius: 10px;
+    background-color: black;
+    font-size: 15px;
+    color: white;
+    font-weight: 800;
+}

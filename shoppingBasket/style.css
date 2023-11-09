@@ -239,6 +239,10 @@ main {
     margin-right: 10px;
 }
 
+.hide {
+    display: none;
+}
+
 .item1 {
     width: 30px;
     text-align: center;

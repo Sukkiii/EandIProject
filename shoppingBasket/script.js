@@ -23,9 +23,9 @@
 //             "thumbnail": "./image/chulsu-figure.png"
 //         },
 //         {
-//             "productId": 4,
 //             "name": "맹구 피규어",
 //             "price": 25000,
+//             "productId": 4,
 //             "quantity": 2,
 //             "thumbnail": "./image/mangu-figure.png"
 //         }
@@ -39,6 +39,13 @@
 //     return fetch(URL)
 //         .then((res) => res.json())
 // }
+
+// getData("./data/dummyData2.json")
+//     .then((data) => {
+//         const dataList = data.products;
+//         makeItem(data.products);
+//     })
+
 
 // function makeItem(data) {
 //     data.forEach(data => {
@@ -55,11 +62,6 @@
 //     console.log(data);
 // }
 
-// getData("./data/dummyData2.json")
-//     .then((data) => {
-//         const dataList = data.products;
-//         makeItem(data.products);
-//     })
 
 // document.addEventListener("DOMContentLoaded", () => {
 //     getData("./data/dummyData2.json")
@@ -70,6 +72,8 @@
 // })
 
 
+
+
 const shoppingCart = document.querySelector(".cart-container");
 
 const LocalStorageData = localStorage.getItem("cart");
@@ -78,20 +82,26 @@ let data = JSON.parse(LocalStorageData);
 
 console.log("data", data);
 
+function addCommas(num) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 if (data) {
     data.forEach(data => {
+        const itemPriceWithCommas = addCommas(data.price);
         shoppingCart.innerHTML += `<div class="item-container">
         <input type="checkbox" class="item-ck-btn" autocomplete='off'>
         <img class="item-img" src="${data.thumbnail}" alt="">
             <p class="item-name item">${data.name}</p>
-            <p class="item-price item">${data.price}</p>
+            <p class="item-price hide item">${data.price}</p>
+            <p class="item-price item">${itemPriceWithCommas}</p>
             <div class="handle-quantity-box">
                 <button class="minus-quantity">-</button>
                 <p class="item-count item1">${data.quantity}</p>
                 <button class="add-quantity">+</button>
             </div>
             <p class="item-del item">기본 배송</p>
-            <p class="item-delval item">3000</p>
+            <p class="item-delval item">3,000</p>
         </div>`
     });
 }
@@ -132,8 +142,8 @@ checkboxes.forEach((checkbox, index) => {
             }
         }
         // 가격 업데이트
-        printItemPrice.innerHTML = printPrice;
-        printTotalPrice.innerHTML = `= ${printPrice + 3000}`;
+        printItemPrice.innerHTML = addCommas(printPrice);
+        printTotalPrice.innerHTML = `= ${addCommas(printPrice + 3000)}`;
     });
 });
 
@@ -160,8 +170,8 @@ totalSelectBtn.addEventListener('click', (e) => {
             }
         }
     });
-    printItemPrice.innerHTML = printPrice;
-    printTotalPrice.innerHTML = `=    ${printPrice + 3000}`;
+    printItemPrice.innerHTML = addCommas(printPrice);
+    printTotalPrice.innerHTML = `= ${addCommas(printPrice + 3000)}`;
 })
 
 // 선택 삭제 버튼 이벤트 리스너
@@ -230,8 +240,8 @@ addQuantityButtons.forEach((button, index) => {
         // 가격 업데이트 (가격 * 수량)
         printPrice += Number(itemNames[index].nextElementSibling.textContent);
         // 가격 업데이트
-        printItemPrice.innerHTML = printPrice;
-        printTotalPrice.innerHTML = `= ${printPrice + 3000}`;
+        printItemPrice.innerHTML = addCommas(printPrice);
+        printTotalPrice.innerHTML = `= ${addCommas(printPrice + 3000)}`;
 
         // 해당 상품의 수량을 데이터에도 업데이트
         data[index].quantity = currentQuantity;
@@ -257,8 +267,10 @@ minusQuantityButtons.forEach((button, index) => {
         // 가격 업데이트 (가격 * 수량)
         printPrice -= Number(itemNames[index].nextElementSibling.textContent);
         // 가격 업데이트
-        printItemPrice.innerHTML = printPrice;
-        printTotalPrice.innerHTML = `= ${printPrice + 3000}`;
+        printPrice = printPrice;
+        console.log(printPrice,"print")
+        printItemPrice.innerHTML = addCommas(printPrice);
+        printTotalPrice.innerHTML = `= ${addCommas(printPrice + 3000)}`;
 
         // 해당 상품의 수량을 데이터에도 업데이트
         data[index].quantity = currentQuantity;

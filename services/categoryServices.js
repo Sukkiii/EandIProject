@@ -69,16 +69,17 @@ const deleteCategory = asyncHandler(async (req, res) => {
 const getProductsByTopCategory = asyncHandler(async (req, res) => {
     const topCategoryId = req.params.id;
     const categories = await Category.find({categoryParent: topCategoryId });
-    console.log(categories)
     const categoryIds = categories.map(category => category._id);
-    console.log(categoryIds)
     const products = await Product.find({ category: categoryIds });
-    console.log(products)
     if (!products) {
-        res.status(400)
+        res.status(404)
         throw new Error('요청하신 상품들이 존재하지 않습니다.');
     }
-    res.json(products);
+    if (categories.length === 0) {
+        res.status(404);
+        throw new Error('카테고리가 존재하지 않습니다.');
+    }
+    res.json({products},{categories});
 });
 
 // 하위 카테고리 -> 상품조회
@@ -87,10 +88,26 @@ const getProductsByCategory = asyncHandler(async (req, res) => {
     const categoryId = req.params.id2;
     const products = await Product.find({ category: categoryId });
     if (!products) {
-        res.status(400)
+        res.status(404)
         throw new Error('요청하신 상품들이 존재하지 않습니다.');
     }
     res.json(products);
 });
 
-module.exports = { createCategory, getCategory, updateCategory, deleteCategory, getProductsByCategory, getProductsByTopCategory };
+// 카테고리와 상품목록 둘다 불러오기
+const getList = asyncHandler(async (req, res) => {
+    const products = await Product.find({}).limit(10);
+    if (products.length === 0) {
+        res.status(404);
+        throw new Error('상품이 존재하지 않습니다.');
+    }
+    const categories = await Category.find({});
+    if (categories.length === 0) {
+        res.status(404);
+        throw new Error('카테고리가 존재하지 않습니다.');
+    }
+    res.json({products, categories});
+});
+
+
+module.exports = { createCategory, getCategory, updateCategory, deleteCategory, getProductsByCategory, getProductsByTopCategory, getList };

@@ -6,7 +6,7 @@ const ordersRouter = require('../routes/orders');
 const categoriesRouter = require('../routes/categories');
 const { getProduct, getProductList } = require('../services/productServices');
 const { signup, login, logout } = require('../services/userServices');
-const { getProductsByCategory, getProductsByTopCategory  } = require('../services/categoryServices');
+const { getProductsByCategory, getProductsByTopCategory, getCategory, getList  } = require('../services/categoryServices');
 const router = express.Router();
 
 // 로그인&아웃, 회원 가입
@@ -17,7 +17,7 @@ router.delete('/logout', logout) // 로그아웃
 //메인 페이지 및 상품 조회(비회원 기능)
 router.get('/categories/:id',getProductsByTopCategory) // 상위 카테고리 ->상품목록
 router.get('/categories/:id1/:id2',getProductsByCategory) // 상위 -> 하위 카테고리 상품목록
-router.get('/', getProductList) // 상품 목록 조회
+router.get('/', getList) // 상품 목록 조회
 router.get('/produts/:id', getProduct) // 상품 조회
 
 // 관리자

@@ -8,6 +8,10 @@ const getProductList = asyncHandler(async (req, res) => {
         res.status(404);
         throw new Error('상품이 존재하지 않습니다.');
     }
+    // //이미지파일 보내기
+    // const imagePath = path.join(__dirname, 'views/uploads/my-image.jpg'); // 이미지 파일의 경로를 설정합니다.
+    // res.sendFile(imagePath); // 이미지 파일을 응답으로 보냅니다.
+
     res.json(products);
 });
 
@@ -20,12 +24,19 @@ const getProduct = asyncHandler(async (req, res) => {
         res.status(404);
         throw new Error('상품이 존재하지 않습니다.');
     }
+    //이미지 파일 보내기
+    const imagePath = path.join(__dirname, 'views/uploads/my-image.jpg'); // 이미지 파일의 경로를 설정합니다.
+    res.sendFile(imagePath); // 이미지 파일을 응답으로 보냅니다.
+
     res.json(products);
+    
 });
 
 // 상품 추가
 const createProduct = asyncHandler(async (req, res) => {
     const { image, description, price, productName, stock  } = req.body;
+
+    const imageFiles = req.files; // 이미지 파일들에 접근
 
     const product = new Product({
         image,
@@ -91,5 +102,3 @@ const deleteProduct = asyncHandler(async (req, res) => {
 });
 
 module.exports = { getProductList, getProduct, createProduct, updateProduct, deleteProduct };
-
-/* */

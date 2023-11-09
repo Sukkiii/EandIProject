@@ -5,6 +5,9 @@ const cookieParser = require('cookie-parser');
 const path = require('path');
 dotenv.config();
 
+const multer  = require('multer'); //이미지 파일 받을 수 있는 미들웨어
+const upload = multer({ dest: 'view/uploads/' }); // 파일이 저장될 위치
+
 const indexRouter = require('./routes')
 const permission = require('./middlewares/permission'); // 유저인증 & 권한 체크
 
@@ -21,9 +24,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 //라우터
-app.use('/api', indexRouter);
-app.use('/api/user', permission('user'));
-app.use('/api/admin', permission('admin'));
+app.use('/', indexRouter);
+app.use('/user', permission('user'));
+app.use('/admin', permission('admin'));
 
 //에러 핸들러
 app.use((err, req, res, next) => {

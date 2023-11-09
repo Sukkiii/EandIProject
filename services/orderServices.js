@@ -1,5 +1,5 @@
 const asyncHandler = require('express-async-handler');
-const { Order } = require('../models/model');
+const { Order, User } = require('../models/model');
 
 // 전체 주문 목록 조회
 const getOrderList = asyncHandler(async (req, res) => {
@@ -13,8 +13,8 @@ const getOrderList = asyncHandler(async (req, res) => {
 
 // 주문 목록 조회
 const getOrders = asyncHandler(async (req, res) => {
-   const userid = req.params.userId;
-   const orders = await Order.find({userId: userid});
+   const user = req.params.id1;
+   const orders = await Order.find({userId: user});
    if (orders.length === 0) {
       res.status(404);
       throw new Error('현재 들어온 주문이 없습니다.');
@@ -24,8 +24,7 @@ const getOrders = asyncHandler(async (req, res) => {
 
 // 주문 조회
 const getOrder = asyncHandler(async (req, res) => {
-   const orderId = req.params.id;
-   const order = await Order.findById(orderId);
+   const order = await Order.find({userId: req.user._id});
    if (!order) {
       res.status(404);
       throw new Error('주문이 존재하지 않습니다.');

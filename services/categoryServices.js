@@ -66,7 +66,7 @@ const deleteCategory = asyncHandler(async (req, res) => {
 });
 
 // 상위 카테고리 -> 상품조회
-const getProductByTopCategory = asyncHandler(async (req, res) => {
+const getProductsByTopCategory = asyncHandler(async (req, res) => {
     const topCategoryId = req.params.id;
     const categories = await Category.find({categoryParent: topCategoryId });
     console.log(categories)
@@ -93,4 +93,4 @@ const getProductsByCategory = asyncHandler(async (req, res) => {
     res.json(products);
 });
 
-module.exports = { createCategory, getCategory, updateCategory, deleteCategory, getProductsByCategory, getProductByTopCategory };
+module.exports = { createCategory, getCategory, updateCategory, deleteCategory, getProductsByCategory, getProductsByTopCategory };

@@ -21,9 +21,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 //라우터
-app.use('/', indexRouter);
-app.use('/user', permission('user'));
-app.use('/admin', permission('admin'));
+app.use('/api', indexRouter);
+app.use('/api/user', permission('user'));
+app.use('/api/admin', permission('admin'));
 
 //에러 핸들러
 app.use((err, req, res, next) => {

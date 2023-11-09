@@ -65,9 +65,24 @@ const deleteCategory = asyncHandler(async (req, res) => {
 
 // 카테고리 -> 상품조회
 const getProductByCategory = asyncHandler(async (req, res) => {
-    const categoryId = req.params.id;
-    const products = await Product.find({ category: categoryId });
-    res.json(products)
+    const topCategoryId = req.params.id;
+
+    // 상위 카테고리와 그 하위 카테고리를 모두 찾습니다.
+    const categories = await Category.find({
+        $or: [
+            { _id: topCategoryId },
+            { categoryParent: topCategoryId }
+        ]
+    });
+
+    // 찾은 카테고리의 ID를 추출합니다.
+    const categoryIds = categories.map(category => category._id);
+
+    // Product 모델에서 category 필드가 categoryIds 중 하나와 일치하는 모든 상품을 찾습니다.
+    const products = await Product.find({ category: { $in: categoryIds } });
+
+    // 찾은 상품을 응답으로 반환합니다.
+    res.json(products);
 });
 
 module.exports = { createCategory, getCategory, updateCategory, deleteCategory, getProductByCategory };

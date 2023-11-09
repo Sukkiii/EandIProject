@@ -1,0 +1,72 @@
+{
+  "products": [
+    {
+      "ProductId": 5,
+      "ProductName": "짱구 악어와 초코비 피규어",
+      "Price": 25820,
+<<<<<<< HEAD:data/dummyData2.json
+      "Image": ["../image/jjangu-chochobi-figure.png",
+                "../image/jjangu-chochobi-figure-explain2.png",
+                "../image/jjangu-chochobi-figure-explain3.png",
+                "../image/jjangu-chochobi-figure-explain4.png",
+                "../image/jjangu-chochobi-figure-explain5.png",
+                "../image/jjangu-chochobi-figure-explain6.png",
+                "../image/jjangu-chochobi-figure-explain7.png"],
+=======
+      "Image": "./image/jjangu-chochobi-figure.png",
+>>>>>>> origin/front-dev:pgw/main/data/dummyData2.json
+      "Description": "너무 귀여운 짱구 피규어예요 :)짱구가 제일 좋아하는 초코비를 들고 악어로 변신한 짱구! 책상 위에 두면 책상이 얼마나 귀엽게요~?!"
+    },
+    {
+      "ProductId": 6,
+      "ProductName": "짱구 건담로봇 블록",
+      "Price": 25820,
+<<<<<<< HEAD:data/dummyData2.json
+      "Image": ["../image/jjangu-gundamrogbot-figure.png",
+                "../image/jjangu-chochobi-figure-explain2.png",
+                "../image/jjangu-chochobi-figure-explain3.png",
+                "../image/jjangu-chochobi-figure-explain4.png",
+                "../image/jjangu-chochobi-figure-explain5.png",
+                "../image/jjangu-chochobi-figure-explain6.png",
+                "../image/jjangu-chochobi-figure-explain7.png"],
+=======
+      "Image": "./image/jjangu-gundamrogbot-figure.png",
+>>>>>>> origin/front-dev:pgw/main/data/dummyData2.json
+      "Description": "너무 귀여운 짱구 피규어예요 :) 짱구가 건담로봇으로 변신했어요!"
+    },
+    {
+      "ProductId": 7,
+      "ProductName": "짱구 부리부리대마왕 블록",
+      "Price": 25820,
+<<<<<<< HEAD:data/dummyData2.json
+      "Image": ["../image/jjangu-buriburiking-figure.png",
+                "../image/jjangu-chochobi-figure-explain2.png",
+                "../image/jjangu-chochobi-figure-explain3.png",
+                "../image/jjangu-chochobi-figure-explain4.png",
+                "../image/jjangu-chochobi-figure-explain5.png",
+                "../image/jjangu-chochobi-figure-explain6.png",
+                "../image/jjangu-chochobi-figure-explain7.png"],
+=======
+      "Image": "./image/jjangu-buriburiking-figure.png",
+>>>>>>> origin/front-dev:pgw/main/data/dummyData2.json
+      "Description": "너무 귀여운 짱구 피규어예요 :) 부리부리대마왕으로 변신한 짱구! 부리부리부리부리~ 부리부리부리부리~"
+    },
+    {
+      "ProductId": 8,
+      "ProductName": "짱구 부리부리춤 블록",
+      "Price": 25820,
+<<<<<<< HEAD:data/dummyData2.json
+      "Image": ["../image/jjangu-buriburidance-figure.png",
+                "../image/jjangu-chochobi-figure-explain2.png",
+                "../image/jjangu-chochobi-figure-explain3.png",
+                "../image/jjangu-chochobi-figure-explain4.png",
+                "../image/jjangu-chochobi-figure-explain5.png",
+                "../image/jjangu-chochobi-figure-explain6.png",
+                "../image/jjangu-chochobi-figure-explain7.png"],
+=======
+      "Image": "./image/jjangu-buriburidance-figure.png",
+>>>>>>> origin/front-dev:pgw/main/data/dummyData2.json
+      "Description": "너무 귀여운 짱구 피규어예요 :) 부끄러움을 모르는 짱구 :( 부끄러움은 모르지만 얄미우면서 귀엽지 않나요?"
+    }
+  ]
+}

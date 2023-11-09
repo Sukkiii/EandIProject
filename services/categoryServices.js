@@ -97,7 +97,11 @@ const getList = asyncHandler(async (req, res) => {
         res.status(404);
         throw new Error('상품이 존재하지 않습니다.');
     }
-    const categories = await Category.find({}); 
+    const categories = await Category.find({});
+    if (categories.length === 0) {
+        res.status(404);
+        throw new Error('카테고리가 존재하지 않습니다.');
+    }
     res.json({products, categories});
 });
 

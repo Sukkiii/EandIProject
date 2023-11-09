@@ -73,17 +73,17 @@ const logout = asyncHandler(async (req, res) => {
 
 // 회원 목록 조회 (관리자)
 const getUserList = asyncHandler(async (req, res) => {
-    const users = await User.find({}).limit(20); // db 특정 필터를 설정하여 갯수를 제한하여 데이터 반환할 수 있게 로직구현 고민
+    const users = await User.find({}).limit(20); 
     if(users.length === 0) {
         res.status(404)
         throw new Error('요청하신 데이터가 존재하지 않습니다.')
     }
-    res.json(users); // 민감정보 제어
+    res.json(users);
 });
 
 // 회원 조회
 const getUser = asyncHandler(async (req, res) => {
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(req.user.id);
     if (!user) {
         res.status(404);
         throw new Error('사용자가 존재하지 않습니다.');
@@ -113,7 +113,15 @@ const updateUser = asyncHandler(async (req, res) => {
 
     res.json({ message: '회원 정보가 수정되었습니다.' });
 });
+// 회원 탈퇴
+const resignUser = asyncHandler(async (req, res) => {
+    const userId = req.user._id;
+    const user = await User.findById(userId)
+    user.deleteAt = Date.now();
+    await user.save();
 
+    res.json({ message: '사용자 데이터가 삭제되었습니다. ' });
+});
 // 회원 삭제(탈퇴) - 소프트 삭제
 const deleteUser = asyncHandler(async (req, res) => {
     const userId = req.params.id;
@@ -133,5 +141,5 @@ const deleteUser = asyncHandler(async (req, res) => {
     res.json({ message: '사용자 데이터가 삭제되었습니다. ' });
 });
 
-module.exports = { signup, login, logout, getUserList, updateUser, deleteUser, getUser };
+module.exports = { signup, login, logout, getUserList, updateUser, deleteUser, getUser, resignUser };
 

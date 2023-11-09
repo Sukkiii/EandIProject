@@ -1,12 +1,12 @@
 const asyncHandler = require('express-async-handler')
 const { Category, Product } = require('../models/model');
 
-// 카테고리 생성
+// 카테고리 추가
 const createCategory = asyncHandler(async (req, res) => {
-    const { categoryName, categoryImage, categoryParent } = req.body;
+    const {  categoryId ,categoryName, categoryImage, categoryParent } = req.body;
 
     const category = new Category({
-        categoryName, categoryImage, categoryParent
+        categoryId, categoryName, categoryImage, categoryParent
     });
 
     if (!category) {
@@ -19,8 +19,8 @@ const createCategory = asyncHandler(async (req, res) => {
     res.json({ message: '카테고리가 추가되었습니다.' });;
 });
 
-// 카테고리 목록 조회 
-const getCategory = asyncHandler(async (req, res) => {
+// 카테고리 목록 
+const getCategories = asyncHandler(async (req, res) => {
     const categories = await Category.find({});
 
     if (!categories) {
@@ -33,13 +33,13 @@ const getCategory = asyncHandler(async (req, res) => {
 
 // 카테고리 수정
 const updateCategory = asyncHandler(async (req, res) => {
-    const { categoryName, categoryImage, categoryParent } = req.body;
+    const { categoryId, categoryName, categoryImage, categoryParent } = req.body;
 
-    const categoryId = req.params.id; // 수정할 카테고리 ID를 가져옴
+    const categoryI = req.params.id; // 수정할 카테고리 ID를 가져옴
     // 카테고리 수정
     const updatedCategory = await Category.updateOne(
-        { _id: categoryId },
-        { categoryName, categoryImage, categoryParent },
+        { categoryId: categoryI },
+        { categoryId, categoryName, categoryImage, categoryParent },
         { new: true },
     );
 
@@ -53,9 +53,13 @@ const updateCategory = asyncHandler(async (req, res) => {
 
 // 카테고리 삭제
 const deleteCategory = asyncHandler(async (req, res) => {
-    const categoryId = req.params.id;
-
-    const deletedCategory = await Category.deleteOne({ _id: categoryId });
+    const categoryI = req.params.id;
+    const categoryId = await Category.findOne({ categoryId: categoryI });
+    if (!categoryId) {
+        res.status(404);
+        throw new Error('요청하신 카테고리가 존재하지 않습니다.');
+    }
+    const deletedCategory = await Category.deleteOne({ _id: categoryId._id });
 
     if (!deletedCategory) {
         res.status(404);
@@ -67,8 +71,13 @@ const deleteCategory = asyncHandler(async (req, res) => {
 
 // 상위 카테고리 -> 상품조회
 const getProductsByTopCategory = asyncHandler(async (req, res) => {
-    const topCategoryId = req.params.id;
-    const categories = await Category.find({categoryParent: topCategoryId });
+    const categoryI = req.params.id;
+    const topCategoryId = await Category.findOne({ categoryId: categoryI });
+    if (!topCategoryId) {
+        res.status(404);
+        throw new Error('요청하신 카테고리가 존재하지 않습니다.');
+    }
+    const categories = await Category.find({ categoryParent: topCategoryId._id });
     const categoryIds = categories.map(category => category._id);
     const products = await Product.find({ category: categoryIds });
     if (!products) {
@@ -79,14 +88,19 @@ const getProductsByTopCategory = asyncHandler(async (req, res) => {
         res.status(404);
         throw new Error('카테고리가 존재하지 않습니다.');
     }
-    res.json({products},{categories});
+    res.json({ products }, { categories });
 });
 
 // 하위 카테고리 -> 상품조회
 const getProductsByCategory = asyncHandler(async (req, res) => {
     // const topCategoryId = req.params.id1;
-    const categoryId = req.params.id2;
-    const products = await Product.find({ category: categoryId });
+    const categoryI = req.params.id2;
+    const categoryId = await Category.findOne({ categoryId: categoryI });
+    if (!categoryId) {
+        res.status(404);
+        throw new Error('요청하신 카테고리가 존재하지 않습니다.');
+    }
+    const products = await Product.find({ category: categoryId._id });
     if (!products) {
         res.status(404)
         throw new Error('요청하신 상품들이 존재하지 않습니다.');
@@ -95,7 +109,7 @@ const getProductsByCategory = asyncHandler(async (req, res) => {
 });
 
 // 카테고리와 상품목록 둘다 불러오기
-const getList = asyncHandler(async (req, res) => {
+const CategoryAndProducts = asyncHandler(async (req, res) => {
     const products = await Product.find({}).limit(10);
     if (products.length === 0) {
         res.status(404);
@@ -106,8 +120,8 @@ const getList = asyncHandler(async (req, res) => {
         res.status(404);
         throw new Error('카테고리가 존재하지 않습니다.');
     }
-    res.json({products, categories});
+    res.json({ products, categories });
 });
 
 
-module.exports = { createCategory, getCategory, updateCategory, deleteCategory, getProductsByCategory, getProductsByTopCategory, getList };
+module.exports = { createCategory, getCategories, updateCategory, deleteCategory, getProductsByCategory, getProductsByTopCategory, CategoryAndProducts };

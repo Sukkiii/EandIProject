@@ -88,7 +88,6 @@ const passwordValidator = (password) => {
    return "비밀번호가 유효합니다.";
 }
 
-
  // 특수문자가 포함되어 있는지 확인
  const specialChars = "!@#$%^&*()+=-[]\\\';,./{}|\":<>?";
  for (let i = 0; i < specialChars.length; i++) {

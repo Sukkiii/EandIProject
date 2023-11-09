@@ -15,7 +15,7 @@ router.post('/login', login) // 로그인
 router.delete('/logout', logout) // 로그아웃
 
 //메인 페이지 및 상품 조회
-router.get('/', getCategory) // 주문 조회
+// router.get('/', getCategory) // 주문 조회
 router.get('/', getProductList) // 상품 목록 조회
 router.get('/produts/:id', getProduct) // 상품 조회
 

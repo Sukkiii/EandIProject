@@ -3,9 +3,6 @@ let email = document.getElementById("emailInput");
 let birth = document.getElementById("birthInput");
 let mobile = document.getElementById("mobileInput");
 let address = document.getElementById("addressInput");
-<<<<<<< HEAD
-fetch("./Data.json")
-=======
 let password = document.getElementById("passwordInput");
 let newPassword = document.getElementById("newpasswordInput");
 
@@ -17,39 +14,19 @@ fetch("http://localhost:5000/user/users/:id", {
     "Content-Type": "application/json",
   },
 })
->>>>>>> loginfeature
   .then((res) => {
     // console.log(res);
     return res.json();
   })
   .then((res) => {
-<<<<<<< HEAD
-    // console.log(res.user)
-    user = res.user;
-    user.forEach((el) => {
-=======
     console.log(res);
     res.forEach((el) => {
->>>>>>> loginfeature
       email.value = el.email;
       birth.value = el.birth;
       mobile.value = el.mobile;
       address.value = el.address;
     });
   });
-<<<<<<< HEAD
-//기존비밀번호
-fetch("userData", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    password: passwordInput,
-  }),
-});
-//새로운비밀번호
-=======
 //기존정보화면에뿌려주는함수
 
 //기존비밀번호
@@ -91,4 +68,3 @@ const submitHandle = () => {
 };
 
 submitButton.addEventListener("submit", submitHandle);
->>>>>>> loginfeature

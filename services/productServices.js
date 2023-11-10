@@ -1,12 +1,11 @@
 const asyncHandler = require('express-async-handler')
 const { Product } = require('../models/model');
-
+const { NotFoundError, BadRequestError } = require('../utils/customError')
 // 상품 목록 조회(최신순)
 const getProductList = asyncHandler(async (req, res) => {
     const products = await Product.find({}).sort('-createdAt').limit(10);
     if (products.length === 0) {
-        res.status(404);
-        throw new Error('상품이 존재하지 않습니다.');
+        throw new NotFoundError('상품이 존재하지 않습니다.');
     }
     // //이미지파일 보내기
     // const imagePath = path.join(__dirname, 'views/uploads/my-image.jpg'); // 이미지 파일의 경로를 설정합니다.
@@ -23,8 +22,7 @@ const getProductList = asyncHandler(async (req, res) => {
     const products = await Product.find({}).sort('-createdAt').skip(skip).limit(limit);
 
     if (products.length === 0) {
-        res.status(404);
-        throw new Error('상품이 존재하지 않습니다.');
+        throw new NotFoundError('상품이 존재하지 않습니다.');
     }
 
     res.json(products);
@@ -34,8 +32,7 @@ const getProduct = asyncHandler(async (req, res) => {
     const productId = req.params.id;
     const product = await Product.findById(productId)
     if (!product) {
-        res.status(404);
-        throw new Error('상품이 존재하지 않습니다.');
+        throw new NotFoundError('상품이 존재하지 않습니다.');
     }
     //이미지 파일 보내기
     // const image = product.productName
@@ -58,25 +55,21 @@ const createProduct = asyncHandler(async (req, res) => {
         stock,
     });
 
-    if (!(product.productName)) {
-        res.status(404);
-        throw new Error('상품 이름을 입력하지 않았습니다.');
-    } else if (!(product.image)) {
-        res.status(404);
-        throw new Error('이미지 업로드하는데 문제가 발생하였습니다.');
-    } else if (!(product.price)) {
-        res.status(404);
-        throw new Error('상품 가격을 입력하지 않았습니다.');
-    } else if (!(product.description)) {
-        res.status(404);
-        throw new Error('상품 설명을 입력하지 않았습니다.');
-    } else if (!(product.stock)) {
-        res.status(404);
-        throw new Error('재고를 입력하지 않았습니다.');
+    const fields = {
+        productName: '상품 이름을 입력하지 않았습니다.',
+        image: '이미지 업로드하는데 문제가 발생하였습니다.',
+        price: '상품 가격을 입력하지 않았습니다.',
+        description: '상품 설명을 입력하지 않았습니다.',
+        stock: '재고를 입력하지 않았습니다.',
+    };
+    for (const [field, message] of Object.entries(fields)) {
+        if (!product[field]) {
+            throw new BadRequestError(message);
+        }
     }
 
     await product.save(); // 상품 저장
-    res.status(201).json('상품을 추가하였습니다.');
+    res.status(201).json({ message: '상품을 추가하였습니다.' });
 });
 
 // 상품 수정
@@ -90,10 +83,10 @@ const updateProduct = asyncHandler(async (req, res) => {
         { $set: { image, description, price, productName, stock } },
     );
 
-    if (updatedProduct.nModified === 0) {
-        throw new Error('상품 추가하는데 오류가 발생하였습니다.');
+    if (!updatedProduct) {
+        throw new NotFoundError('상품 추가하는데 오류가 발생하였습니다.');
     } else if (!image && !description && !price && !productName && !stock && (productName.length === 0) && (description.length === 0) && (image.length === 0)) {
-        throw new Error('속성 값을 기재하지 않았습니다.');
+        throw new NotFoundError('속성 값을 기재하지 않았습니다.');
     }
 
     res.json({ message: '상품을 수정하였습니다.' });
@@ -105,7 +98,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
     const findId = await Product.findById(req.params.id);
 
     if (!findId) {
-        throw new Error('상품을 찾을 수 없습니다.');
+        throw new NotFoundError('상품을 찾을 수 없습니다.');
     }
 
     const productId = await Product.deleteOne({ _id: req.params.id });

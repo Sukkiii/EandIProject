@@ -1,17 +1,16 @@
 const asyncHandler = require('express-async-handler')
 const { Category, Product } = require('../models/model');
-
+const { NotFoundError } = require('../utils/customError')
 // 카테고리 추가
 const createCategory = asyncHandler(async (req, res) => {
-    const {  categoryId ,categoryName, categoryImage, categoryParent } = req.body;
+    const { categoryId, categoryName, categoryImage, categoryParent } = req.body;
 
     const category = new Category({
         categoryId, categoryName, categoryImage, categoryParent
     });
 
     if (!category) {
-        res.status(404);
-        throw new Error('카테고리 생성이 이루어지지 않았습니다.');
+        throw new NotFoundError ('카테고리 생성이 이루어지지 않았습니다.');
     }
 
     await category.save();
@@ -24,8 +23,7 @@ const getCategories = asyncHandler(async (req, res) => {
     const categories = await Category.find({});
 
     if (!categories) {
-        res.status(404);
-        throw new Error('카테고리 조회에 실패하였습니다.');
+        throw new NotFoundError('카테고리 조회에 실패하였습니다.');
     }
 
     res.json(categories);
@@ -37,15 +35,17 @@ const updateCategory = asyncHandler(async (req, res) => {
 
     const categoryI = req.params.categoryId; // 수정할 카테고리 ID를 가져옴
     // 카테고리 수정
+    const findedId = await Category.findOne({categoryId:categoryI})
+    if (!findedId) {
+        throw new NotFoundError('요청하신 카테고리가 존재하지 않습니다.');
+    }
     const updatedCategory = await Category.updateOne(
         { categoryId: categoryI },
         { categoryId, categoryName, categoryImage, categoryParent },
         { new: true },
     );
-
-    if (!updatedCategory) {
-        res.status(404);
-        throw new Error('카테고리 수정이 이루어지지 않았습니다.');
+    if (updatedCategory.length === 0) {
+        throw new NotFoundError('카테고리 수정이 이루어지지 않았습니다.');
     }
 
     res.json({ message: '카테고리가 수정되었습니다.' });
@@ -56,14 +56,12 @@ const deleteCategory = asyncHandler(async (req, res) => {
     const categoryI = req.params.categoryId;
     const categoryId = await Category.findOne({ categoryId: categoryI });
     if (!categoryId) {
-        res.status(404);
-        throw new Error('요청하신 카테고리가 존재하지 않습니다.');
+        throw new NotFoundError('요청하신 카테고리가 존재하지 않습니다.');
     }
     const deletedCategory = await Category.deleteOne({ _id: categoryId._id });
 
     if (!deletedCategory) {
-        res.status(404);
-        throw new Error('카테고리 삭제가 이루어지지 않았습니다.');
+        throw new NotFoundError('카테고리 삭제가 이루어지지 않았습니다.');
     }
 
     res.json({ message: '카테고리가 삭제되었습니다.' });
@@ -75,21 +73,18 @@ const getProductsByTopCategory = asyncHandler(async (req, res) => {
     console.log(categoryI)
     const topCategoryId = await Category.findOne({ categoryId: categoryI });
     if (!topCategoryId) {
-        res.status(404);
-        throw new Error('요청하신 카테고리가 존재하지 않습니다.');
+        throw new NotFoundError('요청하신 카테고리가 존재하지 않습니다.');
     }
     const categories = await Category.find({ categoryParent: topCategoryId._id });
     const categoryIds = categories.map(category => category._id);
     const products = await Product.find({ category: categoryIds });
     if (!products) {
-        res.status(404)
-        throw new Error('요청하신 상품들이 존재하지 않습니다.');
+        throw new NotFoundError('요청하신 상품들이 존재하지 않습니다.');
     }
     if (categories.length === 0) {
-        res.status(404);
-        throw new Error('카테고리가 존재하지 않습니다.');
+        throw new NotFoundError('카테고리가 존재하지 않습니다.');
     }
-    res.json({products ,categories});
+    res.json({ products, categories });
 });
 
 // 하위 카테고리 -> 상품조회
@@ -98,13 +93,11 @@ const getProductsByCategory = asyncHandler(async (req, res) => {
     const categoryI = String(req.params.categoryId2);
     const categoryId = await Category.findOne({ categoryId: categoryI });
     if (!categoryId) {
-        res.status(404);
-        throw new Error('요청하신 카테고리가 존재하지 않습니다.');
+        throw new NotFoundError('요청하신 카테고리가 존재하지 않습니다.');
     }
     const products = await Product.find({ category: categoryId._id });
     if (!products) {
-        res.status(404)
-        throw new Error('요청하신 상품들이 존재하지 않습니다.');
+        throw new NotFoundError('요청하신 상품들이 존재하지 않습니다.');
     }
     res.json(products);
 });
@@ -113,13 +106,11 @@ const getProductsByCategory = asyncHandler(async (req, res) => {
 const CategoryAndProducts = asyncHandler(async (req, res) => {
     const products = await Product.find({}).limit(10);
     if (products.length === 0) {
-        res.status(404);
-        throw new Error('상품이 존재하지 않습니다.');
+        throw new NotFoundError('상품이 존재하지 않습니다.');
     }
     const categories = await Category.find({});
     if (categories.length === 0) {
-        res.status(404);
-        throw new Error('카테고리가 존재하지 않습니다.');
+        throw new NotFoundError('카테고리가 존재하지 않습니다.');
     }
     res.json({ products, categories });
 });

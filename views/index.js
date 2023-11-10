@@ -45,11 +45,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         const contentType = response.headers.get("content-type");
 
         if (!contentType || !contentType.includes("application/json")) {
-            throw new Error("Invalid content type. Expected JSON.");
+            const htmlData = await response.text();
+            console.log(htmlData); // HTML 데이터를 콘솔에 출력하거나 다른 처리를 수행
+        } else {
+            const jsonData = await response.json();
+            console.log(jsonData); // JSON 데이터를 콘솔에 출력하거나 다른 처리를 수행
         }
-
-        const data = await response.json();
-        console.log(data); // 받아온 데이터를 콘솔에 출력하거나 다른 처리를 수행
     } catch (error) {
         console.error('Error fetching data:', error);
     }

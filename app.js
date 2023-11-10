@@ -16,7 +16,7 @@ let corsOptions = {
 }
 
 const apiRouter = require('./routes')
-const indexRouter = require('./routes/indexRouter')
+// const indexRouter = require('./routes/indexRouter')
 mongoose.connect(process.env.MONGODB_URL).then(() => {
   console.log("MongoDB connect Success!");
 }).catch((err) => console.log(err));
@@ -32,7 +32,7 @@ app.use(cookieParser());
 
 //라우터
 app.use("/api", apiRouter);
-app.use("/", indexRouter);
+// app.use("/", indexRouter);
 
 //에러 핸들러
 app.use((err, req, res, next) => {

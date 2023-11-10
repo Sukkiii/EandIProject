@@ -22,5 +22,4 @@ router.use('/users', usersRouter);
 router.use('/products', productsRouter);
 router.use('/orders', ordersRouter);
 router.use('/categories', categoriesRouter);
-
 module.exports = router;

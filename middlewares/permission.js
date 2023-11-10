@@ -7,8 +7,7 @@ const secret = process.env.ACCESS_SECRET
 module.exports = (role) => asyncHandler(async (req, res, next) => {
    const token = req.cookies.accessToken;
    if (token === undefined) { // 쿠키에 토큰 존재 여부
-      const error = { status: 401, message: "인증되지 않은 유저입니다." }
-      next(error);
+      throw new UnauthorizedError("인증되지 않은 유저입니다.")
    }
    const user = jwt.verify(token, secret); // 토큰 검사
    req.user = await User.findById(user.id).select('-password') // req.user에 유저 할당
@@ -18,8 +17,7 @@ module.exports = (role) => asyncHandler(async (req, res, next) => {
       (role === 'admin' && user.userRole === 'admin')) {
       next();
    } else {
-      const error = { status: 403, message: "접근이 제한되었습니다." }
-      next(error);
+      throw new ForbiddenError("접근이 제한되었습니다.")
    }
    console.log(req.user)
 })

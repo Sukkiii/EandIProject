@@ -3,7 +3,7 @@ const { Product } = require('../models/model');
 
 // 상품 목록 조회(최신순)
 const getProductList = asyncHandler(async (req, res) => {
-    const products = await Product.find({}).sort('-createdAt').limit(20);
+    const products = await Product.find({}).sort('-createdAt').limit(10);
     if (products.length === 0) {
         res.status(404);
         throw new Error('상품이 존재하지 않습니다.');
@@ -16,7 +16,7 @@ const getProductList = asyncHandler(async (req, res) => {
 });
 /* 상품 목록 조회(1page / 10 items)
 const getProductList = asyncHandler(async (req, res) => {
-    const page = Number(req.query.page) || 1; // 페이지 번호를 가져옵니다. 기본값은 1입니다.
+    const page = Number(req.query.page) || 1; // 페이지 번호.. 기본값은 1
     const limit = 10; // 페이지당 상품 수
     const skip = (page - 1) * limit; // 건너뛸 상품 수
 
@@ -32,9 +32,8 @@ const getProductList = asyncHandler(async (req, res) => {
 // 상품 상세 조회
 const getProduct = asyncHandler(async (req, res) => {
     const productId = req.params.id;
-    const product = await Product.findById(productId).populate("category");
-
-    if (!products) {
+    const product = await Product.findById(productId)
+    if (!product) {
         res.status(404);
         throw new Error('상품이 존재하지 않습니다.');
     }
@@ -43,7 +42,6 @@ const getProduct = asyncHandler(async (req, res) => {
     // const imagePath = path.join(__dirname, `views/images/${image}.jpg`); // 이미지 파일의 경로를 설정합니다.
     // res.sendFile(imagePath); // 이미지 파일을 응답으로 보냅니다.
     res.json(product);
-
 });
 
 // 상품 추가

@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const response = await fetch(baseURL);
 
         if (!response.ok) {
-            throw new Error(HTTP error! Status: ${ response.status });
+            throw new Error(`HTTP error! Status: ${ response.status }`);
         }
 
         const contentType = response.headers.get("content-type");

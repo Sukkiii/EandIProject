@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const path = require("path");
+const cors = require("cors");
 dotenv.config();
 
 // const multer  = require('multer'); //이미지 파일 받을 수 있는 미들웨어
@@ -20,6 +21,13 @@ mongoose
   .catch((err) => console.log(err));
 
 const app = express();
+app.use(
+  cors({
+    origin: "*", // 출처 허용 옵션
+    credentials: true, // 사용자 인증이 필요한 리소스(쿠키 등) 접근
+  })
+);
+
 app.use(express.json()); // express.json(): POST 등의 요청과 함께 오는 json형태의 데이터를 인식하고 핸들링할 수 있게 함.
 app.use(express.static("views"));
 app.use("/image", express.static("image"));

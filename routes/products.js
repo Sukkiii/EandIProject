@@ -7,9 +7,10 @@ router.get('/admin/:id', permission('admin'), getProduct) // 상품 상세 조�
 router.post('/admin', permission('admin'), createProduct) // 상품 추가
 router.put('/admin/:id', permission('admin'), updateProduct) // 상품 수정
 router.delete('/admin/:id', permission('admin'), deleteProduct) // 상품 삭제
+router.get('/admin', permission('admin'), getProductList) // 전체 상품 목록 조회
+
 router.get('/:id', getProduct) // 상품 상세 조회
 // router.get('/', getProductList) // 상품 목록 조회
 
-router.get('/', permission('admin'), getProductList) // 전체 상품 목록 조회
 
 module.exports = router;

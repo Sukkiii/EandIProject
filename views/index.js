@@ -33,3 +33,16 @@ shoppingStartBtn.addEventListener('click',() => {
     }, 500);
 })
 
+const baseURL = "http://kdt-sw-7-team05.elicecoding.com";
+
+
+const fetch = require(baseURL);
+
+fetch(fetch)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data); // 서버에서 받아온 JSON 데이터
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });

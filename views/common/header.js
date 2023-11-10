@@ -212,6 +212,9 @@ function createHeader() {
         <a href="/login/">로그인</a>
       </li>
       <li class="service-move">
+        <a href="/login/">로그아웃</a>
+      </li>
+      <li class="service-move">
         <a href="/shoppingBasket/">장바구니</a>
       </li>
       <li class="service-move">

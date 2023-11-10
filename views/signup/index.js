@@ -156,13 +156,13 @@ function submitToggle2() {
 }
 
 submitButton2.addEventListener("click", (e) => {
-  e.preventDefault();
-  alert("회원가입에 필요한 모든 필드를 채워주세요.");
+  // e.preventDefault();
+  // alert("회원가입에 필요한 모든 필드를 채워주세요.");
 });
 
 // //버튼누르면정보를백으로뿌려주는최종함수
 const submitHandler = (e) => {
-  e.preventDefault();
+  // e.preventDefault();
   signup();
 };
 
@@ -171,8 +171,9 @@ submitButton.addEventListener("submit", submitHandler);
 // const data = [{email:'asd',passwr},{}]
 //정보를json화하여body에담아보내는함수
  
-const signup = () => {
-  fetch("http://localhost:5000/signup", {
+const signup = (e) => {
+  e.preventDefault()
+  fetch("http://localhost:3000/signup", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -189,12 +190,14 @@ const signup = () => {
     .then((res) => res.json())
     .then((res) => {
       if (res.statusCode === 200) {
+        console.log(res.body)
         alert(res.body.message);
         console.log("success");
       }
     })
     .catch((err) => {
       alert(err);
+      console.log('err')
       console.log(err, "실패");
     });
 };

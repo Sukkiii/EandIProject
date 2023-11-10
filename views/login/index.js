@@ -42,14 +42,15 @@
 //     }
 //   };
 
-const url = "http://localhost:5000";
+const url = "http://localhost:3000";
 const submitButton = document.querySelector("#signInSubmit");
 const emailInput = document.querySelector("#emailInput");
 const passwordInput = document.querySelector("#passwordInput");
 const email = emailInput.value;
 const password = passwordInput.value;
 
-const loginHandle = () => {
+const loginHandle = (e) => {
+  e.preventDefault();
   fetch(`${url}/login`, {
     method: "POST",
     credentials: "include",
@@ -65,9 +66,13 @@ const loginHandle = () => {
           // localStorage.setItem("jwtToken", token);
           // alert("로그인");
           // const token = res.cookies.accessToken;
+          console.log(data)
+          console.log(document.cookie)
           document.cookie = `token=${result.token}; path=/`;
           alert("Login successful");
           redirect(`${url}/`);
+          // document.getElementById('login').style.display = "none";
+          // document.getElementById('logout').style.display = "unset";
         } else {
           alert("Login failed");
         }

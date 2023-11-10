@@ -4,8 +4,8 @@ const permission = require('../middlewares/permission'); // 유저인증 & 권�
 const router = express.Router();
 
 router.get('/mypage/:id', permission('user'), getUser) // 회원 정보 조회
-router.put('/mypage', permission('user'), updateUser) // 회원 정보 수정
-router.delete('/mypage', permission('user'), resignUser) // 회원 삭제(탈퇴)
+router.put('/mypage/:id', permission('user'), updateUser) // 회원 정보 수정
+router.delete('/mypage/:id', permission('user'), resignUser) // 회원 삭제(탈퇴)
 
 router.get('/admin', permission('admin'), getUserList) // 전체 회원 목록 조회
 router.get('/admin/:id', permission('admin'), getUser) // 회원 정보 조회

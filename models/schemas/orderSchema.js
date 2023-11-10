@@ -48,4 +48,8 @@ const orderSchema = new Schema({
     timestamps: true,
 });
 
+<<<<<<< HEAD
 module.exports = orderSchema;
+=======
+module.exports = orderSchema;
+>>>>>>> onlyBack

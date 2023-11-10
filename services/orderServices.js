@@ -13,8 +13,12 @@ const getOrderList = asyncHandler(async (req, res) => {
 
 // 주문 목록 조회
 const getOrders = asyncHandler(async (req, res) => {
+<<<<<<< HEAD
    const userid = req.params.userId;
    const orders = await Order.find({userId: userid});
+=======
+   const orders = await Order.find({ userId: req.user._id });
+>>>>>>> onlyBack
    if (orders.length === 0) {
       res.status(404);
       throw new Error('현재 들어온 주문이 없습니다.');
@@ -22,10 +26,17 @@ const getOrders = asyncHandler(async (req, res) => {
    res.json(orders);
 });
 
+<<<<<<< HEAD
 // 주문 조회
 const getOrder = asyncHandler(async (req, res) => {
    const orderId = req.params.id;
    const order = await Order.findById(orderId);
+=======
+// 주문 상세조회
+const getOrder = asyncHandler(async (req, res) => {
+   const orderId = req.params.id;
+   const order = await Order.findOne({ _id: orderId });
+>>>>>>> onlyBack
    if (!order) {
       res.status(404);
       throw new Error('주문이 존재하지 않습니다.');
@@ -35,10 +46,17 @@ const getOrder = asyncHandler(async (req, res) => {
 
 // 주문 신청
 const createOrder = asyncHandler(async (req, res) => {
+<<<<<<< HEAD
    const { userId, productId, receiver, quantity, phoneNumber, orderAddress, deliveryStatus, totalPrice } = req.body;
 
    const order = new Order({
       userId,
+=======
+   const { productId, receiver, quantity, phoneNumber, orderAddress, deliveryStatus, totalPrice } = req.body;
+
+   const order = new Order({
+      userId: req.user._id, // 주문 신청 때 주문자의 id
+>>>>>>> onlyBack
       productId,
       quantity,
       receiver,
@@ -84,6 +102,7 @@ const deleteOrder = asyncHandler(async (req, res) => {
       res.status(404)
       throw new Error('주문을 찾을 수 없습니다. ');
    }
+<<<<<<< HEAD
    await Order.deleteOne({ _id: orderId });
 
    res.json({ message: '주문이 삭제되었습니다.' });
@@ -91,3 +110,29 @@ const deleteOrder = asyncHandler(async (req, res) => {
 
 
 module.exports = { getOrder, createOrder, updateOrder, deleteOrder, getOrders, getOrderList }; 
+=======
+   const deleted = await Order.deleteOne({ _id: orderId });
+   if (!deleted) {
+      res.status(500)
+      throw new Error('서버 오류입니다. ');
+   }
+   res.json({ message: '주문이 삭제되었습니다.' });
+});
+
+// 배송 상태 수정
+const updateDeliveryStatus = asyncHandler(async (req, res) => {
+   const orderId = req.params.id;
+   const order = await Order.findById(orderId);
+   if (!order) {
+      res.status(404);
+      throw new Error('주문이 존재하지 않습니다.');
+   }
+   const newStatus = req.body.deliveryStatus; // 새로운 state 값
+   order.deliveryStatus = newStatus; // 주문의 state 값을 업데이트
+   const updatedStatus = await order.save(); // 변경된 주문을 저장
+   res.json(updatedStatus); // 업데이트된 주문을 반환
+})
+
+
+module.exports = { getOrder, createOrder, updateOrder, deleteOrder, getOrders, getOrderList, updateDeliveryStatus }; 
+>>>>>>> onlyBack

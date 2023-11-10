@@ -1,16 +1,31 @@
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("DOMContentLoaded event fired");
+});
+// 프록시 설정 or 쿠키사용을 위한 옵션 추가
+
 document.addEventListener("DOMContentLoaded", async () => {
-  const baseURL = "http://kdt-sw-7-team05.elicecoding.com";
+  // const baseURL = "http://kdt-sw-7-team05.elicecoding.com";
+  const baseURL = "http://localhost:3000";
+
   const currentPath = window.location.pathname;
-  const categoryId = extractCategoryId(currentPath);
+  // const categoryId = extractCategoryId(currentPath);
+  const categoryId = `figure`;
 
-  const apiURL = `${baseURL}/categories/${categoryId}`;
+  const apiURL = `${baseURL}/api/categories/${categoryId}`;
 
-  const response = await fetch(apiURL);
-
+  const response = await fetch(apiURL, { credential: "include" });
   const data = await response.json();
-
+  console.log(data);
   const productUl = document.querySelector(".product-ul");
+
+  if (!response.ok) {
+    console.error("Error:", response.status);
+    return;
+  }
+
   data.products.forEach((product) => {
+    product.image[0] = `${baseURL}${product.image[0]}`;
+    // console.log(product.price);
     const productLi = createProductElement(product);
     productUl.appendChild(productLi);
   });
@@ -22,8 +37,8 @@ function createProductElement(product) {
 
   const img = document.createElement("img");
   img.className = "product-list-img";
-  img.src = product.image[0]; // 이미지 배열 중 첫 번째 이미지 사용
-  img.alt = product.image[0];
+  img.src = product.image[0];
+  img.alt = product.productName;
 
   const description = document.createElement("div");
   description.className = "description";

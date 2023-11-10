@@ -160,7 +160,7 @@ function createHeader() {
     <nav class="category-info">
       <ul class="category-ul">
         <li class="category-move">
-          <a href="/categories/figure">
+          <a href="/categories?id=figure">
             <img class="category-icon" src="../common/img/figure.png" alt="" />
             피규어
           </a>

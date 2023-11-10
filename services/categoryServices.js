@@ -71,7 +71,8 @@ const deleteCategory = asyncHandler(async (req, res) => {
 
 // 상위 카테고리 -> 상품조회
 const getProductsByTopCategory = asyncHandler(async (req, res) => {
-    const categoryI = req.params.id;
+    const categoryI = String(req.params.categoryId);
+    console.log(categoryI)
     const topCategoryId = await Category.findOne({ categoryId: categoryI });
     if (!topCategoryId) {
         res.status(404);
@@ -88,13 +89,13 @@ const getProductsByTopCategory = asyncHandler(async (req, res) => {
         res.status(404);
         throw new Error('카테고리가 존재하지 않습니다.');
     }
-    res.json({ products }, { categories });
+    res.json({products ,categories});
 });
 
 // 하위 카테고리 -> 상품조회
 const getProductsByCategory = asyncHandler(async (req, res) => {
     // const topCategoryId = req.params.id1;
-    const categoryI = req.params.id2;
+    const categoryI = String(req.params.categoryId2);
     const categoryId = await Category.findOne({ categoryId: categoryI });
     if (!categoryId) {
         res.status(404);

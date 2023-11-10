@@ -19,7 +19,7 @@ router.get('/', CategoryAndProducts) // 전체 카테고리 & 상품 목록 조�
 
 // 각 라우터 연결
 router.use('/users', usersRouter);
-router.use('/productsRouter', productsRouter);
+router.use('/products', productsRouter);
 router.use('/orders', ordersRouter);
 router.use('/categories', categoriesRouter);
 module.exports = router;

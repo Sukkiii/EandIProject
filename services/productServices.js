@@ -39,9 +39,9 @@ const getProduct = asyncHandler(async (req, res) => {
         throw new Error('상품이 존재하지 않습니다.');
     }
     //이미지 파일 보내기
-    const image = product.productName
-    const imagePath = path.join(__dirname, `views/images/${image}.jpg`); // 이미지 파일의 경로를 설정합니다.
-    res.sendFile(imagePath); // 이미지 파일을 응답으로 보냅니다.
+    // const image = product.productName
+    // const imagePath = path.join(__dirname, `views/images/${image}.jpg`); // 이미지 파일의 경로를 설정합니다.
+    // res.sendFile(imagePath); // 이미지 파일을 응답으로 보냅니다.
     res.json(product);
 
 });

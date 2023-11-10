@@ -4,8 +4,8 @@ const permission = require('../middlewares/permission'); // 유저인증 & 권�
 const router = express.Router();
 
 // router.get('/', getCategories) // 카테고리 조회
-router.get('/:id', getProductsByTopCategory) // 상위 카테고리 ->상품목록
-router.get('/:id1/:id2', getProductsByCategory) // 상위 -> 하위 카테고리 상품목록
+router.get('/:categoryId', getProductsByTopCategory) // 상위 카테고리 ->상품목록
+router.get('/:categoryId1/:categoryId2', getProductsByCategory) // 상위 -> 하위 카테고리 상품목록
 
 router.get('/admin', permission('admin'), getCategories) // 카테고리 목록 조회
 router.post('/admin/:id', permission('admin'), createCategory) // 카테고리 추가

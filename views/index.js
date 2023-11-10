@@ -33,14 +33,24 @@ shoppingStartBtn.addEventListener('click',() => {
     }, 500);
 })
 
-const baseURL = "http://kdt-sw-7-team05.elicecoding.com";
+document.addEventListener("DOMContentLoaded", async () => {
+    const baseURL = "http://kdt-sw-7-team05.elicecoding.com/";
+    try {
+        const response = await fetch(baseURL);
 
+        if (!response.ok) {
+            throw new Error(HTTP error! Status: ${ response.status });
+        }
 
-fetch(baseURL)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data); // 서버에서 받아온 JSON 데이터
-    })
-    .catch(error => {
+        const contentType = response.headers.get("content-type");
+
+        if (!contentType || !contentType.includes("application/json")) {
+            throw new Error("Invalid content type. Expected JSON.");
+        }
+
+        const data = await response.json();
+        console.log(data); // 받아온 데이터를 콘솔에 출력하거나 다른 처리를 수행
+    } catch (error) {
         console.error('Error fetching data:', error);
-    });
+    }
+});

@@ -35,7 +35,7 @@ const getCategories = asyncHandler(async (req, res) => {
 const updateCategory = asyncHandler(async (req, res) => {
     const { categoryId, categoryName, categoryImage, categoryParent } = req.body;
 
-    const categoryI = req.params.id; // 수정할 카테고리 ID를 가져옴
+    const categoryI = req.params.categoryId; // 수정할 카테고리 ID를 가져옴
     // 카테고리 수정
     const updatedCategory = await Category.updateOne(
         { categoryId: categoryI },
@@ -53,7 +53,7 @@ const updateCategory = asyncHandler(async (req, res) => {
 
 // 카테고리 삭제
 const deleteCategory = asyncHandler(async (req, res) => {
-    const categoryI = req.params.id;
+    const categoryI = req.params.categoryId;
     const categoryId = await Category.findOne({ categoryId: categoryI });
     if (!categoryId) {
         res.status(404);

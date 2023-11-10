@@ -14,6 +14,7 @@ indexRouter.use("/", serveStatic("main"));
 
 // 카테고리 페이지
 indexRouter.use("/categories", serveStatic("categories"));
+//
 
 // 상품 페이지
 indexRouter.use("/products", serveStatic("products"));
@@ -37,9 +38,9 @@ indexRouter.use("/payment", serveStatic("payment"));
 indexRouter.use("/users", serveStatic("users"));
 
 // 관리자 페이지
-indexRouter.use("/manager", serveStatic("manager"));
+indexRouter.use("/admin", serveStatic("admin"));
 
 // 에러 페이지
 indexRouter.use("/page-not-found", serveStatic("page-not-found"));
 
-export { indexRouter };
+module.exports = indexRouter;

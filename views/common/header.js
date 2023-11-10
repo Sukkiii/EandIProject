@@ -39,6 +39,7 @@ table {
   align-items: center;
   justify-content: center;
   font-size: 2.5rem;
+  min-width: 230px;
 }
 h1 a {
   display: flex;
@@ -153,50 +154,50 @@ function createHeader() {
   header.innerHTML = `
   <h1>
     <a href="/">
-      <img class="main-logo" src="../common/img/logo.png" />
+      <img class="main-logo" src="/common/img/logo.png" />
     </a>
   </h1>
   <div class="head-container">
     <nav class="category-info">
       <ul class="category-ul">
         <li class="category-move">
-          <a href="/categories/figure">
-            <img class="category-icon" src="../common/img/figure.png" alt="" />
+          <a href="/categories?id=figure">
+            <img class="category-icon" src="/common/img/figure.png" alt="" />
             피규어
           </a>
         </li>
         <li class="category-move">
-          <a href="/categories/doll">
+          <a href="/categories?id=doll">
             <img
               class="category-icon"
-              src="../common/img/doll.png"
+              src="/common/img/doll.png"
               alt=""
             />인형</a
           >
         </li>
         <li class="category-move">
-          <a href="/categories/pencil">
+          <a href="/categories?id=pencil">
             <img
               class="category-icon"
-              src="../common/img/stationery.png"
+              src="/common/img/stationery.png"
               alt=""
             />학용품</a
           >
         </li>
         <li class="category-move">
-          <a href="/categories/clothes">
+          <a href="/categories?id=clothes">
             <img
               class="category-icon"
-              src="../common/img/clothes.png"
+              src="/common/img/clothes.png"
               alt=""
             />옷</a
           >
         </li>
         <li class="category-move">
-          <a href="/categories/etc">
+          <a href="/categories?id=etc">
             <img
               class="category-icon"
-              src="../common/img/etc.png"
+              src="/common/img/etc.png"
               alt=""
             />기타</a
           >

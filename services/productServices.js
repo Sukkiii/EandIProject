@@ -16,7 +16,7 @@ const getProductList = asyncHandler(async (req, res) => {
 });
 /* 상품 목록 조회(1page / 10 items)
 const getProductList = asyncHandler(async (req, res) => {
-    const page = Number(req.query.page) || 1; // 페이지 번호를 가져옵니다. 기본값은 1입니다.
+    const page = Number(req.query.page) || 1; // 페이지 번호.. 기본값은 1
     const limit = 10; // 페이지당 상품 수
     const skip = (page - 1) * limit; // 건너뛸 상품 수
 

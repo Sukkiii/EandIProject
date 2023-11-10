@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+
+
 function showSelectedValue(selectElement) {
     const selectedValue = selectElement.value;
     console.log(selectedValue);

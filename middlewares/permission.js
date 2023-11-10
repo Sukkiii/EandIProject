@@ -21,5 +21,4 @@ module.exports = (role) => asyncHandler(async (req, res, next) => {
       const error = { status: 403, message: "접근이 제한되었습니다." }
       next(error);
    }
-   console.log(req.user)
 })

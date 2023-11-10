@@ -10,4 +10,5 @@ router.delete('/admin/:categoryId', permission('admin'), deleteCategory) // 카�
 
 router.get('/:categoryId', getProductsByTopCategory) // 상위 카테고리 ->상품목록
 router.get('/:categoryId1/:categoryId2', getProductsByCategory) // 상위 -> 하위 카테고리 상품목록
+
 module.exports = router;

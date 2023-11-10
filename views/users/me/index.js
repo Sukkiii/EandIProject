@@ -8,7 +8,7 @@ let newPassword = document.getElementById("newpasswordInput");
 
 const submitButton = document.getElementById("submitButton");
 
-fetch("http://localhost:5000/user/users/:id", {
+fetch("http://localhost:5000/user/mypage/:id", {
   method: "GET",
   headers: {
     "Content-Type": "application/json",
@@ -27,22 +27,11 @@ fetch("http://localhost:5000/user/users/:id", {
       address.value = el.address;
     });
   });
-//기존정보화면에뿌려주는함수
-
-//기존비밀번호
-// fetch("userData", {
-//   method: "POST",
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-//   body: JSON.stringify({
-//     password: passwordInput,
-//   }),
-// });
+ 
 
 //입력한value로재설정하는함수
 const submitHandle = () => {
-  fetch("http://127.0.0.1:5500/user/users/:id", {
+  fetch("http://127.0.0.1:5500/user/mypage/:id", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

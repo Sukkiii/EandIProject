@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.8.1/video-js.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.8.1/video.min.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>managerPage</title>
+  </head>
+  <body>
+    <script src="./delivery.js"></script>
+    <script src="./views/common/header.js"></script>
+    <main class="main-container">
+      <section class="section">
+        <div class="container">
+          <div class="head-banner">
+            <div class="each-banner-wrap" href="../categoryList/categoryList.html">
+              <span class="banner-name">카테고리 목록</span>
+            </div>
+            <div class="each-banner-wrap" href="../productList/productList.html">
+              <span class="banner-name">제품 목록</span>
+            </div>
+            <div class="each-banner-wrap banner-click" href="../delivery/delivery.html">
+              <span class="banner-name">배송상태 변경</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="delivery-container">
+          <div class="delivery-search-header">
+            <div class="item">주문번호</div>
+            <div class="item">주문일</div>
+            <div class="item">전화번호</div>
+            <div class="item">배송상태</div>
+          </div>
+          <div class="delivery-status-container">
+            <div class="delivery-status-item">
+              <div class="item order-number">주문번호</div>
+              <div class="item order-date">주문일</div>
+              <div class="item order-phone-number">전화번호</div>
+              <select class="order-status" onchange="showSelectedValue(this)">
+                <option value="ready">배송 준비중</option>
+                <option value="run">배송중</option>
+                <option value="success">배송 완료</option>
+              </select>
+            </div>
+
+            <div class="delivery-status-item">
+              <div class="item order-number">주문번호</div>
+              <div class="item order-date">주문일</div>
+              <div class="item order-phone-number">전화번호</div>
+              <select class="order-status" onchange="showSelectedValue(this)">
+                <option value="ready1">배송 준비중</option>
+                <option value="run1">배송중</option>
+                <option value="success1">배송 완료</option>
+              </select>
+            </div>
+
+            <div class="delivery-status-item">
+              <div class="item order-number">주문번호</div>
+              <div class="item order-date">주문일</div>
+              <div class="item order-phone-number">전화번호</div>
+              <select class="order-status" onchange="showSelectedValue(this)">
+                <option value="ready2">배송 준비중</option>
+                <option value="run2">배송중</option>
+                <option value="success2">배송 완료</option>
+              </select>
+            </div>
+
+            <div class="delivery-status-item">
+              <div class="item order-number">주문번호</div>
+              <div class="item order-date">주문일</div>
+              <div class="item order-phone-number">전화번호</div>
+              <select class="order-status" onchange="showSelectedValue(this)">
+                <option value="ready3">배송 준비중</option>
+                <option value="run3">배송중</option>
+                <option value="success3">배송 완료</option>
+              </select>
+            </div>
+
+            <div class="delivery-status-item">
+              <div class="item order-number">주문번호</div>
+              <div class="item order-date">주문일</div>
+              <div class="item order-phone-number">전화번호</div>
+              <select class="order-status" onchange="showSelectedValue(this)">
+                <option value="ready4">배송 준비중</option>
+                <option value="run4">배송중</option>
+                <option value="success4">배송 완료</option>
+              </select>
+            </div>
+
+          </div>
+      </div>
+
+      <!-- <div class="category-btn">
+        <button class="custom-btn btn-12">
+          <span>추가하기</span>
+          <span>주문 추가</span>
+        </button>
+        <button class="custom-btn btn-12">
+          <span>삭제하기</span>
+          <span>주문 삭제</span>
+        </button>
+      </div> -->
+
+    </main>
+  <script src="./views/common/footer.js"></script>
+  </body>
+</html>
+
+
+<!-- // const OrderSchmea = new Schmea({
+//     userId: {
+//         type: mongoose.Schema.Types.ObjectId,
+//         ref: 'User'
+//     }, // 주문번호
+//     userName: { type: String, required: true }, // 배송받는 사람
+//     phoneNumber: { type: String, required: true }, // 전화번호
+//     orderProduct: [{
+//         type: mongoose.Schema.Types.ObjectId,
+//         required: true,
+//         ref: 'Product'
+//     }], // 상품번호 -> 배열: 다수의 주문관리
+//     quantity: { type: Number, required: true }, // 수량
+//     orderAddress: { type: String, required: true }, // 배송지
+//     orderDate: { type: Date, required: true, default: Date.now }, // 주문일시
+//     deliveryStatus: { // 배송상태
+//         type: Number,
+//         enum: [1, 2, 3, 4], // 1: 결제완료, 2: 배송 준비중, 3: 배송중, 4: 배송 완료
+//         default: 1,
+//     },
+//     totalPrice: { type: Number, required: true, default: 0 }, // 주문금액
+//     description: { type: String } //요청사항
+//    deleteAt: { type: Date, default: null } // 주문 수정, 취소 관리
+// }, {
+//     timestamps: true,
+// }); -->

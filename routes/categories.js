@@ -9,7 +9,7 @@ router.get('/:categoryId1/:categoryId2', getProductsByCategory) // 상위 -> 하
 
 router.get('/', permission('admin'), getCategories) // 카테고리 목록 조회
 router.post('/admin', permission('admin'), createCategory) // 카테고리 추가
-router.put('/admin/:id', permission('admin'), updateCategory) // 카테고리 수정
-router.delete('/admin/:id', permission('admin'), deleteCategory) // 카테고리 삭제
+router.put('/admin/:categoryId', permission('admin'), updateCategory) // 카테고리 수정
+router.delete('/admin/:categoryId', permission('admin'), deleteCategory) // 카테고리 삭제
 
 module.exports = router;

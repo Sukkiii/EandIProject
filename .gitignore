@@ -1,15 +1,5 @@
-<<<<<<< HEAD
-README.md
-.DS_Store.DS_Store
-node_modules
-<<<<<<< HEAD
-=======
 node_modules
 .env
-zzzz.js
+api.txt
 README.md
-index-copy.js
-api.js
->>>>>>> onlyBack
-=======
->>>>>>> 298ba752c6202e3864861b452b5a2e203d8847a6
+.DS_Store.DS_Store

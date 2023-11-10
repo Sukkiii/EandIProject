@@ -11,39 +11,7 @@
 </head>
 
 <body>
-    <header>
-        <ul class="nav-container">
-            <a href="./index.html" class="nav-logo nav-box">
-                <img alt="" class="nav-logo-img">
-            </a>
-            <ul class="nav-menu">
-                <li class="nav-box">
-                    <a href="" class="nav-box-title">피규어</a>
-                </li>
-                <li class="nav-box">
-                    <a href="" class="nav-box-title">인형</a>
-                </li>
-                <li class="nav-box">
-                    <a href="" class="nav-box-title">학용품</a>
-                </li>
-                <li class="nav-box">
-                    <a href="" class="nav-box-title">옷</a>
-                </li>
-
-            </ul>
-            <ul class="nav-profile">
-                <li class="nav-box">
-                    <a href="" class="nav-box-title">로그인</a>
-                </li>
-                <li class="nav-box">
-                    <a href="" class="nav-box-title">장바구니</a>
-                </li>
-                <li class="nav-box">
-                    <a href="" class="nav-box-title">마이페이지</a>
-                </li>
-            </ul>
-        </ul>
-    </header>
+    <script src="../common/header.js"></script>
     <main>
         <form>
             <h3>회원가입</h3>
@@ -53,83 +21,85 @@
                 <p>이메일:</p>
                 <input class="formInput" id="emailInput" type="email" maxlength="64" pattern=".+@.+" required
                     title="이메일을 입력해 주세요">
-                    <button id="emailButton" type="click"> </button>
-                    <div id='idValid'>
-            </div>
-            <br> <div id="name">
-                <p>이름:</p>
-                <input class="formInput" id="nameInput" type="name">  
-                     
+                <button id="emailButton" type="click"> </button>
+                <div id='idValid'>
+                </div>
+                <br>
+                <div id="name">
+                    <p>이름:</p>
+                    <input class="formInput" id="nameInput" type="name">
+
                     <!-- <div id='idValid'> -->
-            </div>
-            <br>
-            <div id="password">
-                <p>비밀번호:</p>
-                <input class="formInput" type="password" name="password" id="passwordInput"  ></input>
-            </div>
-            <br>
-            <div id="passwordCheck">
-                <p>비밀번호 확인:</p>
-                <input class="formInput"type="password" name="passwordCheckInput" id="passwordCheckInput"  ></input>
-                <div id='pwValid'>
-            </div>
-            
-            </div>
-            <br>
-            <!-- <div id="gender">
+                </div>
+                <br>
+                <div id="password">
+                    <p>비밀번호:</p>
+                    <input class="formInput" type="password" name="password" id="passwordInput"></input>
+                </div>
+                <br>
+                <div id="passwordCheck">
+                    <p>비밀번호 확인:</p>
+                    <input class="formInput" type="password" name="passwordCheckInput" id="passwordCheckInput"></input>
+                    <div id='pwValid'>
+                    </div>
+
+                </div>
+                <br>
+                <!-- <div id="gender">
                 <p>성별:</p>
                 <select>
                     <option>남자</option>
                     <option>여자</option>
                 </select>
             </div> -->
-            <br>
-            <div id="birth">
-                <p>생년월일:</p>
-                <input class="formInput" name="birth" id="birthInput"  ></input>
-                <div id='birthValid'>
-            </div>
-            <br>
-            <div class="flexbox">
-                <div id="mobile">
-                    <p>전화번호:</p>
-                    <input name="mobile" id="mobileInput" requiredtitle="전화번호를 입력해주세요"  ></input>
-                </div>
                 <br>
+                <div id="birth">
+                    <p>생년월일:</p>
+                    <input class="formInput" name="birth" id="birthInput"></input>
+                    <div id='birthValid'>
+                    </div>
+                    <br>
+                    <div class="flexbox">
+                        <div id="mobile">
+                            <p>전화번호:</p>
+                            <input name="mobile" id="mobileInput" requiredtitle="전화번호를 입력해주세요"></input>
+                        </div>
+                        <br>
 
-                <div id='address'>
-                    <p>주소:</p>
-                    <input name="addressInput" id="addressInput"  ></input>
-                    <!-- <input type="text" id="sample4_postcode" placeholder="우편번호">
+                        <div id='address'>
+                            <p>주소:</p>
+                            <input name="addressInput" id="addressInput"></input>
+                            <!-- <input type="text" id="sample4_postcode" placeholder="우편번호">
                     <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
                     <input type="text" id="sample4_roadAddress" placeholder="도로명주소">
                     <input type="text" id="sample4_jibunAddress" placeholder="지번주소">
                     <span id="guide" style="color:#999;display:none"></span>
                     <input type="text" id="sample4_detailAddress" placeholder="상세주소">
                     <input type="text" id="sample4_extraAddress" placeholder="참고항목"> -->
-                    
-                </div>
-            </div>
-            <br>
-            <div id="terms">
-                <article>
-                    <textarea name="terms" id="termsInput" cols="40" rows="10">
+
+                        </div>
+                    </div>
+                    <br>
+                    <div id="terms">
+                        <article>
+                            <textarea name="terms" id="termsInput" cols="40" rows="10">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
              Nulla ipsam ratione explicabo natus fugit. Veniam asper
              iores beatae quo, vel magni omnis, ipsam, exercitatione
              m ducimus optio officiis quasi esse blanditiis quibusdam.
         </textarea>
-                </article>
-                동의 <input type="checkbox" name="termsButton" id="termsButton">
-            </div>
-            <br>
-            <br>
-            <button type="submit" id='submitButton' class="btn btn-outline-success" style="display: none;">Submit</button>
-            <!-- 추가기능1. js써서 필드가 다 차면 secondary에서 submit로 class변경 -->
-            <button type="submit" id='submitButton2' class="btn btn-outline-secondary">필드를모두채우세요</button>
+                        </article>
+                        동의 <input type="checkbox" name="termsButton" id="termsButton">
+                    </div>
+                    <br>
+                    <br>
+                    <button type="submit" id='submitButton' class="btn btn-outline-success"
+                        style="display: none;">Submit</button>
+                    <!-- 추가기능1. js써서 필드가 다 차면 secondary에서 submit로 class변경 -->
+                    <button type="submit" id='submitButton2' class="btn btn-outline-secondary">필드를모두채우세요</button>
         </form>
     </main>
-
+    <script src="../common/footer.js"></script>
 </body>
 <script src="./index.js"></script>
 

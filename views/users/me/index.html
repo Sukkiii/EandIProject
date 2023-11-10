@@ -6,51 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./index.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
+  
     <title>mypage</title>
 </head>
-
-<input>
-<header>
-    <ul class="nav-container">
-        <a href="./index.html" class="nav-logo nav-box">
-            <img src="./Unknown_오후_1.18.00-removebg-preview.png" alt="" class="nav-logo-img">
-        </a>
-        <ul class="nav-menu">
-            <li class="nav-box">
-                <a href="" class="nav-box-title">피규어</a>
-            </li>
-            <li class="nav-box">
-                <a href="" class="nav-box-title">인형</a>
-            </li>
-            <li class="nav-box">
-                <a href="" class="nav-box-title">학용품</a>
-            </li>
-            <li class="nav-box">
-                <a href="" class="nav-box-title">옷</a>
-            </li>
-
-        </ul>
-        <ul class="nav-profile">
-            <li class="nav-box">
-                <a href="/login/index.html" class="nav-box-title">로그인</a>
-            </li>
-            <li class="nav-box">
-                <a href="" class="nav-box-title">장바구니</a>
-            </li>
-            <li class="nav-box">
-                <a href="/users/me/index.html" class="nav-box-title">마이페이지</a>
-            </li>
-        </ul>
-    </ul>
-</header>
-
+<body>
+    <script src="../../common/header.js"></script>
 <section id="mypageForm">
-
-
-
     <section id=mypageSec1>
-
         <div>뒤로가기<br>
             <a href="./index.html"><img id="backward" src="./img/backward.png" />
             </a>
@@ -60,13 +22,10 @@
             <div>장바구니</div><br><a href=""><img id="cartImg" src="./img/cart.png" /></a>
         </div>
     </section>
-
-
     <section id=mypageSec2>
         <h1>계정관리</h1>
         <main>
             <form>
-
                 <br>
                 <br>
                 <div id="email">
@@ -75,11 +34,7 @@
                         title="이메일을 입력해 주세요">
                     <div id='idValid'>
                     </div>
-                    <br>
-                    <!-- <div id="password">
-                        <p>기존 비밀번호:</p>
-                        <input class="formInput" type="password" name="password" id="passwordInput"></input>
-                    </div> -->
+
                     <br>
                     <div id="passwordCheck">
                         <p>새로운 비밀번호</p>
@@ -111,17 +66,16 @@
                         <br>
                         <br>
                         <br>
-                        <button type="submit" id='submitButton' class="btn btn-outline-success"
-                            >Submit</button>
-                 
+                        <button type="submit" id='submitButton' class="btn btn-outline-success">Submit</button>
+
 
             </form>
         </main>
     </section>
-
-
 </section>
+<script src="../../common/footer.js"></script>
 </body>
 <script src="./index.js"></script>
+
 
 </html>

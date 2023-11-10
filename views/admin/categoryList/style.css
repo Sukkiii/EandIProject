@@ -157,9 +157,13 @@ a {
   background-color: rgb(124, 124, 124);
   border-radius: 10px;
   box-shadow: 5px 5px black;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .category-item-name{
+  width: 70%;
   text-align: center;
   color: white;
   font-weight: 700;
@@ -264,3 +268,7 @@ a {
 }
 
 /* 제품 목록 css */
+
+.box {
+  width: 70%;
+}

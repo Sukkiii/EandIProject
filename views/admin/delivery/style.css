@@ -61,12 +61,10 @@ a.nav-item {
   padding-bottom: 1rem;
 }
 .page-introduce {
-  font-size: 20px;
   padding: 1rem;
   color: #8c8c8c;
+  size: 2rem;
 }
-
-
 main {
   display: block;
   margin: 0 auto;
@@ -119,70 +117,54 @@ a {
   font-weight: 700;
 }
 
-/* 위에는 냅둘 것 */
-/* category.html 파일의 css임 */
 
 .main-container {
   width: 100%;
   display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
-.sub-container{
+.delivery-container {
   width: 80%;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  align-content: center;
-  justify-content: center;
+  margin-top: 20px;
 }
 
-.category-container {
+.delivery-search-header {
   width: 100%;
+  height: 40px;
+  background-color: rgb(201, 201, 201);
+  border: 1px solid black;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-    border: 1px solid black;
+  padding: 30px;
 }
 
-.category-item {
-  width: 30%;
-  padding: 10px;
-  margin: 10px;
-  background-color: rgb(124, 124, 124);
-  border-radius: 10px;
-  box-shadow: 5px 5px black;
-}
-
-.category-item-name{
+.item {
+  width: 20%;
   text-align: center;
-  color: white;
-  font-weight: 700;
-  font-size: 20px;
-  background-color: rgb(37, 37, 37);
-  padding: 10px;
 }
 
-.category-btn {
+.delivery-status-item {
   width: 100%;
+  height: 40px;
+  border-bottom: 1px dotted black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+}
+/* 
+.category-btn {
+  width: 80%;
   display: flex;
   align-items: center;
   justify-content: space-around;
   margin-top: 20px;
-}
-
-.category-plus-btn {
-  padding: 20px;
-  margin: 10px;
-  font-size: 20px;
-  border-radius: 10px;
-  font-weight: 700;
   border: 1px solid black;
-  background-color: #ddd;
+  padding: 20px;
 }
 
 .custom-btn {
@@ -258,6 +240,4 @@ a {
   -webkit-transform: rotateX(-90deg);
   -moz-transform: rotateX(-90deg);
   transform: rotateX(-90deg);
-}
-
-/* 제품 목록 css */
+} */

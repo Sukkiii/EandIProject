@@ -1,87 +1,45 @@
-const bestProductsFile = "../data/dummyData.json";
-const productsFile = "../data/dummyData2.json";
+document.addEventListener("DOMContentLoaded", async () => {
+  const baseURL = "http://kdt-sw-7-team05.elicecoding.com";
+  const currentPath = window.location.pathname;
+  const categoryId = extractCategoryId(currentPath);
 
-function fetchProductData(url) {
-  // return fetch("/api/products")
-  return fetch(url)
-    .then((response) => response.json())
-    .catch((error) => {
-      console.error("data error", error);
-    });
-}
+  const apiURL = `${baseURL}/categories/${categoryId}`;
 
-function displayProducts(products, containerClass, thumbnailClass) {
-  const productUl = document.querySelector(`.${containerClass} .product-ul`);
+  const response = await fetch(apiURL);
 
-  products.forEach((product) => {
-    const productLi = document.createElement("li");
-    productLi.classList.add("product-li");
+  const data = await response.json();
 
-    const thumbnailClassAdd =
-      containerClass === "best-products"
-        ? "best-product-thumbnail"
-        : "product-thumbnail";
-    productLi.innerHTML = `
-    <div class="${thumbnailClassAdd}">
-      <img
-        class="product-list-img"
-        src="${product.Image[0]}"
-        alt="${product.Image[0]}"
-      />
-    </div>
-    <div class="description">
-      <div class="product-name">${product.ProductName}</div>
-      <div class="product-price">${product.Price}원</div>
-      ${
-        containerClass === "best-products"
-          ? ""
-          : `<div class="product-explain">${product.Description}</div>`
-      }
-    </div>
-  `;
-
+  const productUl = document.querySelector(".product-ul");
+  data.products.forEach((product) => {
+    const productLi = createProductElement(product);
     productUl.appendChild(productLi);
   });
+});
+
+function createProductElement(product) {
+  const productLi = document.createElement("li");
+  productLi.className = "product-li";
+
+  const img = document.createElement("img");
+  img.className = "product-list-img";
+  img.src = product.image[0]; // 이미지 배열 중 첫 번째 이미지 사용
+  img.alt = product.image[0];
+
+  const description = document.createElement("div");
+  description.className = "description";
+  description.innerHTML = `
+    <div class="product-name">${product.productName}</div>
+    <div class="product-price">${product.price}원</div>
+    <div class="product-explain">${product.description}</div>
+  `;
+
+  productLi.appendChild(img);
+  productLi.appendChild(description);
+
+  return productLi;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  fetchProductData(bestProductsFile)
-    .then((data) => {
-      displayProducts(
-        data.bestProducts,
-        "best-products",
-        "best-products-thumbnail"
-      );
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-
-  fetchProductData(productsFile)
-    .then((data) => {
-      displayProducts(data.products, "products", "product-thumbnail");
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-  const headerContent = document.querySelector("#header-content");
-  fetch("../common/header.html")
-    .then((response) => response.text())
-    .then((data) => {
-      headerContent.innerHTML = data;
-    })
-    .catch((error) => {
-      console.error("헤더 로드 중 오류 발생:", error);
-    });
-
-  // footer를 가져와서 HTML 파일에 추가
-  const footerContent = document.querySelector("#footer-content");
-  fetch("../common/footer.html")
-    .then((response) => response.text())
-    .then((data) => {
-      footerContent.innerHTML = data;
-    })
-    .catch((error) => {
-      console.error("푸터 로드 중 오류 발생:", error);
-    });
-});
+function extractCategoryId(path) {
+  const matches = path.match(/\/categories\/([^/]+)/);
+  return matches ? matches[1] : null;
+}

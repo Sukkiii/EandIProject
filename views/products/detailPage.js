@@ -1,6 +1,3 @@
-// const bestProductsFile = "../data/dummyData.json";
-const productsFile = "../data/dummyData2.json";
-
 const selectedProduct = {
   productId: null,
   name: null,
@@ -8,40 +5,37 @@ const selectedProduct = {
   quantity: 1,
   thumbnail: null,
 };
-// 페이지 상세 제품 url이 https://쇼핑몰/product-detail.html?id=123
-// 위와같은 형태로 제공된다고 가정했을 때, 아래와 같은 코드를 사용해야할 것 같다.
 
-function fetchProductData(url) {
-  // const urlParams = new URLSearchParams(window.location.search);
-  // const productId = urlParams.get("id");
-  const productId = 5;
+function fetchProductData() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const productId = urlParams.get("id");
 
-  return (
-    fetch(url)
-      // return fetch("/api/products")
+  if (!productId) {
+    console.error("상품 ID를 찾을 수 없습니다.");
+    return Promise.reject("상품 ID를 찾을 수 없습니다.");
+  }
 
-      .then((response) => response.json())
-      .then((data) => {
-        const product = data.products.find((p) => p.ProductId === productId);
-        if (product) {
-          selectedProduct.productId = productId;
-          selectedProduct.name = product.ProductName;
-          selectedProduct.price = product.Price;
-          selectedProduct.thumbnail = product.Image[0];
-          // selectedProduct.quantity = 1;
-          return product;
-        } else {
-          throw new Error("상품을 찾을 수 없습니다.");
-        }
-      })
-      .catch((error) => {
-        console.error("데이터 오류", error);
-      })
-  );
+  const apiUrl = `http://kdt-sw-7-team05.elicecoding.com/products/?id=${productId}`;
+
+  return fetch(apiUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      const product = data.find((p) => p.productId === productId);
+      if (product) {
+        selectedProduct.productId = productId;
+        selectedProduct.name = data.productName;
+        selectedProduct.price = data.price;
+        selectedProduct.thumbnail = data.image[0];
+      }
+      return product;
+    })
+    .catch((error) => {
+      console.error("데이터 오류", error);
+    });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  fetchProductData(productsFile)
+  fetchProductData()
     .then((data) => {
       displayDetailProduct(data);
 
@@ -65,26 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch((error) => {
       console.error(error);
-    });
-  const headerContent = document.querySelector("#header-content");
-  fetch("../common/header.html")
-    .then((response) => response.text())
-    .then((data) => {
-      headerContent.innerHTML = data;
-    })
-    .catch((error) => {
-      console.error("헤더 로드 중 오류 발생:", error);
-    });
-
-  // footer.html과 header.html이 js로 존재한다면, js파일로 존재한다면 바로 넣을 수 있을 것
-  const footerContent = document.querySelector("#footer-content");
-  fetch("../common/footer.html")
-    .then((response) => response.text())
-    .then((data) => {
-      footerContent.innerHTML = data;
-    })
-    .catch((error) => {
-      console.error("푸터 로드 중 오류 발생:", error);
     });
 });
 
@@ -178,7 +152,3 @@ function updatePrice(quantity) {
     priceValue * quantity
   )}원`;
 }
-
-// 1. 장바구니를 거치지 않고 구매하기 버튼을 눌렀을 때, 장바구니에 추가는 하지 않을건지
-// 2. 구매하기 버튼을 눌렀을때, 상세페이지에서 구매하기 페이지로 바로 데이터를 보내야할 지?
-// 3.

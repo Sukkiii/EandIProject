@@ -8,62 +8,24 @@
       rel="stylesheet"
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.8.1/video.min.js"></script>
-    <link rel="stylesheet" href="./style-1.css" />
+    <link rel="stylesheet" href="./style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>managerPage</title>
   </head>
   <body>
-    <script src="./manegerPage.js"></script>
-    <header>
-      <ul class="nav-container">
-        <a href="./index.html" class="nav-logo">
-          <img src="../image/짱샵ui.png" alt="" class="nav-logo-img" />
-        </a>
-        <ul class="nav-menu">
-          <li>
-            <a href="" class="nav-item">피규어</a>
-          </li>
-          <li>
-            <a href="" class="nav-item">인형</a>
-          </li>
-          <li>
-            <a href="" class="nav-item">학용품</a>
-          </li>
-          <li>
-            <a href="" class="nav-item">옷</a>
-          </li>
-          <li>
-            <a href="" class="nav-item">스티커</a>
-          </li>
-        </ul>
-        <ul class="nav-profile">
-          <li>
-            <a href="" class="nav-item">로그인</a>
-          </li>
-          <li>
-            <a href="" class="nav-item">장바구니</a>
-          </li>
-          <li>
-            <a href="" class="nav-item">마이페이지</a>
-          </li>
-        </ul>
-      </ul>
-      <div class="main-logo-locate">
-        <span class="page-introduce">짱구 굿즈 쇼핑몰</span>
-        <img class="mainpage-ui" src="./../image/짱샵ui.png" alt="" />
-      </div>
-    </header>
+    <script src="./category.js"></script>
+    <script src="../common/header.js"></script>
     <main class="main-container">
       <section class="section">
         <div class="container">
           <div class="head-banner">
-            <div class="each-banner-wrap banner-click" href="categoryList.html">
+            <div class="each-banner-wrap banner-click" href="../categoryList/categoryList.html">
               <span class="banner-name">카테고리 목록</span>
             </div>
-            <div class="each-banner-wrap" href="productList.html">
+            <div class="each-banner-wrap" href="../productList/productList.html">
               <span class="banner-name">제품 목록</span>
             </div>
-            <div class="each-banner-wrap " href="delivery.html">
+            <div class="each-banner-wrap " href="../delivery/delivery.html">
               <span class="banner-name">배송상태 변경</span>
             </div>
           </div>
@@ -73,27 +35,27 @@
       <div class="sub-container">
         <div class="category-container">
             <div class="category-item">
-              <img src="./image/1.png" alt="">
+              <img class="item-img" src="../image/1.png" alt="">
               <p class="category-item-name">피규어</p>
             </div>
 
             <div class="category-item">
-              <img src="./image/1.png" alt="">
+              <img class="item-img" src="../image/1.png" alt="">
               <p class="category-item-name">인형</p>
             </div>
 
             <div class="category-item">
-              <img src="./image/1.png" alt="">
+              <img class="item-img" src="../image/1.png" alt="">
               <p class="category-item-name">학용품</p>
             </div>
 
             <div class="category-item">
-              <img src="./image/1.png" alt="">
+              <img class="item-img" src="../image/1.png" alt="">
               <p class="category-item-name">옷</p>
             </div>
 
             <div class="category-item">
-              <img src="./image/1.png" alt="">
+              <img class="item-img" src="../image/1.png" alt="">
               <p class="category-item-name">스티커</p>
             </div>
         </div>
@@ -112,6 +74,6 @@
       </div>
 
     </main>
-    <footer></footer>
+    <script src="./views/common/footer.js"></script>
   </body>
 </html>

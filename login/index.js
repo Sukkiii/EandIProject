@@ -64,6 +64,7 @@ const loginHandle = () => {
         if (data.success) {
           // localStorage.setItem("jwtToken", token);
           // alert("로그인");
+          // const token = res.cookies.accessToken;
           document.cookie = `token=${result.token}; path=/`;
           alert("Login successful");
           redirect(`${url}/`);

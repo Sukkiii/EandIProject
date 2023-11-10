@@ -1,5 +1,5 @@
-fetch("http://localhost:5000/user/orders/:id2",{
-  // ./Data.json
+fetch("./Data.json",{
+  // http://localhost:5000/user/orders/:id2
   // 
 })
   .then((res) => 
@@ -21,17 +21,32 @@ fetch("http://localhost:5000/user/orders/:id2",{
       const row1 = document.createElement("td");
       const row2 = document.createElement("td");
       const row3 = document.createElement("td");
+      const row4 = document.createElement("td");
       table.className = currentClass;
 
       table.appendChild(row1);
       table.appendChild(row2);
       table.appendChild(row3);
+      table.appendChild(row4);
       itemImg.appendChild(table);
-      row1.textContent = data.orderDate;
-      row2.textContent = data.orderProduct;
-      row3.textContent = data.deliveryStatus;
+      // row1.textContent = data.orderDate;
+      // row2.textContent = data.orderProduct;
+      // row3.textContent = data.deliveryStatus;
+      row1.textContent = data.date;
+      row2.textContent = data.item;
+      row3.textContent = data.status;
+      row4.innerHTML = "<button id='orderDelete'>-</button>"
     });
   });
+
+const deleteBtn = document.querySelector('#orderDelete')
+const orderDelete = ()=>{
+  fetch(" http://localhost:5000/user/orders/:id2",{
+  }).then()
+}
+deleteBtn.addEventListener('click',orderDelete)
+
+
 
   //리스트받아오기...어떻게..
 //주문갯수만큼 테이블 생성 어떻게

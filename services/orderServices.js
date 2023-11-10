@@ -13,7 +13,8 @@ const getOrderList = asyncHandler(async (req, res) => {
 
 // 주문 목록 조회
 const getOrders = asyncHandler(async (req, res) => {
-   const orders = await Order.find({ userId: req.user._id });
+   console.log(req.user.id)
+   const orders = await Order.find({ userId: req.user.id });
    if (orders.length === 0) {
       throw new NotFoundError('현재 들어온 주문이 없습니다.');
    }
@@ -95,8 +96,10 @@ const updateDeliveryStatus = asyncHandler(async (req, res) => {
    const newStatus = req.body.deliveryStatus; // 새로운 state 값
    order.deliveryStatus = newStatus; // 주문의 state 값을 업데이트
    const updatedStatus = await order.save(); // 변경된 주문을 저장
-   res.json(updatedStatus); // 업데이트된 주문을 반환
+   res.json({deliveryStatus: updatedStatus.deliveryStatus, message: '배송 상태 수정 완료'}); // 업데이트된 주문을 반환
 })
+
+//주문 취소
 
 
 module.exports = { getOrder, createOrder, updateOrder, deleteOrder, getOrders, getOrderList, updateDeliveryStatus }; 

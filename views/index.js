@@ -36,9 +36,7 @@ shoppingStartBtn.addEventListener('click',() => {
 const baseURL = "http://kdt-sw-7-team05.elicecoding.com";
 
 
-const fetch = require(baseURL);
-
-fetch(fetch)
+fetch(baseURL)
     .then(response => response.json())
     .then(data => {
         console.log(data); // 서버에서 받아온 JSON 데이터

@@ -34,7 +34,7 @@ const getProduct = asyncHandler(async (req, res) => {
     const productId = req.params.id;
     const product = await Product.findById(productId).populate("category");
 
-    if (!products) {
+    if (!product) {
         res.status(404);
         throw new Error('상품이 존재하지 않습니다.');
     }

@@ -27,10 +27,10 @@ app.use(
     credentials: true, // 사용자 인증이 필요한 리소스(쿠키 등) 접근
   })
 );
-
-app.use(express.json()); // express.json(): POST 등의 요청과 함께 오는 json형태의 데이터를 인식하고 핸들링할 수 있게 함.
+app.use(express.json());// express.json(): POST 등의 요청과 함께 오는 json형태의 데이터를 인식하고 핸들링할 수 있게 함.
 app.use(express.static("views"));
-app.use("/images", express.static("images"));
+// app.use("/images", express.static("images"));
+
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 

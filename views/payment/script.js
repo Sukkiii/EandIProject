@@ -36,33 +36,34 @@ paymentBtn.innerHTML += `${printTotalPrice}원 결제하기`;
 
 
 paymentBtn.addEventListener('click',() => {
-    const serverUrl = "http://localhost:3000/api/orders";
+    // const serverUrl = "http://localhost:3000/api/orders";
 
-    const token = "accessToken";
+    // const token = "accessToken";
 
-    const requestOptions = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`, // Set the Authorization header with the token
-        },
-        body: JSON.stringify(data), // Convert data to JSON format
-    };
+    // const requestOptions = {
+    //     method: "POST",
+    //     headers: {
+    //         "Content-Type": "application/json",
+    //         "Authorization": `Bearer ${token}`, // Set the Authorization header with the token
+    //     },
+    //     body: JSON.stringify(data), // Convert data to JSON format
+    // };
 
-    fetch(serverUrl, requestOptions)
-        .then((response) => {
-            if (response.ok) {
-                return response.json(); // Parse the response as JSON if necessary
-            } else {
-                throw new Error("Request failed");
-            }
-        })
-        .then((data) => {
-            // Handle the server's response data (if needed)
-            console.log("Server response:", data);
-        })
-        .catch((error) => {
-            // Handle any errors that occurred during the request
-            console.error("Error:", error);
-        });
+    // fetch(serverUrl, requestOptions)
+    //     .then((response) => {
+    //         if (response.ok) {
+    //             return response.json(); // Parse the response as JSON if necessary
+    //         } else {
+    //             throw new Error("Request failed");
+    //         }
+    //     })
+    //     .then((data) => {
+    //         // Handle the server's response data (if needed)
+    //         console.log("Server response:", data);
+    //     })
+    //     .catch((error) => {
+    //         // Handle any errors that occurred during the request
+    //         console.error("Error:", error);
+    //     });
+    alert("구매가 완료되었습니다.");
 })

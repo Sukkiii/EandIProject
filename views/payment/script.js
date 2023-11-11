@@ -35,15 +35,17 @@ let printTotalPrice = addCommas(totalPrice);
 console.log(printTotalPrice);
 paymentBtn.innerHTML += `${printTotalPrice}원 결제하기`;
 
-const serverUrl = "";
 
 paymentBtn.addEventListener('click',() => {
-    const serverUrl = "";
+    const serverUrl = "http://localhost:3000/api/orders";
+
+    const token = "accessToken";
 
     const requestOptions = {
         method: "POST",
         headers: {
-            "Content-Type": "application/json", // Set the appropriate content type
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`, // Set the Authorization header with the token
         },
         body: JSON.stringify(data), // Convert data to JSON format
     };

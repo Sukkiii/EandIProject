@@ -1,3 +1,5 @@
+
+
 const vibration = (target) => {
   target.classList.add("vibration");
 
@@ -55,7 +57,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const totalData = mainData.products;
       console.log(mainData);
 
-      const popItemList = totalData.slice(0, 4);
+      const popItemList = totalData.slice(0,4);
       const newItemList = totalData.slice(4);
 
       const mainNewList = document.querySelector(".main-new-list");

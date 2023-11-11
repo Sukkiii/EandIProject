@@ -1,45 +1,75 @@
 // 프록시 설정 or 쿠키사용을 위한 옵션 추가
+let selectedCategoryId = "";
+let products = {};
 
 document.addEventListener("DOMContentLoaded", async () => {
   // const baseURL = "http://kdt-sw-7-team05.elicecoding.com";
   const baseURL = "http://localhost:3000";
 
-  const currentURL = window.location.href;
-  const url = new URL(currentURL);
-  const categoryId = url.searchParams.get("id");
-  // const categoryId = `figure`;
+  const currentURL = window.location.search;
 
-  const apiURL = `${baseURL}/api/categories/?id=${categoryId}`;
+  const params = new URLSearchParams(currentURL);
+  const categoryId = params.get("id");
 
-  // const response = await fetch(apiURL);
+  const apiURL = `${baseURL}/api/categories/${categoryId}`;
   const response = await fetch(apiURL, {
     credentials: "include",
   });
 
   const data = await response.json();
+  products = data.products;
   console.log(data);
   const productUl = document.querySelector(".product-ul");
-
+  const bestProductUl = document.querySelector(".best-product-ul");
+  const categoryMini = document.querySelectorAll(".figure-categories-name");
+  categoryMini.forEach((_) => {
+    _.addEventListener("click", () => {
+      selectedCategoryId = _.id;
+      productUl.innerHTML = "";
+      products
+        .filter((_) => _.category === selectedCategoryId)
+        .forEach((product) => {
+          product.image[0] = `${baseURL}${product.image[0]}`;
+          const productLi = createProductElement(product);
+          productUl.appendChild(productLi);
+        });
+    });
+  });
   if (!response.ok) {
     console.error("Error:", response.status);
     return;
   }
 
-  data.products.forEach((product) => {
+  products.forEach((product) => {
     product.image[0] = `${baseURL}${product.image[0]}`;
-    // console.log(product.price);
     const productLi = createProductElement(product);
+    productLi.id = product.category;
     productUl.appendChild(productLi);
+  });
+
+  const productStockSort = products.sort((a, b) => {
+    if (a.stock > b.stock) return 1;
+    else return -1;
+  });
+  productStockSort.slice(0, 4).forEach((product) => {
+    product.image[0] = `${baseURL}${product.image[0]}`;
+    const productLi = createProductElement(product);
+    bestProductUl.appendChild(productLi);
   });
 });
 
 function createProductElement(product) {
   const productLi = document.createElement("li");
   productLi.className = "product-li";
+  productLi.addEventListener("click", () => {
+    const detailUrl = `${window.location.origin}/products/?id=${product._id}`;
+    window.location.href = detailUrl;
+  });
 
   const img = document.createElement("img");
   img.className = "product-list-img";
   img.src = product.image[0];
+  // img.src = "/views/image/1.png";
   img.alt = product.productName;
 
   const description = document.createElement("div");
@@ -55,9 +85,3 @@ function createProductElement(product) {
 
   return productLi;
 }
-
-// function extractCategoryId(path) {
-//   const matches = path.match(/\/categories\/([^/]+)/);
-//   return matches ? matches[1] : null;
-//   // return path.searchParams.get("id");
-// }

@@ -7,75 +7,74 @@ const selectedProduct = {
 };
 
 function fetchProductData() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const productId = urlParams.get("id");
+  const baseURL = "http://localhost:3000";
 
-  if (!productId) {
-    console.error("상품 ID를 찾을 수 없습니다.");
-    return Promise.reject("상품 ID를 찾을 수 없습니다.");
-  }
+  const currentURL = window.location.search;
 
-  const apiUrl = `http://kdt-sw-7-team05.elicecoding.com/products/?id=${productId}`;
+  const params = new URLSearchParams(currentURL);
+  const productId = params.get("id");
 
-  return fetch(apiUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      const product = data.find((p) => p.productId === productId);
-      if (product) {
-        selectedProduct.productId = productId;
-        selectedProduct.name = data.productName;
-        selectedProduct.price = data.price;
-        selectedProduct.thumbnail = data.image[0];
-      }
-      return product;
+  const apiURL = `${baseURL}/api/products/${productId}`;
+
+  return fetch(apiURL, {
+    credentials: "include",
+  })
+    .then(async (response) => {
+      // const product = data.find((p) => p.productId === productId);
+      // if (product) {
+      const data = await response.json();
+      console.log(data);
+      selectedProduct.productId = productId;
+      selectedProduct.name = data.productName;
+      selectedProduct.price = data.price;
+      selectedProduct.thumbnail = data.image[0];
+      return data;
+      // console.log(selectedProduct);
     })
     .catch((error) => {
       console.error("데이터 오류", error);
     });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  fetchProductData()
-    .then((data) => {
-      displayDetailProduct(data);
+document.addEventListener("DOMContentLoaded", async () => {
+  const data = await fetchProductData();
+  displayDetailProduct(data);
 
-      const addToCartButton = document.querySelector(".into-basket");
-      addToCartButton.addEventListener("click", () => {
-        addToCart();
-      });
-      const directBuyButton = document.querySelector(".direct-buy");
-      directBuyButton.addEventListener("click", () => {
-        directBuy();
-      });
-      const quantityDownButton = document.querySelector(".quantity-down");
-      quantityDownButton.addEventListener("click", () => {
-        decreaseQuantity();
-      });
+  const addToCartButton = document.querySelector(".into-basket");
+  addToCartButton.addEventListener("click", () => {
+    addToCart();
+  });
+  const directBuyButton = document.querySelector(".direct-buy");
+  directBuyButton.addEventListener("click", () => {
+    directBuy();
+  });
+  const quantityDownButton = document.querySelector(".quantity-down");
+  quantityDownButton.addEventListener("click", () => {
+    decreaseQuantity();
+  });
 
-      const quantityUpButton = document.querySelector(".quantity-up");
-      quantityUpButton.addEventListener("click", () => {
-        increaseQuantity();
-      });
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+  const quantityUpButton = document.querySelector(".quantity-up");
+  quantityUpButton.addEventListener("click", () => {
+    increaseQuantity();
+  });
 });
 
 // 이 위에는 dummyData 불러오는 코드
 // product.Image는 배열 형식으로 구성되어 있음.
 
 function displayDetailProduct(product) {
+  console.log(product);
+
   const detailThumbnail = document.querySelector(".detail-thumbnail-random");
   const detailArea = document.querySelector(".detail-area");
 
   const thumbnailImg = document.createElement("img");
-  thumbnailImg.src = product.Image[0];
+  thumbnailImg.src = product.image[0];
   detailThumbnail.appendChild(thumbnailImg);
 
-  for (let i = 1; i < product.Image.length; i++) {
+  for (let i = 1; i < product.image.length; i++) {
     const detailImg = document.createElement("img");
-    detailImg.src = product.Image[i];
+    detailImg.src = product.image[i];
     detailArea.appendChild(detailImg);
   }
 
@@ -83,12 +82,12 @@ function displayDetailProduct(product) {
   const priceCalculate = document.querySelector(".price-calculate");
 
   detailMsg.innerHTML = `
-  <div class="product-name">${product.ProductName}</div>
-  <div class="product-price">${formatPriceWithCommas(product.Price)}원</div>
-  <div class="product-explain">${product.Description}</div>
+  <div class="product-name">${product.productName}</div>
+  <div class="product-price">${formatPriceWithCommas(product.price)}원</div>
+  <div class="product-explain">${product.description}</div>
   `;
 
-  priceCalculate.innerHTML = `${formatPriceWithCommas(product.Price)}원`;
+  priceCalculate.innerHTML = `${formatPriceWithCommas(product.price)}원`;
 }
 
 function addToCart(data) {
@@ -138,6 +137,7 @@ function increaseQuantity() {
 }
 
 function formatPriceWithCommas(price) {
+  console.log(typeof price, price);
   return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 

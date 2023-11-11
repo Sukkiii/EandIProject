@@ -3,8 +3,7 @@ let selectedCategoryId = "";
 let products = {};
 
 document.addEventListener("DOMContentLoaded", async () => {
-  // TODO: const baseURL = "http://kdt-sw-7-team05.elicecoding.com";
-  const baseURL = "http://localhost:3000";
+  const baseURL = "http://kdt-sw-7-team05.elicecoding.com";
 
   const currentURL = window.location.search;
 
@@ -51,7 +50,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       products
         .filter((_) => _.category === selectedCategoryId)
         .forEach((product) => {
-          product.image[0] = `${baseURL}${product.image[0]}`;
+          // product.image[0] = `${baseURL}${product.image[0]}`;
           const productLi = createProductElement(product);
           productUl.appendChild(productLi);
         });

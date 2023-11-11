@@ -39,7 +39,7 @@ shoppingStartBtn.addEventListener("click", () => {
 });
 
 document.addEventListener("DOMContentLoaded", async () => {
-  const baseURL = "http://localhost:3000/api";
+  const baseURL = "http://kdt-sw-7-team05.elicecoding.com/api";
   try {
     const response = await fetch(baseURL);
 

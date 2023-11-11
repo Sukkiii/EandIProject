@@ -12,7 +12,7 @@ const token = document.cookie
   .find((row) => row.startsWith("accessToken="))
   .split("=")[1];
 console.log(token);
-fetch("http://localhost:3000/api/users/mypage", {
+fetch("http://kdt-sw-7-team05.elicecoding.com/api/users/mypage", {
   method: "GET",
   headers: {
     "Content-Type": "application/json",
@@ -72,7 +72,7 @@ const submitHandle = (e) => {
 
   // 여기서 사용자의 ID를 얻어와서 URL을 동적으로 생성
   const userId = "123"; // 사용자 ID를 실제 값으로 대체
-  const url = `http://127.0.0.1:3000/api/users/mypage/:${userId}`;
+  const url = `http://kdt-sw-7-team05.elicecoding.com/:${userId}`;
 
   fetch(url, {
     method: "PUT",
@@ -97,7 +97,7 @@ const submitHandle = (e) => {
       console.log(res.message);
       
       console.log("success");
-      // window.location.href ='http://localhost:3000'
+      window.location.href ='http://kdt-sw-7-team05.elicecoding.com/'
     })
     .catch((err) => {
       alert("실패하였습니다.");

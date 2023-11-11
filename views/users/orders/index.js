@@ -41,7 +41,7 @@ fetch("./Data.json",{
 
 const deleteBtn = document.querySelector('#orderDelete')
 const orderDelete = ()=>{
-  fetch(" http://localhost:5000/user/orders/:id2",{
+  fetch(" http://kdt-sw-7-team05.elicecoding.com/user/orders/:id2",{
   }).then()
 }
 deleteBtn.addEventListener('click',orderDelete)

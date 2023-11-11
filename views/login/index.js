@@ -51,7 +51,7 @@ const loginHandle = (e) => {
   const password = passwordInput.value;
   e.preventDefault();
   // console.log(email,password)
-  fetch("http://localhost:3000/api/login", {
+  fetch("http://kdt-sw-7-team05.elicecoding.com/api/login", {
     method: "POST",
     credentials: "include",
     body: JSON.stringify({ email: email, password: password }),
@@ -75,7 +75,7 @@ const loginHandle = (e) => {
           document.getElementById('loginBtn').style.display = "none";
           document.getElementById('logoutBtn').style.display = "unset";
           document.getElementById('mypage').style.display = "unset";
-          window.location.assign("http://localhost:3000/");
+          window.location.assign("http://kdt-sw-7-team05.elicecoding.com");
         } else {
           alert("Login failed");
         }

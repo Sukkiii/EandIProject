@@ -28,7 +28,7 @@ table {
   left: 0;
   right: 0;
   z-index: 50;
-  height: 150px;
+  height: 100px;
   background-color: #fff;
   box-shadow: 0 1px 20px 0px rgba(0, 0, 0, 0.3);
   justify-content: space-between;
@@ -69,7 +69,7 @@ header .head-container {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 150px;
+  height: 100px;
   text-align: center;
   border-right: 2px solid #ebebeb;
 }
@@ -78,7 +78,7 @@ header .head-container {
   display: flex;
   border-left: 2px solid #ebebeb;
   z-index: 1;
-  height: 150px;
+  height: 100px;
   list-style: none;
 }
 .category-move > a:hover {
@@ -95,7 +95,7 @@ header .head-container {
   width: 120px;
   position: relative;
   display: flex;
-  padding-top: 90px;
+  padding-top: 60px;
   margin-right: -4px;
   border-right: 1px solid #ebebeb;
   background-color: #fff;
@@ -109,7 +109,7 @@ header .head-container {
 }
 .category-icon {
   position: absolute;
-  top: 40px;
+  top: 15px;
   left: 50%;
   width: 35px;
   height: 34px;
@@ -237,7 +237,7 @@ const logOutButton = document.querySelector("#logoutBtn");
 const logOutHandle = async (e) => {
   e.preventDefault();
   try {
-    const response = await fetch("http://localhost:3000/api/logout", {
+    const response = await fetch("http://kdt-sw-7-team05.elicecoding.com/api/logout", {
       method: "DELETE",
       credentials: "include",
       headers: { "Content-Type": "application/json" },
@@ -248,7 +248,7 @@ const logOutHandle = async (e) => {
       // document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       console.log(data.message,'data.message');
       alert("Logout successful");
-      window.location.assign("http://localhost:3000");
+      window.location.assign("http://kdt-sw-7-team05.elicecoding.com");
       document.getElementById('loginBtn').style.display = "unset";
       document.getElementById('logoutBtn').style.display = "none";
       document.getElementById('mypage').style.display = "none";

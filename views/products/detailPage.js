@@ -7,8 +7,7 @@ const selectedProduct = {
 };
 
 function fetchProductData() {
-  const baseURL = "http://localhost:3000";
-  // TODO: const baseURL = "http://kdt-sw-7-team05.elicecoding.com/";
+  const baseURL = "http://kdt-sw-7-team05.elicecoding.com";
 
   const currentURL = window.location.search;
 

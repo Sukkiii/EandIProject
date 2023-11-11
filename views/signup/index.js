@@ -170,7 +170,7 @@ const submitHandler = (e) => {
 
 const signup = (e) => {
   e.preventDefault();
-  fetch("http://localhost:3000/api/signup", {
+  fetch("http://kdt-sw-7-team05.elicecoding.com/api/signup", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -190,7 +190,7 @@ const signup = (e) => {
       // console.log(res.body);
       alert(res.message);
       console.log("success");
-      window.location.href ='http://localhost:3000';
+      window.location.href ='http://kdt-sw-7-team05.elicecoding.com';
     })
     .catch((err) => {
       alert(err);

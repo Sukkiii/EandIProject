@@ -59,9 +59,7 @@ const logout = asyncHandler(async (req, res) => {
     res.cookie('accessToken', null, { maxAge: 0 })
     if (res.cookie.accessToken) {
         res.status(500)
-        const error = new Error('정상적으로 로그 아웃이 되지 않았습니다.');
-        next(error);
-        return;
+        throw new InternalServerError('정상적으로 로그 아웃이 되지 않았습니다.');
     } res.json({ message: '이용해주셔서 감사합니다.' })
 })
 

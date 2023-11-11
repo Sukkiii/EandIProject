@@ -1,12 +1,12 @@
-const express = require('express');
+const express = require("express");
 // const permission = require('../middlewares/permission')
-const usersRouter = require('../routes/users');
-const productsRouter = require('../routes/products');
-const ordersRouter = require('../routes/orders');
-const categoriesRouter = require('../routes/categories');
-const { signup, login, logout } = require('../services/userServices');
-const {  CategoryAndProducts } = require('../services/categoryServices');
-const permission = require('../middlewares/permission'); // 유저인증 & 권한 체크
+const usersRouter = require("../routes/users");
+const productsRouter = require("../routes/products");
+const ordersRouter = require("../routes/orders");
+const categoriesRouter = require("../routes/categories");
+const { signup, login, logout } = require("../services/userServices");
+const { CategoryAndProducts } = require("../services/categoryServices");
+const permission = require("../middlewares/permission"); // 유저인증 & 권한 체크
 const router = express.Router();
 
 // 로그인&아웃, 회원 가입

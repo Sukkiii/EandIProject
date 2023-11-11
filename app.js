@@ -1,19 +1,24 @@
-const express = require('express');
-const dotenv = require('dotenv')
-const mongoose = require('mongoose');
-const cookieParser = require('cookie-parser');
-const path = require('path');
+const express = require("express");
+const dotenv = require("dotenv");
+const mongoose = require("mongoose");
+const cookieParser = require("cookie-parser");
+const path = require("path");
 const cors = require("cors");
 dotenv.config();
 
-const multer = require('multer'); //이미지 파일 받을 수 있는 미들웨어
-const upload = multer({ dest: 'views/images/' }); // 파일이 저장될 위치
+// const multer  = require('multer'); //이미지 파일 받을 수 있는 미들웨어
+// const upload = multer({ dest: 'view/uploads/' }); // 파일이 저장될 위치
 
-const indexRouter = require('./routes')
+const apiRouter = require("./routes");
+// api
+const indexRouter = require("./routes/indexRouter");
 
-mongoose.connect(process.env.MONGODB_URL).then(() => {
-  console.log("MongoDB connect Success!");
-}).catch((err) => console.log(err));
+mongoose
+  .connect(process.env.MONGODB_URL)
+  .then(() => {
+    console.log("MongoDB connect Success!");
+  })
+  .catch((err) => console.log(err));
 
 const app = express();
 app.use(
@@ -30,14 +35,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 //라우터
-app.use('/api', indexRouter);
+app.use("/api", apiRouter);
+app.use("/", indexRouter);
 
 //에러 핸들러
 app.use((err, req, res, next) => {
   // console.log(err)
   // set locals, only providing error in development
   res.locals.message = err.message; // res.locals는 응답 객체의 로컬 변수(local variable)를 나타내며, 응답을 렌더링하는 뷰(view)에서 사용
-  res.locals.error = req.app.get('env') === 'development' ? err : {}; // 재사용하기 어려움
+  res.locals.error = req.app.get("env") === "development" ? err : {}; // 재사용하기 어려움
 
   // render the error page
   res.status(err.status || 500);
@@ -45,4 +51,4 @@ app.use((err, req, res, next) => {
 });
 
 const port = process.env.PORT || 3000;
-app.listen(port, console.log('Server is start'))
+app.listen(port, console.log("Server is start"));

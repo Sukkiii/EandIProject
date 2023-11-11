@@ -75,7 +75,6 @@ const createProduct = asyncHandler(async (req, res) => {
 // 상품 수정
 const updateProduct = asyncHandler(async (req, res) => {
     const { image, description, price, productName, stock } = req.body;
-
     const productId = req.params.id; // 업데이트할 상품 ID를 가져옴
     // 상품 업데이트
     const updatedProduct = await Product.updateOne(
@@ -96,7 +95,6 @@ const updateProduct = asyncHandler(async (req, res) => {
 const deleteProduct = asyncHandler(async (req, res) => {
 
     const findId = await Product.findById(req.params.id);
-
     if (!findId) {
         throw new NotFoundError('상품을 찾을 수 없습니다.');
     }

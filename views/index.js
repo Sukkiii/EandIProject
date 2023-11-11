@@ -1,3 +1,5 @@
+
+
 const vibration = (target) => {
   target.classList.add("vibration");
 
@@ -54,10 +56,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       const totalData = mainData.products;
       console.log(mainData); // JSON 데이터를 콘솔에 출력하거나 다른 처리를 수행
 
-      const popItemList = totalData.slice(0, 4);
+      const popItemList = totalData.slice(0,4);
       const newItemList = totalData.slice(4);
-      console.log(popItemList, "popItemList");
-      console.log(newItemList, "new");
+      console.log(popItemList,"popItemList");
+      console.log(newItemList,"new");
 
       const mainNewList = document.querySelector(".main-new-list");
       newItemList.forEach(item => {
@@ -96,7 +98,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       //   src="/views/image/1.png"
       //   alt=""
       // />
-
+      
 
       const mainHotList = document.querySelector(".main-hot-list");
       popItemList.forEach(item => {

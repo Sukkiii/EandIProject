@@ -106,3 +106,16 @@ const submitHandle = (e) => {
 };
 
 submitButton.addEventListener("submit", submitHandle);
+
+document.addEventListener(
+  "DOMContentLoaded",
+  (window.onload = function (e) {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    if (isLoggedIn) {
+      document.getElementById("loginBtn").style.display = "none";
+      document.getElementById("logoutBtn").style.display = "unset";
+      document.getElementById("mypage").style.display = "unset";
+      document.getElementById("signupBtn").style.display = "none";
+    }
+  })
+);

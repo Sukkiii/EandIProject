@@ -206,7 +206,7 @@ function createHeader() {
     </nav>
     <ul class="cus-service">
       <li class="service-move">
-        <a href="/signup/">회원가입</a>
+        <a id='signupBtn' href="/signup/">회원가입</a>
       </li>
       <li class="service-move">
         <a id='loginBtn' href="/login/">로그인</a>
@@ -252,6 +252,7 @@ const logOutHandle = async (e) => {
       document.getElementById('loginBtn').style.display = "unset";
       document.getElementById('logoutBtn').style.display = "none";
       document.getElementById('mypage').style.display = "none";
+      document.getElementById('signupBtn').style.display = "unset";
        localStorage.removeItem('isLoggedIn');
     } else {
       console.log(data,'data');

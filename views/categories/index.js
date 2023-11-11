@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const url = new URL(currentURL);
   const categoryId = url.searchParams.get("id");
   // const categoryId = `figure`;
-  console.log(categoryId);
 
   const apiURL = `${baseURL}/api/categories/?id=${categoryId}`;
 
@@ -58,7 +57,7 @@ function createProductElement(product) {
 }
 
 // function extractCategoryId(path) {
-//   // const matches = path.match(/\/categories\/([^/]+)/);
-//   // return matches ? matches[1] : null;
-//   return path.searchParams.get("id");
+//   const matches = path.match(/\/categories\/([^/]+)/);
+//   return matches ? matches[1] : null;
+//   // return path.searchParams.get("id");
 // }

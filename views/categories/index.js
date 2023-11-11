@@ -3,7 +3,7 @@ let selectedCategoryId = "";
 let products = {};
 
 document.addEventListener("DOMContentLoaded", async () => {
-  // const baseURL = "http://kdt-sw-7-team05.elicecoding.com";
+  // TODO: const baseURL = "http://kdt-sw-7-team05.elicecoding.com";
   const baseURL = "http://localhost:3000";
 
   const currentURL = window.location.search;
@@ -16,9 +16,31 @@ document.addEventListener("DOMContentLoaded", async () => {
     credentials: "include",
   });
 
+  const testUrl = `${baseURL}/api`;
+  const testRes = await fetch(testUrl, {
+    credentials: "include",
+  });
+  const testData = await testRes.json();
+  const criteria = testData.categories.filter(
+    (_) => _.categoryId === categoryId
+  )[0];
+  const categories = testData.categories.filter(
+    (_) => _.categoryParent === criteria._id
+  );
+  const mainCategoryName = document.querySelector(".main-category-name");
+  mainCategoryName.innerHTML = criteria.categoryName;
+
+  categories.forEach((_) => {
+    const categoriesUl = document.querySelector(".categories-ul");
+    const categoriesLi = document.createElement("li");
+    categoriesLi.className = "figure-categories-name";
+    categoriesLi.id = _._id;
+    categoriesLi.innerHTML = _.categoryName;
+    categoriesUl.appendChild(categoriesLi);
+  });
+
   const data = await response.json();
   products = data.products;
-  console.log(data);
   const productUl = document.querySelector(".product-ul");
   const bestProductUl = document.querySelector(".best-product-ul");
   const categoryMini = document.querySelectorAll(".figure-categories-name");
@@ -68,8 +90,8 @@ function createProductElement(product) {
 
   const img = document.createElement("img");
   img.className = "product-list-img";
-  img.src = product.image[0];
-  // img.src = "/views/image/1.png";
+  // img.src = product.image[0];
+  img.src = "/image/1.png";
   img.alt = product.productName;
 
   const description = document.createElement("div");

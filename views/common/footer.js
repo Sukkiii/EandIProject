@@ -15,10 +15,10 @@ const footerStyles = `
 
 `;
 
-const styleSheet = document.createElement("style");
-styleSheet.type = "text/css";
-styleSheet.innerText = footerStyles;
-document.head.appendChild(styleSheet);
+const styleSheet1 = document.createElement("style");
+styleSheet1.type = "text/css";
+styleSheet1.innerText = footerStyles;
+document.head.appendChild(styleSheet1);
 
 function createFooter() {
   const footer = document.createElement("footer");

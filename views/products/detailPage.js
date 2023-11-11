@@ -8,6 +8,7 @@ const selectedProduct = {
 
 function fetchProductData() {
   const baseURL = "http://localhost:3000";
+  // TODO: const baseURL = "http://kdt-sw-7-team05.elicecoding.com/";
 
   const currentURL = window.location.search;
 
@@ -20,16 +21,12 @@ function fetchProductData() {
     credentials: "include",
   })
     .then(async (response) => {
-      // const product = data.find((p) => p.productId === productId);
-      // if (product) {
       const data = await response.json();
-      console.log(data);
       selectedProduct.productId = productId;
       selectedProduct.name = data.productName;
       selectedProduct.price = data.price;
       selectedProduct.thumbnail = data.image[0];
       return data;
-      // console.log(selectedProduct);
     })
     .catch((error) => {
       console.error("데이터 오류", error);
@@ -69,7 +66,8 @@ function displayDetailProduct(product) {
   const detailArea = document.querySelector(".detail-area");
 
   const thumbnailImg = document.createElement("img");
-  thumbnailImg.src = product.image[0];
+  // thumbnailImg.src = "/common/img/logo.png"; // product.image[0];
+  thumbnailImg.src = "/image/1.png"; // product.image[0];
   detailThumbnail.appendChild(thumbnailImg);
 
   for (let i = 1; i < product.image.length; i++) {
@@ -137,7 +135,6 @@ function increaseQuantity() {
 }
 
 function formatPriceWithCommas(price) {
-  console.log(typeof price, price);
   return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 

@@ -76,7 +76,7 @@
 
 const shoppingCart = document.querySelector(".cart-container");
 
-const LocalStorageData = localStorage.getItem("cart");
+const LocalStorageData = localStorage.getItem("cartItems");
 
 let data = JSON.parse(LocalStorageData);
 
@@ -189,7 +189,7 @@ deletePartialBtn.addEventListener('click', (e) => {
     });
 
     // 수정된 데이터를 로컬 스토리지에 저장
-    localStorage.setItem("cart", JSON.stringify(data));
+    localStorage.setItem("cartItems", JSON.stringify(data));
 
     // 화면 새로고침
     location.reload();
@@ -198,7 +198,7 @@ deletePartialBtn.addEventListener('click', (e) => {
 // 전체 삭제 버튼 기능 구현
 const deleteAllBtn = document.querySelector('.delete-total-item-btn');
 deleteAllBtn.addEventListener('click', (e) => {
-    localStorage.removeItem("cart");
+    localStorage.removeItem("cartItems");
     console.log("localStorage값 확인", localStorage.getItem("cart"));
     location.reload();
 }
@@ -247,7 +247,7 @@ addQuantityButtons.forEach((button, index) => {
         data[index].quantity = currentQuantity;
 
         // 장바구니 데이터를 로컬 스토리지에 다시 저장
-        localStorage.setItem("cart", JSON.stringify(data));
+        localStorage.setItem("cartItems", JSON.stringify(data));
     });
 });
 
@@ -276,6 +276,6 @@ minusQuantityButtons.forEach((button, index) => {
         data[index].quantity = currentQuantity;
 
         // 장바구니 데이터를 로컬 스토리지에 다시 저장
-        localStorage.setItem("cart", JSON.stringify(data));
+        localStorage.setItem("cartItems", JSON.stringify(data));
     });
 });

@@ -72,9 +72,7 @@ const loginHandle = (e) => {
           // document.cookie = `token=${data.token}; path=/`;
           alert("Login successful");
           // console.log(document.getElementById("logout").style)
-          document.getElementById('loginBtn').style.display = "none";
-          document.getElementById('logoutBtn').style.display = "unset";
-          document.getElementById('mypage').style.display = "unset";
+         localStorage.setItem('isLoggedIn', true);
           window.location.assign("http://kdt-sw-7-team05.elicecoding.com");
         } else {
           alert("Login failed");

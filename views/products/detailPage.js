@@ -66,8 +66,8 @@ function displayDetailProduct(product) {
   const detailArea = document.querySelector(".detail-area");
 
   const thumbnailImg = document.createElement("img");
-  // thumbnailImg.src = "/common/img/logo.png"; // product.image[0];
-  thumbnailImg.src = "/image/1.png"; // product.image[0];
+  thumbnailImg.src = product.image[0];
+  // thumbnailImg.src = "/image/1.png"; // product.image[0];
   detailThumbnail.appendChild(thumbnailImg);
 
   for (let i = 1; i < product.image.length; i++) {

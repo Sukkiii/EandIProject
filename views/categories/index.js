@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   products.forEach((product) => {
-    product.image[0] = `${baseURL}${product.image[0]}`;
+    // product.image[0] = `${baseURL}${product.image[0]}`;
     const productLi = createProductElement(product);
     productLi.id = product.category;
     productUl.appendChild(productLi);
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     else return -1;
   });
   productStockSort.slice(0, 4).forEach((product) => {
-    product.image[0] = `${baseURL}${product.image[0]}`;
+    // product.image[0] = `${baseURL}${product.image[0]}`;
     const productLi = createProductElement(product);
     bestProductUl.appendChild(productLi);
   });
@@ -90,8 +90,8 @@ function createProductElement(product) {
 
   const img = document.createElement("img");
   img.className = "product-list-img";
-  // img.src = product.image[0];
-  img.src = "/image/1.png";
+  img.src = product.image[0];
+  // img.src = "/image/1.png";
   img.alt = product.productName;
 
   const description = document.createElement("div");

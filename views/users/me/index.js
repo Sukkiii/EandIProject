@@ -7,31 +7,38 @@ let password = document.getElementById("passwordInput");
 let newPassword = document.getElementById("newpasswordInput");
 
 const submitButton = document.getElementById("submitButton");
-
-fetch("http://localhost:5000/user/mypage/:id", {
+const token = document.cookie
+  .split("; ")
+  .find((row) => row.startsWith("accessToken="))
+  .split("=")[1];
+console.log(token);
+fetch("http://localhost:3000/api/users/mypage", {
   method: "GET",
   headers: {
     "Content-Type": "application/json",
+    "Authorization": `Bearer ${token}`,
   },
+  credentials: "include"
 })
+// .then((res) =>
+// res.json() 
+//   )
   .then((res) => {
-    // console.log(res);
-    return res.json();
-  })
-  .then((res) => {
-    console.log(res);
-    res.forEach((el) => {
-      email.value = el.email;
-      birth.value = el.birth;
-      mobile.value = el.mobile;
-      address.value = el.address;
-    });
-  });
+    console.log(res)
  
+    email.value = res.email;
+    birth.value = res.birthDay;
+    mobile.value = res.userName;
+    address.value = res.address;
+  })
+  .catch((error) => {
+    console.error("Fetch error:", error);
+    // 에러 처리 로직 추가
+  });
 
 //입력한value로재설정하는함수
 const submitHandle = () => {
-  fetch("http://127.0.0.1:5500/user/mypage/:id", {
+  fetch("http://127.0.0.1:3000/api/users/mypage/:id", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

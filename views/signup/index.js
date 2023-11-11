@@ -163,17 +163,14 @@ submitButton2.addEventListener("click", (e) => {
 // //버튼누르면정보를백으로뿌려주는최종함수
 const submitHandler = (e) => {
   // e.preventDefault();
-  signup();
 };
 
-submitButton.addEventListener("submit", submitHandler);
-
 // const data = [{email:'asd',passwr},{}]
-//정보를json화하여body에담아보내는함수
- 
+// 정보를json화하여body에담아보내는함수
+
 const signup = (e) => {
-  e.preventDefault()
-  fetch("http://localhost:3000/signup", {
+  e.preventDefault();
+  fetch("http://localhost:3000/api/signup", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -181,36 +178,73 @@ const signup = (e) => {
     body: JSON.stringify({
       email: emailInput.value,
       userName: nameInput.value,
-      password: passwordInput.value,
-      birth: birthInput.value,
+      birthDay: birthInput.value,
       address: addressInput.value,
-      mobile: mobileInput.value
+      password: passwordInput.value,
+      userRole: "user",
     }),
   })
-    .then((res) => res.json())
-    .then((res) => {
-      if (res.statusCode === 200) {
-        console.log(res.body)
-        alert(res.body.message);
-        console.log("success");
-      }
+  .then((res) => res.json())
+  .then((res) => {
+      console.log(res);
+      // console.log(res.body);
+      alert(res.body.message);
+      console.log("success");
     })
-    .catch((err) => {
-      alert(err);
-      console.log('err')
-      console.log(err, "실패");
+    .catch(() => {
+      // alert( );
+      console.log("err");
+      console.log("실패");
     });
-};
+  };
+  submitButton.addEventListener("click", signup);
+// const signup = (e) => {
+//   e.preventDefault(); // 폼의 기본 동작(페이지 새로고침)을 막습니다.
+
+//   // 회원가입 정보를 객체로 생성
+//   const signupData = {
+//     email: emailInput.value,
+//     userName: nameInput.value,
+//     password: passwordInput.value,
+//     birth: birthInput.value,
+//     address: addressInput.value,
+//     mobile: mobileInput.value
+//   };
+//   console.log(signupData);
+//   // 로컬스토리지에 회원가입 정보 저장
+//   localStorage.setItem(signupData, JSON.stringify(signupData));
+
+//   // 서버로 데이터 전송
+//   fetch("http://localhost:3000/signup", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(signupData),
+//   })
+//     .then((res) => res.json())
+//     .then((res) => {
+//       if (res.statusCode === 200) {
+//         console.log(res.body);
+//         alert(res.body.message);
+//         console.log("success");
+//       }
+//     })
+//     .catch((err) => {
+//       alert(err);
+//       console.log('err');
+//       console.log(err, "실패");
+//     });
+// };
 //   oncomplete: function(data) {
 //       // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
 //       // 예제를 참고하여 다양한 활용법을 확인해 보세요.
 //   }
 // }).open();
-emailButton.addEventListener("click", checkUsername);
 
 function checkUsername(e) {
   e.preventDefault();
-  fetch("/signup", {
+  fetch("http://localhost:3000/signup/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -232,3 +266,5 @@ function checkUsername(e) {
       return true;
     });
 }
+
+emailButton.addEventListener("click", checkUsername);

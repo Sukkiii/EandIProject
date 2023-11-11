@@ -46,15 +46,16 @@ const url = "http://localhost:3000";
 const submitButton = document.querySelector("#signInSubmit");
 const emailInput = document.querySelector("#emailInput");
 const passwordInput = document.querySelector("#passwordInput");
-const email = emailInput.value;
-const password = passwordInput.value;
 
 const loginHandle = (e) => {
+  const email = emailInput.value;
+  const password = passwordInput.value;
   e.preventDefault();
-  fetch(`${url}/login`, {
+  console.log(email,password)
+  fetch(`${url}/api/login`, {
     method: "POST",
     credentials: "include",
-    body: JSON.stringify({ UserID: email, Password: password }),
+    body: JSON.stringify({ email: email, password: password }),
     headers: {
       "Content-Type": "application/json",
     },
@@ -62,13 +63,14 @@ const loginHandle = (e) => {
     .then((res) => res.json())
     .then(
       (data) => {
-        if (data.success) {
+        console.log(data)
+        if (data.massage) {
           // localStorage.setItem("jwtToken", token);
           // alert("로그인");
           // const token = res.cookies.accessToken;
           console.log(data)
           console.log(document.cookie)
-          document.cookie = `token=${result.token}; path=/`;
+          // document.cookie = `token=${data.token}; path=/`;
           alert("Login successful");
           redirect(`${url}/`);
           // document.getElementById('login').style.display = "none";
@@ -85,7 +87,7 @@ const loginHandle = (e) => {
       alert("Failed to login. Please try again later.");
     });
 };
-submitButton.addEventListener("submit", loginHandle);
+submitButton.addEventListener("click", loginHandle);
 
 // fetch("/protected-resource", {
 //   headers: {

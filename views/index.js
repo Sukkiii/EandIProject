@@ -1,5 +1,4 @@
 
-
 const vibration = (target) => {
   target.classList.add("vibration");
 
@@ -110,3 +109,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.error("Error fetching data:", error);
   }
 });
+
+window.onload = function() {
+  const isLoggedIn = localStorage.getItem('isLoggedIn');
+  if (isLoggedIn) {
+    document.getElementById('loginBtn').style.display = "none";
+    document.getElementById('logoutBtn').style.display = "unset";
+    document.getElementById('mypage').style.display = "unset";
+  }
+};

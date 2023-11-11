@@ -30,7 +30,7 @@ if (data) {
 }
 
 const paymentBtn = document.querySelector(".payment-btn");
-let printTotalPrice = addCommas(totalPrice);
+let printTotalPrice = addCommas(totalPrice + 3000);
 console.log(printTotalPrice);
 paymentBtn.innerHTML += `${printTotalPrice}원 결제하기`;
 

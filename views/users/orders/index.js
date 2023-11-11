@@ -44,7 +44,7 @@ const orderDelete = ()=>{
   fetch(" http://kdt-sw-7-team05.elicecoding.com/user/orders/:id2",{
   }).then()
 }
-deleteBtn.addEventListener('click',orderDelete)
+// deleteBtn.addEventListener('click',orderDelete)
 
 document.addEventListener(
   "DOMContentLoaded",

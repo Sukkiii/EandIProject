@@ -252,6 +252,7 @@ const logOutHandle = async (e) => {
       document.getElementById('loginBtn').style.display = "unset";
       document.getElementById('logoutBtn').style.display = "none";
       document.getElementById('mypage').style.display = "none";
+       localStorage.removeItem('isLoggedIn');
     } else {
       console.log(data,'data');
       alert("Logout failed");

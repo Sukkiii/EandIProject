@@ -1,5 +1,4 @@
-
-const LocalStorageData = localStorage.getItem("cart");
+const LocalStorageData = localStorage.getItem("cartItems");
 
 const orderItemList = document.querySelector(".order-item-list");
 

@@ -1,4 +1,3 @@
-
 const vibration = (target) => {
   target.classList.add("vibration");
 
@@ -116,5 +115,6 @@ window.onload = function() {
     document.getElementById('loginBtn').style.display = "none";
     document.getElementById('logoutBtn').style.display = "unset";
     document.getElementById('mypage').style.display = "unset";
+    document.getElementById('signupBtn').style.display = "none";
   }
 };

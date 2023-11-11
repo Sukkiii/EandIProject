@@ -42,7 +42,6 @@
 //     }
 //   };
 
-const url = "http://localhost:3000";
 const submitButton = document.querySelector("#signInSubmit");
 const emailInput = document.querySelector("#emailInput");
 const passwordInput = document.querySelector("#passwordInput");
@@ -51,8 +50,8 @@ const loginHandle = (e) => {
   const email = emailInput.value;
   const password = passwordInput.value;
   e.preventDefault();
-  console.log(email,password)
-  fetch(`${url}/api/login`, {
+  // console.log(email,password)
+  fetch("http://localhost:3000/api/login", {
     method: "POST",
     credentials: "include",
     body: JSON.stringify({ email: email, password: password }),
@@ -63,18 +62,20 @@ const loginHandle = (e) => {
     .then((res) => res.json())
     .then(
       (data) => {
-        console.log(data)
+        // console.log(data)
         if (data.massage) {
           // localStorage.setItem("jwtToken", token);
           // alert("로그인");
           // const token = res.cookies.accessToken;
-          console.log(data)
-          console.log(document.cookie)
+          console.log(data);
+          console.log(document.cookie);
           // document.cookie = `token=${data.token}; path=/`;
           alert("Login successful");
-          redirect(`${url}/`);
-          // document.getElementById('login').style.display = "none";
-          // document.getElementById('logout').style.display = "unset";
+          // console.log(document.getElementById("logout").style)
+          document.getElementById('loginBtn').style.display = "none";
+          document.getElementById('logoutBtn').style.display = "unset";
+          document.getElementById('mypage').style.display = "unset";
+          window.location.assign("http://localhost:3000/");
         } else {
           alert("Login failed");
         }
@@ -88,7 +89,11 @@ const loginHandle = (e) => {
     });
 };
 submitButton.addEventListener("click", loginHandle);
-
+// document.addEventListener("DOMContentLoaded", () => {
+//   // 이벤트 등록 및 초기화 코드 작성
+//   document.getElementById("logout").style.display = "unset";
+//   document.getElementById("login").style.display = "none";
+// });
 // fetch("/protected-resource", {
 //   headers: {
 //     Authorization: `Bearer ${token}`,

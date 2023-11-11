@@ -13,7 +13,7 @@
     <title>managerPage</title>
   </head>
   <body>
-    <script src="./category.js"></script>
+    
     <script src="../common/header.js"></script>
     <main class="main-container">
       <section class="section">
@@ -35,37 +35,39 @@
       <div class="sub-container">
         <div class="category-container">
             <div class="category-item">
-              <img class="item-img" src="../image/1.png" alt="">
+              <img class="item-img" src="../../common/img/figure.png" alt="">
               <p class="category-item-name">피규어</p>
             </div>
 
             <div class="category-item">
-              <img class="item-img" src="../image/1.png" alt="">
+              <img class="item-img" src="../../common/img/doll.png" alt="">
               <p class="category-item-name">인형</p>
             </div>
 
             <div class="category-item">
-              <img class="item-img" src="../image/1.png" alt="">
+              <img class="item-img" src="../../common/img/stationery.png" alt="">
               <p class="category-item-name">학용품</p>
             </div>
 
             <div class="category-item">
-              <img class="item-img" src="../image/1.png" alt="">
+              <img class="item-img" src="../../common/img/clothes.png" alt="">
               <p class="category-item-name">옷</p>
             </div>
 
             <div class="category-item">
-              <img class="item-img" src="../image/1.png" alt="">
-              <p class="category-item-name">스티커</p>
+              <img class="item-img" src="../../common/img/etc.png" alt="">
+              <p class="category-item-name">기타</p>
             </div>
         </div>
 
         <div class="category-btn">
-            <button class="custom-btn btn-12">
+            <button id="addBtn" class="custom-btn btn-12">
               <span>추가하기</span>
               <span>카테고리 추가</span>
             </button>
-            <button class="custom-btn btn-12">
+            <input id="catInput" placeholder="카테고리 명">  
+            
+            <button id="delBtn" class="custom-btn btn-12">
               <span>삭제하기</span>
               <span>카테고리 삭제</span>
             </button>
@@ -76,4 +78,5 @@
     </main>
     <script src="./views/common/footer.js"></script>
   </body>
+  <script src="./category.js"></script>
 </html>

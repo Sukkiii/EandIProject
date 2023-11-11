@@ -160,8 +160,12 @@ a {
   display: flex;
   align-items: center;
   flex-direction: column;
+  height: 40%;
 }
-
+.item-img{
+  width: 50%;
+  /* height: 5%; */
+}
 .category-item-name{
   width: 70%;
   text-align: center;

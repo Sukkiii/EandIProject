@@ -74,20 +74,26 @@
 /* 회원가입 css */
 #mypageForm {
   background-color: #f7ecb4;
-  margin-top: 5%;
+  margin-top: 10%;
   margin-left: 5%;
   border-radius: 2rem;
   width: 90%;
   height: 80%;
   /* justify-content:center; */
-  /* align-items: center; */
+  /* align-items: center; */  
 }
 #mypageSec1 {
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 0%;
+  font-size: 150%;
+  font-weight: bold;
+ 
 }
+/* #cartText{
+  font-size: 150%
+} */
 #mypageSec1 div {
   text-align: center;
   margin-top: 10%;

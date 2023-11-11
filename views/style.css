@@ -80,6 +80,7 @@ footer{
     align-items: center;
     justify-content: center;
     position: relative;
+    width: 100%;
 }
 
 .forSeelist {
@@ -108,7 +109,7 @@ footer{
 
 .main-container {
     width: 100%;
-    padding-top: 50px;
+    padding-top: 20px;
     background-color: #ffffff;
     padding-bottom: 100px;
     background-color: rgb(253, 255, 137);
@@ -148,9 +149,21 @@ footer{
 
 .main-hot-container {
     width: 100%;
-    height: 2000px;
     display: flex;
     float: left;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 200px;
+    margin: 10px;
+}
+
+.line {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+        top: 35%;
+        z-index: 0;
 }
 
 .main-box {
@@ -159,11 +172,49 @@ footer{
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 10px;
+    margin: 20px;
+}
+
+.main-pop-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.main-hot-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 20px;
 }
 
 .main-hot-title {
-    padding: 20px;
+    width: 25%;
+    font-size: 40px;
     text-align: center;
+    font-weight: 400;
+    border: 1px solid black;
+    margin: 10px;
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    z-index: 2;
 }
 
 .main-hot-list {
@@ -174,6 +225,8 @@ footer{
     justify-content: space-around;
 }
 
+
+
 .main-new-list {
         width: 100%;
     display: flex;
@@ -182,57 +235,131 @@ footer{
     justify-content: space-around;
 }
 
+.hot-list-box a {
+    width: 90%;
+    text-align: center;
+}
+
 .hot-list-box {
     display: inline-block;
     background-color: #ffffff;
-    width: calc(25% - 20px);
-    height: 350px;
+    width: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: 1px solid lightblue;
+    /* border: 1px solid lightblue; */
     box-shadow: 5px 2px 2px smoke;
     border-radius: 20px;
-    margin: 10px;
+    min-width: 230px;
+    padding: 20px 0px 20px 0px;
+}
+
+
+.hot-box-img a {
+    width: 80%;
+    text-align: center;
+}
+
+.pop-list-box {
+    display: inline-block;
+    background-color: #ffffff;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* border: 1px solid lightblue; */
+    box-shadow: 5px 2px 2px smoke;
+    border-radius: 20px;
+    min-width: 230px;
+    padding: 20px 0px 20px 0px;
+}
+
+
+.pop-list-box a {
+    width: 100%;
+    text-align: center;
+}
+
+.pop-box-img {
+    transition: all 50s linear;
+     width: 90%;
+     border-radius: 10px;
+}
+
+.pop-box-img:hover{
+    /* transform: scale(1.3); */
+    animation: vibration .5s infinite;
 }
 
 .hot-box-img{
-     transition: all 20s linear;
+     transition: all 50s linear;
+    width: 200px;
+     border-radius: 10px;
+     padding-right: 5px;
 }
+
 
 .hot-box-img:hover{
     /* transform: scale(1.3); */
     animation: vibration .5s infinite;
 }
 
+.pop-box-img{
+     transition: all 50s linear;
+    width: 200px;
+     border-radius: 10px;
+}
+
+
+.pop-box-img:hover{
+    /* transform: scale(1.3); */
+    animation: vibration .5s infinite;
+}
+
+.hot-item-content {
+    width: 200px;
+    background-color: rgb(255, 111, 111);
+    border-radius: 10px;
+}
+
 .hot-item-name {
-    padding: 10px;
-    font-size: 20px;
-    border-bottom: 2px solid rgb(215, 213, 213);
+    padding: 3px;
+    font-size: 17px;
     text-align: center;
+    color: white;
+    font-weight: 700;
 }
 
 .hot-item-price {
-    padding: 10px;
+    padding: 3px;
     font-size: 15px;
     text-align: center;
+    color: white;
 }
 
 
 .new-list-box {
     display: inline-block;
     background-color: #ffffff;
-    width: 15%;
-    height: 350px;
+    width: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: 1px solid lightblue;
+    /* border: 1px solid lightblue; */
     box-shadow: 5px 2px 2px smoke;
     border-radius: 20px;
     margin: 10px;
+    min-width: 230px;
+    padding: 10px;
+}
+
+
+.new-list-box a {
+    width: 100%;
+    text-align: center;
 }
 
 .new-box-img {
@@ -297,7 +424,7 @@ footer{
 }
 
 .add-scale{
-    transform: scale(1.5);
+    transform: scale(1.3);
 }
 
 .fake-footer {

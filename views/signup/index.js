@@ -186,13 +186,14 @@ const signup = (e) => {
   })
   .then((res) => res.json())
   .then((res) => {
-      console.log(res);
+      console.log(res.message);
       // console.log(res.body);
-      alert(res.body.message);
+      alert(res.message);
       console.log("success");
+      window.location.href ='http://localhost:3000';
     })
-    .catch(() => {
-      // alert( );
+    .catch((err) => {
+      alert(err);
       console.log("err");
       console.log("실패");
     });
@@ -242,29 +243,39 @@ const signup = (e) => {
 //   }
 // }).open();
 
-function checkUsername(e) {
-  e.preventDefault();
-  fetch("http://localhost:3000/signup/", {
+function checkUsername(email) {
+  return fetch("http://localhost:3000/api/signup", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email: emailInput.value }),
+    body: JSON.stringify({ email }),
   })
     .then((res) => res.json())
     .then((res) => {
       if (res.status === 400) {
-        alert("중복된 이메일입니다.");
-        return false;
+        return false; // 중복된 이메일
       } else {
-        console.log("이메일 검사 통과");
-        return true;
+        return true; // 이메일이 유효함
       }
     })
-    .catch(() => {
-      console.log("error");
-      return true;
+    .catch((err) => {
+      console.error(err);
+      return false; // 에러 발생
     });
 }
 
-emailButton.addEventListener("click", checkUsername);
+emailButton.addEventListener("click", async (e) => {
+  e.preventDefault();
+
+  const isValid = await checkUsername(emailInput.value);
+
+  if (!isValid) {
+    alert("중복된 이메일입니다.");
+    idValid.innerText = '가입된 이메일이 있습니다.';
+  } else {
+    alert("이메일 검사 통과");
+    console.log("이메일 검사 통과");
+    idValid.innerText = '';
+  }
+});

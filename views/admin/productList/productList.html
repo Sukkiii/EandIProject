@@ -13,7 +13,6 @@
     <title>managerPage</title>
   </head>
   <body>
-    <script src="./productlist.js"></script>
     <script src="../common/header.js"></script>
     <main class="main-container">
       <section class="section">
@@ -31,11 +30,11 @@
           </div>
         </div>
       </section>
-
+      
       <div class="sub-container">
         <div class="category-container">
             <div class="category-item">
-              <img src="../image/1.png" alt="">
+              <img class="itemImg" src="../../payment/image/chulsu-figure.png" alt="">
               <div class="box">
                 <p class="category-item-name">피규어</p>
                 <p class="category-item-price">20000원</p>
@@ -43,7 +42,7 @@
             </div>
 
             <div class="category-item">
-              <img src="../image/1.png" alt="">
+              <img class="itemImg" src="../../payment/image/jjangu-buriburidance-figure.png" alt="">
               <div class="box">
                 <p class="category-item-name">피규어</p>
                 <p class="category-item-price">20000원</p>
@@ -51,7 +50,7 @@
             </div>
 
             <div class="category-item">
-              <img src="../image/1.png" alt="">
+              <img class="itemImg" src="../../payment//image/jjangu-chochobi-figure.png" alt="">
               <div class="box">
                 <p class="category-item-name">피규어</p>
                 <p class="category-item-price">20000원</p>
@@ -59,7 +58,7 @@
             </div>
 
             <div class="category-item">
-              <img src="../image/1.png" alt="">
+              <img class="itemImg" src="../../payment/image/yuri-figure.png" alt="">
               <div class="box">
                 <p class="category-item-name">피규어</p>
                 <p class="category-item-price">20000원</p>
@@ -67,7 +66,7 @@
             </div>
 
             <div class="category-item">
-              <img src="../image/1.png" alt="">
+              <img class="itemImg" src="../../payment/image/jjangu-gundamrogbot-figure.png" alt="">
               <div class="box">
                 <p class="category-item-name">피규어</p>
                 <p class="category-item-price">20000원</p>
@@ -76,19 +75,28 @@
         </div>
 
         <div class="category-btn">
-            <button class="custom-btn btn-12">
-              <span>추가하기</span>
-              <span>제품 추가</span>
-            </button>
-            <button class="custom-btn btn-12">
-              <span>삭제하기</span>
-              <span>제품 삭제</span>
-            </button>
+          <button id="addBtn" class="custom-btn btn-12">
+            <span>추가하기</span>
+            <span>제품 추가</span>
+          </button>
+          <input id="catInput" placeholder="상품 명"> 
+          <input id="priceInput" placeholder="상품가격"> 
+          <button id="delBtn" class="custom-btn btn-12">
+            <span>삭제하기</span>
+            <span>제품 삭제</span>
+          </button>
         </div>
-
       </div>
+      <form method="post" enctype="multipart/form-data">
+        <div class="button">
+            
+        </div>
+        <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
+    </form>
 
     </main>
     <script src="../common/footer.js"></script>
   </body>
-</html>
+  <script src="./productlist.js"></script>
+  </html>
+  

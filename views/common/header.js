@@ -209,21 +209,57 @@ function createHeader() {
         <a href="/signup/">회원가입</a>
       </li>
       <li class="service-move">
-        <a href="/login/">로그인</a>
+        <a id='loginBtn' href="/login/">로그인</a>
       </li>
       <li class="service-move">
-        <a href="/login/">로그아웃</a>
+        <a id='logoutBtn' href="/login/">로그아웃</a>
       </li>
       <li class="service-move">
         <a href="/shoppingBasket/">장바구니</a>
       </li>
       <li class="service-move">
-        <a href="/users/">마이페이지</a>
+        <a id='mypage' href="/users/">마이페이지</a>
       </li>
     </ul>
   </div>
   `;
+ 
   document.body.appendChild(header);
+  // document.getElementById('loginBtn').style.display = "none";
+  document.getElementById('logoutBtn').style.display = "none";
+  document.getElementById('mypage').style.display = "none";
 }
-
 createHeader();
+ 
+const logOutButton = document.querySelector("#logoutBtn");
+ 
+
+const logOutHandle = async (e) => {
+  e.preventDefault();
+  try {
+    const response = await fetch("http://localhost:3000/api/logout", {
+      method: "DELETE",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+    });
+    const data = await response.json();
+
+    if (data.message) {
+      // document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      console.log(data.message,'data.message');
+      alert("Logout successful");
+      window.location.assign("http://localhost:3000");
+      document.getElementById('loginBtn').style.display = "unset";
+      document.getElementById('logoutBtn').style.display = "none";
+      document.getElementById('mypage').style.display = "none";
+    } else {
+      console.log(data,'data');
+      alert("Logout failed");
+    }
+  } catch (err) {
+    console.error("Error:", err);
+    alert("Failed to logout. Please try again later.");
+  }
+};
+
+logOutButton.addEventListener("click", logOutHandle);

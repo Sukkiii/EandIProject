@@ -140,6 +140,10 @@ a {
   justify-content: center;
 }
 
+.itemImg{
+  object-fit: cover;
+  width: 35%;
+}
 .category-container {
   width: 100%;
   display: flex;
@@ -282,3 +286,9 @@ a {
 }
 
 /* 제품 목록 css */
+/* 파일선택 */
+.button {
+  display: flex;
+  justify-content: center;
+}
+ 

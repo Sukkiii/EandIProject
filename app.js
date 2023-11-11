@@ -7,7 +7,7 @@ const cors = require("cors");
 dotenv.config();
 
 const multer = require('multer'); //이미지 파일 받을 수 있는 미들웨어
-const upload = multer({ dest: 'view/uploads/' }); // 파일이 저장될 위치
+const upload = multer({ dest: 'views/images/' }); // 파일이 저장될 위치
 
 const indexRouter = require('./routes')
 
@@ -24,7 +24,7 @@ app.use(
 );
 app.use(express.json());// express.json(): POST 등의 요청과 함께 오는 json형태의 데이터를 인식하고 핸들링할 수 있게 함.
 app.use(express.static("views"));
-app.use("/image", express.static("image"));
+// app.use("/images", express.static("images"));
 
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());

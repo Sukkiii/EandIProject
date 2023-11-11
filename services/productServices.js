@@ -3,12 +3,12 @@ const { Product } = require('../models/model');
 const { NotFoundError, BadRequestError } = require('../utils/customError')
 // 상품 목록 조회(최신순)
 const getProductList = asyncHandler(async (req, res) => {
-    const products = await Product.find({}).sort('-createdAt').limit(10);
+    const products = await Product.find({}).sort('-createdAt').limit(20);
     if (products.length === 0) {
         throw new NotFoundError('상품이 존재하지 않습니다.');
     }
     // //이미지파일 보내기
-    // const imagePath = path.join(__dirname, 'views/uploads/my-image.jpg'); // 이미지 파일의 경로를 설정합니다.
+    // const imagePath = path.join(__dirname, 'views/images/my-image.jpg'); // 이미지 파일의 경로를 설정합니다.
     // res.sendFile(imagePath); // 이미지 파일을 응답으로 보냅니다.
 
     res.json(products);

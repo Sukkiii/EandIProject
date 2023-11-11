@@ -25,7 +25,7 @@ const signup = asyncHandler(async (req, res) => {
         res.status(404);
         throw new Error('사용자가 존재하지 않습니다.');
     }
-    res.json({ massage: `${user.userName}님 회원 가입에 성공하셨습니다!` })
+    res.json({ message: `${user.userName}님 회원 가입에 성공하셨습니다!` })
 })
 
 // 로그인

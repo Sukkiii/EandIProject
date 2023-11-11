@@ -96,13 +96,12 @@ const updateDeliveryStatus = asyncHandler(async (req, res) => {
    const orderId = req.params.id;
    const order = await Order.findById(orderId);
    if (!order) {
-      res.status(404);
-      throw new Error('주문이 존재하지 않습니다.');
+      throw new NotFoundError('주문이 존재하지 않습니다.');
    }
    const newStatus = req.body.deliveryStatus; // 새로운 state 값
    order.deliveryStatus = newStatus; // 주문의 state 값을 업데이트
    const updatedStatus = await order.save(); // 변경된 주문을 저장
-   res.json(updatedStatus); // 업데이트된 주문을 반환
+   res.json({deliveryStatus: updatedStatus.deliveryStatus, message: '배송 상태 수정 완료'}); // 업데이트된 주문을 반환
 })
 
 
